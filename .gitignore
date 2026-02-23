@@ -1,0 +1,19 @@
+# downloaded documents are too large for git
+data/raw/
+data/processed/
+data/embeddings/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+cln_env/
+*.egg-info/
+
+# misc
+.env
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
