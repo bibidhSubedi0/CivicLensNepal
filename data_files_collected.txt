@@ -1,441 +1,1238 @@
-
-D:\CivicLensNepal\data\raw>tree /f
+D:\CivicLensNepal\data>tree /f
 Folder PATH listing for volume istgidk
 Volume serial number is A8A6-4014
 D:.
-├───01_constitution
-│       Constitution-en.pdf
-│       Constitution-np.pdf
-│
-├───02_economic_survey
-│       Economic-Survey-02-03.pdf
-│       Economic-Survey-08-09.pdf
-│       Economic-Survey-12-13.pdf
-│       Economic-Survey-18-19.pdf
-│       Economic-Survey-19-20.pdf
-│       Economic-Survey-20-21.pdf
-│       Economic-Survey-21-22.pdf
-│       Economic-Survey-22-23.pdf
-│       Economic-Survey-23-24.pdf
-│       Economic-Survey-79-80-np.pdf
-│       Economic-Survey-81-82-np.pdf
-│
-├───03_budget_speech
-│       budget-speech-2020-21-en.pdf
-│       budget-speech-2022-23-en.pdf
-│       budget-speech-2023-24-en.pdf
-│       budget-speech-2024-25-en.pdf
-│       budget-speech-2025-26-en.pdf
-│       budget-speech-82-83-np.pdf
-│
-├───04_psc_syllabuses
-│       PSC-Engineer-Civil-Irrigation-p1.pdf
-│       PSC-Engineer-Civil-Irrigation-p2.pdf
-│       PSC-Engineer-Civil-Sanitary-p1.pdf
-│       PSC-Engineer-Civil-Sanitary-p2.pdf
-│       PSC-Joint-Sec-Govt-Attorney-p1.pdf
-│       PSC-Joint-Sec-Govt-Attorney-p2.pdf
-│       PSC-Joint-Sec-Govt-Attorney-p3.pdf
-│       PSC-Joint-Sec-Parliament-p1.pdf
-│       PSC-Joint-Sec-Parliament-p2.pdf
-│       PSC-Joint-Sec-Parliament-p3.pdf
-│       PSC-Photographer.pdf
-│       PSC-Senior-Computer-Engineer-p1.pdf
-│       PSC-Senior-Computer-Engineer-p2.pdf
-│       PSC-Senior-Sociologist-p1.pdf
-│       PSC-Senior-Sociologist-p2.pdf
-│       psc_agriculture_economist_p1.pdf
-│       psc_agriculture_economist_p2.pdf
-│       psc_computer_operator.pdf
-│       psc_engineer_civil_general_p1.pdf
-│       psc_engineer_civil_general_p2.pdf
-│       psc_environment_inspector_p1.pdf
-│       psc_environment_inspector_p2.pdf
-│       psc_joint_sec_admin_p1.pdf
-│       psc_joint_sec_admin_p2.pdf
-│       psc_joint_sec_admin_p3.pdf
-│       psc_joint_sec_audit_p1.pdf
-│       psc_joint_sec_audit_p2.pdf
-│       psc_joint_sec_audit_p3.pdf
-│       psc_joint_sec_foreign_p1.pdf
-│       psc_joint_sec_foreign_p2.pdf
-│       psc_joint_sec_foreign_p3.pdf
-│       psc_joint_sec_justice_p1.pdf
-│       psc_joint_sec_justice_p2.pdf
-│       psc_joint_sec_justice_p3.pdf
-│       psc_kharidar_p1.pdf
-│       psc_kharidar_p2.pdf
-│       psc_nayab_subba_p1.pdf
-│       psc_nayab_subba_p2.pdf
-│       psc_section_officer_law_p1.pdf
-│       psc_section_officer_law_p2.pdf
-│       psc_section_officer_law_p3.pdf
-│       psc_section_officer_p1.pdf
-│       psc_section_officer_p2.pdf
-│       psc_sub_engineer_civil.pdf
-│       psc_undersecretary_admin_p1.pdf
-│       psc_undersecretary_admin_p2.pdf
-│
-├───05_civil_service_acts
-│       Civil-Service-Act-2049-en.pdf
-│       Civil-Service-Rules-2050-en.pdf
-│       Good-Governance-Act-2050-en.pdf
-│       Good-Governance-Act-2064-en.pdf
-│       Local-Administration-Act-2028-en.pdf
-│
-├───06_bonus_resources
-│       Nepal-Statistical-Yearbook-2023.pdf
-│
-├───07_key_laws
-│       Intergovernmental-Fiscal-Act-2077-en.pdf
-│       Local-Government-Operation-Act-2074-en.pdf
-│       Muluki-Ain-General-Code-en.pdf
-│       Public-Procurement-Regulation-2064-en.pdf
-│       RTI-Rules-2065-en.pdf
-│       Work-Division-Rules-2064-en.pdf
-│
-├───08_planning
-│       15th-Periodic-Plan-en.pdf
-│       16th-Periodic-Plan-en.pdf
-│
-├───09_npc_documents
-│       15th-Plan-Approach-Paper-Draft-1684516952_18.pdf
-│       A-SDG-16-Plus-Report-Peaceful-Just-and-I-1684557808_59.pdf
-│       Consolidated-Livelihood-Exercise-for-Analyzing-Resilience-in-Nepal_July-2024_print_copy.pdf
-│       EMPLOYMENT-RECOVERY-STRATEGIES-AND-PLAN--1684600193_70.pdf
-│       Final-Report-on-Study-and-Analysis-of-Op-1684516133_32.pdf
-│       High-level-Asia-Pacific-Regional-Review--highlelvel-asial-pacific-regional-meeting-on-Istanbul.pdf
-│       Hon-Prof-Dr-Puspa-Raj-Kadel-Vice-Chairma-1684424027_44.pdf
-│       LDC-Graduation-Smooth-Transition-Strateg-LDC-Graduation-STS.pdf
-│       Leading-the-Future---Sustainable-Roads-f-1684598697_11.pdf
-│       Multidimensional-Poverty-Index-Analysis--1684557740_69.pdf
-│       National-Framework-For-Leave-No-One-Behi-LNOB-UPDATED-REPORT-Sept-3-2023-updated.pdf
-│       National-Review-of-Sustainable-Developme-1684554160_15.pdf
-│       National-Strategy-for-Early-Childhood-De-1684556152_14.pdf
-│       Needs-Assessment-Costing-and-Financing-S-1684517256_48.pdf
-│       Nepal-Human-Development-Report-2014-1684513874_79.pdf
-│       Nepal-Human-Development-Report-2020-1684554622_46.pdf
-│       Nepal-MDGs-Acceleration-Framework-Improv-1684497210_100.pdf
-│       Nepal-Millennium-Development-Goals-Progr-1684513954_63.pdf
-│       Nepal-Multidimensional-Poverty-Index-Ana-1684514744_100.pdf
-│       Nepals-National-Statement-to-be-delivere-Nepal_HLPF.pdf
-│       Nepals-SDG-Status-and-Roadmap-2016-2030-1684515827_15.pdf
-│       Nepals-Sustainable-Development-Goals-Nee-SDG-Costing-and-Financing-Strategy-2025.pdf
-│       Post-Flood-Recovery-Needs-Assessment--Fi-1684514458_85.pdf
-│       Press-Release-by-Embassy-of-Nepal-Beijin-press-note-PR-Beijing.pdf
-│       Press-Release-by-the-Permanent-Mission-o-press-note-HLPF-2023.pdf
-│       Press-Release-Consultation-and-lnteracti-consultation-and-interaction-program.pdf
-│       Press-Release-Honourable-Vice-Chair-of-N-VC-participant-in-APFSD.pdf
-│       Press-Release-Inauguration-of-SUN-Global-Inauguration-of-SUN-Global-Gathering,-2019.pdf
-│       Press-Release-National-Planning-Commissi-npc-gets-full-shape-2080.01.05.pdf
-│       Press-Release-on-the-Right-Honourable-Pr-Press-Release-23rd-July-pm-visit-to-italy-day-1.pdf
-│       Press-Release-on-the-Right-Honourable-Pr-Press-Release-24th-July-pm-visit-to-italy-day-2.pdf
-│       Press-Release-on-the-Right-Honourable-Pr-Press-Release-25-July-2023--pm-visit-to-italy-day-3.pdf
-│       Press-Release-on-the-Visit-of-Vice-Chair-press-release-doha-for-website.pdf
-│       Press-Release-UNICEF-Country-Representat-UNICEF-2079-12-22.pdf
-│       Press-Release-Visit-of-Honourable-Member-Member-RK-Phuyal-Geneva.pdf
-│       Regional-Earthquake-Recovery-Dialogue-fo-1684513531_79.pdf
-│       SDGs-Baseline-Report-of-Karnali-Province-1684554230_30.pdf
-│       Sub-Regional-Workshop-on-Structural-Tran-PR-Sub-regional-workshop-1.pdf
-│       Sustainable-Development-GoalRevised-Indi-SDG-Indicators_16-Aug-2023-updated.pdf
-│       Sustainable-Development-Goals-2016-2030--1684513461_65.pdf
-│       Sustainable-Development-Goals-Progress-A-1684555333_67.pdf
-│       THE-EFFECTS-OF-COVID-19-PANDEMIC-ON-FORE-1684556068_18.pdf
-│       The-Fifteenth-Plan-Fiscal-Year-201920-2-1684554899_25.pdf
-│       United-Nations-Development-Assistance-Fr-1684515022_20.pdf
-│       Universalizing-Clean-Energy-in-Nepal-1684516044_18.pdf
-│       अनगमन-भरमण-परतवदन-बक-बरदय-र-सरखत-सह-सचव-1684476784_88.pdf
-│       अनगमन-भरमण-परतवदन-रकम-रलप-सलयन-र-पयठन-स-1684476591_75.pdf
-│       अनगमन-भरमण-परतवदन-रमछप-र-सनधल-करयकरम-नर-1684476526_19.pdf
-│       अनगमन-भरमण-परतवदनअछम-र-बजर-सह-सचव-वषण-न-1684476888_35.pdf
-│       अनपचरक-कषतरम-कभड-१९-क-परभव-नयनकरण-रणनतहर-1684599402_55.pdf
-│       आ-व-२०८३८४-क-लग-परदश-सरकर-र-सथनय-तहमरफत--notice-for-csgrants-2082-gorkhapatra.pdf
-│       आ-व-२०८३८४-क-लग-परदश-सरकर-र-सथनय-तहमरफत--notice-for-csgrants-2082.pdf
-│       आपरत-नत-२०६९-क-पनरवलकन-परतवदन-1684598784_87.pdf
-│       आरथक-ववधकरण-करयकरम-Tanfeedh-Opening-Day--1684512789_96.pdf
-│       आव-२०७४०७५-क-वरषक-परतवदन-1684516680_83.pdf
-│       आव-२०७६७७-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684553096_58.pdf
-│       आव-२०७६७७-म-समपरक-अनदन-मरफत-परदश-र-सथनय--1684553190_30.pdf
-│       आव-२०७७७८-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684554366_4.pdf
-│       आव-२०७७७८-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684555140_58.pdf
-│       आव-२०७८७९-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684556757_93.pdf
-│       आव-२०७८७९-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684556687_86.pdf
-│       आव-२०७९८०-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684598596_53.pdf
-│       आव-२०७९८०-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684598499_58.pdf
-│       आव-२०८०८१-म-वशष-अनदनमरफत-परदश-सरकर-र-सथन-विशेष-अनुदान-final-2080.pdf
-│       आव-२०८०८१-म-समपरक-अनदनमरफत-परदश-सरकर-तथ--समपूरक-अनुदान-final-2080.pdf
-│       आव-२०८२८३-म-वशष-अनदनमरफत-परदश-सरकर-तथ-सथ-Full-List-Vishesh.pdf
-│       आव-२०८२८३-म-समपरक-अनदनमरफत-परदश-सरकर-तथ--Full-List-Samapurak.pdf
-│       एककत-यजनबदध-शहर-वकसक-मपदणड-मसयद-परतवदन-1684512712_18.pdf
-│       एककत-रषटरय-रजगर-परणलक-ढच-समबनध-परतवदन-२०-1684600265_78.pdf
-│       एककत-रषटरय-समजक-सरकष-सरचन-२०७७-सझव-तथ-छल-1684599761_44.pdf
-│       एककत-रषटरय-समजक-सरकष-सरचन-२०८०-एकीकृत-राष्ट्रिय-सामाजिक-सुरक्षा-संरचना,-२०८०-Final.pdf
-│       औदयगक-नत२०६७-नत-पनरवलकन-परतवदन-1684598252_27.pdf
-│       कष-वयवसय-परवरदधन-नतक-समकष-1684557897_18.pdf
-│       कषजनय-वसतक-आयत-नरयतक-अवसथ-अधययन-परतवदन-1684557991_24.pdf
-│       कषत-तथयङक-सङकलन-नरदशकपरयगकरत-पसतक-२०८२-DamageDataCollectionGuideline2082.pdf
-│       कषम-वदश-लगनक-समभवयत-अधययन-1684599316_29.pdf
-│       खदय-परणल-रपनतरणक-रणनतक-यजन-२०८१८२-२०८६८७-खाद्य-प्रणाली-रूपान्तरणको-रणनीतिक-योजना.pdf
-│       गरमण-सडक-नरमणम-भर-उपकरण-परयगबट-उतपनन-वपद-1684598900_61.pdf
-│       जललगत-वकस-अयजनहरक-अनगमन-भरमण-परतवदन-डट-अ-1684476654_62.pdf
-│       तथयङक-र-तथयङकय-सकषरत-1684599899_99.pdf
-│       दग-वकस-लकषय-आवशयकत-पहचन-लगत-अनमन-तथ-वततय-1684555921_22.pdf
-│       दग-वकस-लकषय-सथनयकरण-सरत-पसतक-1684555249_21.pdf
-│       दग-वकस-लकषयहर-वरतमन-अवसथ-र-भव-मरगचतर२०१६-1684516777_72.pdf
-│       दग-वकसक-लकषयहर-करणल-परदशक-आधर-तथयङक-परतव-1684554297_69.pdf
-│       नत-तथ-यजन-र-तथयङकसमबनध-परयगतमक-पसतक-1684600026_92.pdf
-│       नपल-मनव-वकस-परतवदन-१९९८-1684493548_57.pdf
-│       नपल-मनव-वकस-परतवदन-२००४-1684493449_40.pdf
-│       नपल-मनव-वकस-परतवदन-२००९-1684493293_25.pdf
-│       नपल-मनव-वकस-परतवदन-२०१४-1684493382_25.pdf
-│       नपल-मनव-वकस-परतवदन-२०२०-1684493688_81.pdf
-│       नपल-सहशरबद-वकस-परगत-परतवदन-२००२-1684497362_76.pdf
-│       नपल-सहशरबद-वकस-परगत-परतवदन-२००५-1684497424_91.pdf
-│       नपल-सहशरबद-वकस-परगत-परतवदन-२०१०-1684497280_44.pdf
-│       नपल-सहशरबद-वकस-परगत-परतवदन-२०१३-1684494512_100.pdf
-│       नपल-सहशरबद-वकस-परगत-परतवदन-२०१५-1684497496_97.pdf
-│       नपलक-जनसखयक-परवरतनहर-परवतहर-र-नतगत-परभव-1684514333_4.pdf
-│       नपलम-तहगत-सरकरक-यजन-समनवयक-सङगठनतमक-सरचन-1684557235_83.pdf
-│       नपलम-लखपरकषण-र-बरज-फरछयटक-सथत-1684599113_54.pdf
-│       नपलम-वततय-समवशकरण-समबनध-अधययन-परतवदन-1684557037_96.pdf
-│       नरयतम-नगद-अनदन-समबनध-वयवसथक-परभवकरत-अधयय-1684557403_21.pdf
-│       पनधर-यजन-आरथक-वरष-२०७६७७-२०७८७९-क-मधयव-1684600389_98.pdf
-│       पनधर-यजन-आव-२०७६०७७-२०८००८१-क-आधर-पतर-1684517386_18.pdf
-│       परमख-आरथक-सचकक-परयग-वध-1684600099_62.pdf
-│       परयटन-नत-२०६५-नत-पनरवलकन-अधययन-परतवदन-1684596682_19.pdf
-│       पररमभक-बलवकस-रषटरय-रणनत-२०७७-२०७८-1684555989_40.pdf
-│       परशसनक-तथ-नययक-जटलतक-करण-ऊरज-खनपन-सडक-र--1684596404_83.pdf
-│       परस-वजञपत-आगम-तन-आरथक-वरष-२०८०८१-२०८१८२-rastiya-shrot-anuman-samiti-3-arthik-barsha.pdf
-│       परस-वजञपत-आगम-तन-आरथक-वरषक-रषटरय-सरतक-अन-rastriya-short-vc-bishwo.pdf
-│       परस-वजञपत-आयगक-नवनयकत-सदसय-ड-अनत-शह-ढगनक-appointment-of-member-anita.pdf
-│       परस-वजञपत-उचचसतरय-रजनतक-मञचक-बठक-२०७७३२९-HIGH-LEVEL-POLITICAL-FORUM.pdf
-│       परस-वजञपत-कलमब-पलनक-४७-औ-Consultative-Co-COLOMBO-PLAN-47TH-CONSULTATIVE-COMMITTEE.pdf
-│       परस-वजञपत-दग-वकस-लकषय-कनदरय-नरदशक-समतक-ब-Press-Release-2079-12-24-SDG-steering-committee.pdf
-│       परस-वजञपत-दग-वकस-लकषय-परगत-समकष-२०१६--२०-SDG_Progress_Press_Release-2077.pdf
-│       परस-वजञपत-दरघकलन-सच-सहतक-पनधर-यजन-आव-२०७-national-interaction-prg-on-15th-plan-concept-paper.pdf
-│       परस-वजञपत-नपल-मनव-वकस-परतवदन-२०२०-सरवजनक-NHDR_2020_PR1.pdf
-│       परस-वजञपत-नपलक-सवसथय-कषतर-वरतमन-अवसथ-र-भ-national-dialouge-on-health.pdf
-│       परस-वजञपत-पषण-सव-वसतर-अभयन-समबनध-वशव-समम-scaling-up-nutrition-movement-golbal-gathering-2019.pdf
-│       परस-वजञपत-पषण-सव-वसतर-अभयन-समबनध-वशव-समम-SUNGG-2076-kartik-19.pdf
-│       परस-वजञपत-मत-२०७७-मघ-१८-गतक-रषटरय-यजन-आय-NPC-FULL-COMMITTEE-MEETING-2077-MAGH-18.pdf
-│       परस-वजञपत-रषटरय-यजन-आयगक-उपधयकष-एव-सदसय-members-appointment-and-spokesperson.pdf
-│       परस-वजञपत-रषटरय-यजन-आयगक-परण-बठकल-आव-२०७-full-committee-meeting-2077.2.15..pdf
-│       परस-वजञपत-रषटरय-यजन-आयगक-मननय-उपधयकष-ड-म-vc-meeting-with-Hanna-Singer-Hamdy.pdf
-│       परस-वजञपत-रषटरय-यजन-आयगक-मननय-उपधयकष-डमन-Press-release-2080.01.05-APFSD.pdf
-│       परस-वजञपत-रषटरय-वकस-परषद-बठक२०७५-मत-२०७५-NDC-2075.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४५-औ--45th-NDAC.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४७-औ--47th-NDAC-2076.10.26.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४८-औ--48TH-NDAC.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४९-औ--49-th-NDAC.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-५०-औ--50th-NDAC-2079-12-23.pdf
-│       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-५०-औ--50th-PRENDAC.pdf
-│       परस-वजञपत-सममननय-परधनमनतर-एवम-रषटरय-यजन--NPC-FULL-MEETING-2076-FALGUN-19.pdf
-│       परस-वजञपत-सममननय-परधनमनतर-एवम-रषटरय-यजन--npc-purna-baithak-2076.1.15.pdf
-│       परस-वजञपत-२०८२-भद-२३-र-२४-गत-भएक-आनदलनक--press-release--loss-and-damage-assessment-2082-07-12.pdf
-│       परस-वजञपतरषटरय-यजन-आयगक-मननय-उपधयकष-ड-मन-meeting-of-vc-with-adb-country-director.pdf
-│       परस-वजञपतवकसशल-मलकम-सतरननत-रणनत-तरजमक-मस-press-note-LDC-Strearing.pdf
-│       बढगणडक-जलवधत-आयजनक-लगनक-खक-तयर-गरन-गठत-स-1684514570_89.pdf
-│       बदधक-अपङगत-भएक-वयकतलई-परदन-गरएक-सव-परवहक-1684556896_8.pdf
-│       बलपतर-आहवनक-सचन-bid-documents11042025131852.pdf
-│       बहकषतरय-पषण-यजन-तसर-आव-२०८०८१-२०८७८८-MSNP-III-Report-Nepali-final-(2).pdf
-│       बहकषतरय-पषण-यजन-दसर-२०७५७६-२०७९८०-1684514913_92.pdf
-│       म-उपधयकष-परड-पषपरज-कडल-तथ-करयकरम-नरदशक-श-1684477391_46.pdf
-│       मधयमकलन-खरच-सरचन-अव-२०७५७६-२०७७७८-1684516215_67.pdf
-│       मधयमकलन-खरच-सरचन-आव-२०७६७७-२०७८७९-1684517785_72.pdf
-│       मधयमकलन-खरच-सरचन-आव-२०७७७८---२०७९८०-1684553945_59.pdf
-│       मधयमकलन-खरच-सरचन-आव२०७८७९-२०८०८१-तथ-वरषक-1684556598_38.pdf
-│       मधयमकलन-खरच-सरचन-आव२०८०८१-२०८२८३-तथ-वरषक-MTEF-Fina2080.81.pdf
-│       मननय-कपसनध-परसद-समतक-टल-दवर-भएक-सथलगत-अन-1684477017_14.pdf
-│       मननय-सदसय-ड-कपसनध-परसद-समतवट-उदयपर-र-परस-1684477276_88.pdf
-│       मननय-सदसय-ड-कपसनध-परसद-समतवट-बर-र-परस-जल-1684477107_8.pdf
-│       मननय-सदसय-ड-कपसनध-परसद-समतवट-महततर-र-धनष-1684477188_76.pdf
-│       रषटरय-आयजन-बक-समबनध-नरदशक-1684553307_37.pdf
-│       रषटरय-आयजन-बङकम-आयजन-परवषट-समबनध-जरर-सचन-राष्ट्रिय-आयोजना-बैङ्कमा-आयोजना-प्रविष्टि-सम्बन्धी-जरुरी-सूचना.pdf
-│       रषटरय-गरवक-आयजनक-समय-तथ-लगत-अधकत-समबनध-स-national-pride-project-cost-and-time-overrun-report-82_6_10-(1).pdf
-│       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-1684600664_81.pdf
-│       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-अव-२०७३-1684516516_43.pdf
-│       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-आव-२०७४-1684516864_55.pdf
-│       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-आव-२०७६-1684555049_25.pdf
-│       रषटरय-गरवक-आयजनहरक-सङकषपत-परचय-तथ-परगत-1684472880_3.pdf
-│       रषटरय-जनगणन-२०७८-पररमभक-नतज-1684598429_34.pdf
-│       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684516328_92.pdf
-│       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684517876_37.pdf
-│       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684554483_24.pdf
-│       रषटरय-यजन-आयगबट-भईरहक-कषत-मलयङकन-सरवकषण--web.pdf
-│       रषटरय-रजगर-नत-२०७१-नत-पनरवलकन-अधययन-परतव-1684596776_6.pdf
-│       रषटरय-वकस-समसय-समधन-समतक-४६-औ-बठक-मत-२०७-46th-NDAC.pdf
-│       रसय-यकरन-यदधल-नपलक-उदयग-वणजय-र-आपरत-कषतर-रसिया-र-युक्रेन-युद्धको-उद्योग-र-वाणिज्य-क्षैत्रमा-पर्ने-प्रभाव-अध्ययन-सम्बन्धी-प्रत.pdf
-│       लख-रचन-उपलबध-गरउन-समबनध-सचन-notice-for-articles.pdf
-│       लख-रचन-उपलबध-गरउन-समबनध-सचन-provinces-letter-for-loss-and-damage.pdf
-│       वकस-पतरकक-लग-लख-रचन-उपलबध-गरउन-समबनध-सचन-notice-for-bikash-patrika10262025122010.pdf
-│       वकस-वरष-४२---अक-१-२०८२-पस-VIKAS-2026.pdf
-│       वणजय-नत-२०७२-करयनवयनक-परभवकरत-अधययन-परतव-1684557326_78.pdf
-│       वदश-वनमय-दर-नरधरण-परणल-अधययन-परतवदन-1684556970_83.pdf
-│       वदशक-छतरवततल-नजमत-सवक-जनशकत-वयवसथपनम-परक-1684556827_80.pdf
-│       वदशक-रजगर-नत-२०६८-क-पनरवलकन-परतवदन-1684599200_6.pdf
-│       वदशक-रजगरल-गरब-नवरण-र-समजक-सरकषम-परयएक-य-1684599579_37.pdf
-│       वन-तथ-भसरकषण-मनतरलय-अनतरगत-सचलत-बह-सरकरव-1684476436_16.pdf
-│       वपदपछक-आवशयकत-आकलन---भग-१-1684513771_45.pdf
-│       वपदपछक-आवशयकत-आकलन---भग-२-1684513646_23.pdf
-│       वरषक-परतवदन-आरथक-वरष-२०८१०८२-Barsik-Pratibedan-2082---Attached-cover.pdf
-│       वरषक-परतवदन-आव-२०७४०७५-1684736687_60.pdf
-│       वरषक-परतवदन-आव-२०७४०७५-1684916773_13.pdf
-│       वरषक-परतवदन-आव-२०७५०७६-1684736614_59.pdf
-│       वरषक-परतवदन-आव-२०७६०७७-1684554980_2.pdf
-│       वरषक-परतवदन-आव-२०७६०७७-1684736325_22.pdf
-│       वरषक-परतवदन-आव-२०७८०७९-1684470260_71.pdf
-│       वरषक-परतवदन-आव-२०७८०७९-1684600529_76.pdf
-│       वरषक-परतवदन-आव-२०७९८०-NPC-Annual-Report-2079-2080-Revised-3-26.pdf
-│       वरषक-परतवदन-आव-२०८०८१-annual-report-2081.pdf
-│       वरषक-परतवदन-आव२०७५०७६-1684553669_64.pdf
-│       वरषक-वकस-करयकरम-आरथक-वरष-२०७७२०७८-1684553790_94.pdf
-│       वरषक-वकस-करयकरम-२०७६२०७७-1684517590_27.pdf
-│       वशष-अनदन-समबनध-पहल-सशधन-करयवध-२०८२-विशेष-अनुदान-सम्बन्धी-(पहिलो-संशोधन)-कार्यविधि,-२०८२.pdf
-│       शहर-सवसथय-नत-२०७२-नत-पनरवलकन-अधययन-परतवद-1684597942_95.pdf
-│       सचन-परवध-परणल-परयगकरत-तथ-परणल-सञचलनकरत-क-cyber-security-advisory.pdf
-│       सचनक-हक-समबनध-ऐन-२०६४-क-दफ-५-र-सचनक-हक-स-1684554036_21.pdf
-│       सथनय-तहक-यजन-तरजम-दगदरशन-1684598335_57.pdf
-│       समदयक-वदयलयक-सबल-अभयस-अधययन-परतवदन-1684557564_86.pdf
-│       समदयक-वनल-रषटरय-अरथतनतरम-परक-परभव-अधययन--1684557499_43.pdf
-│       समपरक-अनदन-समबनध-पहल-सशधन-करयवध-२०८२-समपूरक-अनुदान-सम्बन्धी-(पहिलो-संशोधन)-कार्यविधि,-२०८२.pdf
-│       समरट-सट-सफरत-शहर-समवनध-अवधरण-पतर-1684512575_36.pdf
-│       सयकत-परस-वजञपत-रषटरय-यजन-आयग-र-महलख-परकष-SDG_Joint_Consultative_Meeting_between_NPC_and_OAG.pdf
-│       सरकर-कषक-सरचन-अवसथ-र-परवतत-अधययन-1684599011_59.pdf
-│       सरकषत-कषतरल-नपलक-अरथतनतरम-परक-परभव-1684599680_23.pdf
-│       सरवजनक-लगन-वयवसथपन-करययजन-आरथक-वरष-२०८१८-सार्वजनिक-लगानी-व्यवस्थापन-कार्ययोजना.pdf
-│       सरवजनक-ससथन-समबनध-अधययन-परतवदन-1684557632_81.pdf
-│       सहर-यजन-आरथक-वरष-२०८१८२-२०८५८६-सोह्रौं-योजना.pdf
-│       १४-औ-यजन-२०७३७४-२०७५७६-1684515942_66.pdf
-│       २०३०-परकलपन-रयआ-क-परतनधमणडल-ल-मत-डसमबर-1684512890_25.pdf
-│       २०८२-भद-२३-र-२४-गत-भएक-आनदलनक-करमम-भएक-क-notice-about-loss-n-damage.pdf
-│       २०८२-भद-२३-र-२४-गतक-आनदलनक-करमम-भएक-सरवज-Cheti-Mulyankan.pdf
-│
-└───11_laws_np
-        Legal-Maxims-कानूनी-सूक्तिहरू.pdf
-        अख्तियार-दुरूपयोग-अनुसन्.pdf
-        अख्तियार-दुरूपयोग-अनुसन्धान-आयोग-ऐन-२०४८.pdf
-        अख्तियार-दुरूपयोग-अनुसन्धान-आयोग-नियमावली-२०५९.pdf
-        अचल-सम्पत्ति-अधिग्रण-ऐन-२०१३.pdf
-        अचल-सम्पत्ति-अधिग्रहण-नियमहरू-२०१६.pdf
-        अतिरिक्त-हुलाक-नियमावली-२०३४.pdf
-        अदालती-दण्ड-जरिवाना-असुल-तहसिल-नियमहरू-२०२६-लाई-खारेज-गर्ने-नियमहरू-२०२८.pdf
-        अध्यागमन-ऐन-२०४९-1.pdf
-        अध्यागमन-नियमावली-२०५१.pdf
-        अनिवार्य-तथा-निःशुल्क-शिक्षा-सम्बन्धी-ऐन-२०७५.pdf
-        अनिवार्य-तथा-निःशुल्क-शिक्षा-सम्बन्धी-नियमावली-२०७७.pdf
-        अनुगमन-तथा-मूल्याङ्कन-ऐन२०८०.pdf
-        अनुमतिपत्र-बहाल-नरहेका-दूरसञ्_चार-सेवा-प्रदायकको-सम्पत्ति-व्यवस्थापन-नियमावली-२०७९.pdf
-        अनुमतिपत्र-बहाल-नरहेका-दूरसञ्‍चार-सेवा-प्रदायकको-सम्पत्ति-व्यवस्थापन-नियमावली-२०७९.pdf
-        अनौपचारिक-शिक्षा-नीति-२०.pdf
-        अन्तःशुल्क-ऐन-२०५८.pdf
-        अन्तःशुल्क-नियमावली-२०५९.pdf
-        अन्तरदेशीय-धर्मपुत्र-धर.pdf
-        अन्तर्राष्ट्रिय-आणविक-उर.pdf
-        अन्तर्राष्ट्रिय-एकीकृत-पर्वतीय-विकास-केन्द्र-ऐन-२०४०.pdf
-        अन्तर्राष्ट्रिय-न्यायालयको-विधान.pdf
-        अन्तर्राष्ट्रिय-फाइनान्स-कर्पोरेशनको-सदस्याता-प्राप्त-गर्ने-ऐन-२०२२.pdf
-        अन्तर्राष्ट्रिय-विकास-एसोसिएशनको-सदस्यता-प्राप्त-गर्ने-ऐन-२०१९.pdf
-        अन्तर्राष्ट्रिय-वित्तीय-कारोबार-ऐन-२०५४.pdf
-        अन्तर–सरकारी-वित्त-व्यवस्थापन-ऐन-२०७४.pdf
-        अपराध-पीडित-संरक्षण-ऐन-२०७५.pdf
-        अपराध-पीडित-संरक्षण-नियमावली-२०७७.pdf
-        अपाङ्ग-संरक्षण-तथा-कल्याण-ऐन-२०३९-1.pdf
-        अपाङ्ग-संरक्षण-तथा-कल्याण-नियमावली-२०५१.pdf
-        अपाङ्गता-भएका-व्यक्तिको-अधिकार-सम्बन्धी-ऐन-२०७४.pdf
-        अपाङ्गता-भएका-व्यक्तिको-अधिकार-सम्बन्धी-नियमावली-२०७७.pdf
-        अपाङ्गता-भएका-व्यक्तिहरुको-अधिकार-सम्बन्धी-महासन्धिको-ऐच्छिक-आलेख.pdf
-        अभिलेख-संरक्षण-ऐन-२०४६.pdf
-        अभिलेख-संरक्षण-नियमावली-२०६३.pdf
-        अवैतनिक-वाणिज्यदूत-सम्बन्धी-नियमावली-२०३९.pdf
-        आकस्मिक-कोष-ऐन-२०१६-1.pdf
-        आकस्मिक-कोष-नियमावली-२०३१.pdf
-        आकस्मिक-बीमा-कोष-सञ्चालन-नियमावली-२०६०.pdf
-        आतङ्ककारी-तथा-विध्वंसात्मक-कार्य-नियन्त्रण-तथा-सजाय-ऐन-२०५८.pdf
-        आदिकवि-भानुभक्त-जन्मस्थल-विकास-समिति-गठन-आदेश-२०७७.pdf
-        आदिवासि-जनजाति-आयोग-नियामवली-२०७९.pdf
-        आदिवासी-जनजाति-आयोग-ऐन-२०७४.pdf
-        आदिवासी-जनजाति-उत्थान-राष्ट्रिय-प्रतिष्ठान-ऐन-२०५८.pdf
-        आदिवासी-तथा-जनजाति-सम्बन्धी-महासन्धि.pdf
-        आन्तरिक-हुलाक-वस्तु-बिमा-गर्ने-ऐन-२०१९.pdf
-        आन्तरिक-हुलाक-वस्तु-बिमा-गर्ने-नियमहरू-२०१९.pdf
-        आपतकालीन-बालउद्धार-कोष-सञ्चालन-नियमावली-२०६७.pdf
-        आमाको-दूधलाई-प्रतिस्थापन-गर्ने-वस्तु-बिक्री-वितरण-नियन्त्रण-ऐन-२०४९.pdf
-        आमाको-दूधलाई-प्रतिस्थापन-गर्ने-वस्तु-विक्री-वितरण-नियन्त्रण-नियमावली-२०५१.pdf
-        आय-टिकट-दस्तूर-ऐन-२०१९.pdf
-        आयकर-ऐन-२०५८.pdf
-        आयकर-नियमावली-२०५९.pdf
-        आयुर्वेद-चिकित्सा-परिषद्-ऐन-२०४५.pdf
-        आयोडिनयुक्त-नून-उत्पादन-तथा-बिक्री-वितरण-ऐन-२०५५.pdf
-        आर्थिक-अध्यादेश-२०५९.pdf
-        आर्थिक-अध्यादेश-२०७०.pdf
-        आर्थिक-ऐन-2079.pdf
-        आर्थिक-ऐन-२०७६.pdf
-        आर्थिक-ऐन-२०७७.pdf
-        आर्थिक-ऐन-२०८०.pdf
-        आर्थिक-कार्यविधि-ऐन-२०५५.pdf
-        आर्थिक-कार्यविधि-तथा-वित्तीय-उत्तरदायित्व-ऐन-२०७६.pdf
-        आर्थिक-कार्यविधि-तथा-वित्तीय-उत्तरदायित्व-नियमावली-२०७७.pdf
-        आर्थिक-कार्यविधि-नियमावली-२०६४.pdf
-        आर्थिक-सरकारको-अर्थ-सम्बन्धी-प्रस्तावलाई-कार्यान्वयन-गर्न-बनेको-अध्यादेश-२०६९.pdf
-        आर्थिक-सामाजिक-तथा-सांस्कृतिक-अधिकार-सम्बन्धी-अन्तर्राष्ट्रिय-प्रतिज्ञापत्र.pdf
-        आवश्यक-पदार्थ-नियन्त्रण-अधिकार-ऐन-२०१७.pdf
-        आवश्यक-वस्तु-संरक्षण-ऐन-२०१२.pdf
-        आवश्यक-सेवा-सञ्चालन-ऐन-२०१४.pdf
-        आवासको-अधिकार-सम्बन्धी-ऐन-२०७५.pdf
-        उखडा-सम्बन्धी-ऐन-२०२१.pdf
-        उखडा-सम्बन्धी-नियमहरू-२०२१.pdf
-        उच्च-अदालत-तथा-जिल्ला-अदालतका-न्यायाधीश.pdf
-        उच्च-अदालत-नियमावली-२०७३.pdf
-        उच्च-माध्यमिक-शिक्षा-ऐन-२०४६.pdf
-        उच्च-माध्यमिक-शिक्षा-नियमावली-२०५२.pdf
-        उजीरसिँह-थापाको-जंगी-तथा-निजामती-स्थिति-बन्देज.pdf
-        उपभोक्ता-संरक्षण-ऐन-२०७५.pdf
-        उपभोक्ता-संरक्षण-नियमावली-२०५६.pdf
-        उपभोक्ता-संरक्षण-नियमावली-२०७६.pdf
-        उमेर-नाम-र-जात-सच्याउने-नियमहरू-२०१७.pdf
-        उर्जा-दक्षता-तथा-संरक्षण-विधेयक-सम्बन्धमा-तयार-गरिएको-अध्ययन-प्रतिवेदन.pdf
-        ऋण-तथा-जमानत-ऐन-२०२५.pdf
-        ऋणपत्रको-प्राथमिक-तथा-दोस्रो-बजार-व्यवस्थापन-नियमावली-२०६१.pdf
-        एकल-महिला-सुरक्षा-कोष-सञ्चालन-नियमावली-२०७०.pdf
-        एजेन्सी-संशोधन-र-एकीकरण-नियमहरू-२०१९.pdf
-        ओजोन-तहलाई-नष्ट-गर्ने-पदार्थको-उपभोग-नियन्त्रण-नियमावली-२०५७.pdf
-        औद्योगिक-पुनरुत्थान-कोष-सञ्चालन-कार्यविधि-नियमावली-२०६४.pdf
-        औद्योगिक-व्यवसाय-ऐन-२०७३.pdf
-        औद्योगिक-व्यवसाय-ऐन-२०७६.pdf
-        औद्योगिक-व्यवसाय-नियमावली-२०७८.pdf
-        औद्योगिक-व्यवसाय-विकास-प्रतिष्ठान-ऐन-२०५३.pdf
-        औषधि-ऐन-२०३५.pdf
-        औषधि-जाँचबुझ-तथा-निरीक्षण-नियमावली-२०४०.pdf
-        औषधि-तेस्रो-संशोधन-अध्यादेश-२०७७.pdf
-        औषधि-तेस्रो-संशोधन-अध्यादेश-२०७९.pdf
-        औषधि-दर्ता-नियमावली-२०३८.pdf
-        औषधि-परामर्श-परिषद्-र-औषधि-सल्लाहकार-समिति-गठन-नियमावली-२०३७.pdf
-        औषधि-स्तर-नियमावली-२०४३.pdf
-        कञ्चनजङ्घा-संरक्षण-क्षेत्र-व्यवस्थापन-नियमावली-२०६४.pdf
-        कमैया-श्रम-निषेध-गर्ने-सम्बन्धी-ऐन-२०५८.pdf
-        कमैया-श्रम-निषेध-गर्ने-सम्बन्धी-नियमावली-२०६७.pdf
-        कम्पनी-ऐन-२०६३-लाई-संशोधन-गर्न-बनेको-विधेयक.pdf
-        कम्पनी-ऐन-२०६३.pdf
-        करार-सेवा-नियमहरू-२०२६.pdf
-        कर्जा-सुरक्षण-नियमावली-२०७५.pdf
-        कर्णाली-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०६८.pdf
-        कर्मचारी-सञ्चयकोष-ऐन-२०१९.pdf
-        कर्मचारी-समायोजन-अध्यादेश-२०७५.pdf
-        कर्मचारी-समायोजन-ऐन-२०७४.pdf
-        कर्मचारी-समायोजन-ऐन-२०७५.pdf
-        कर्मचारी-समायोजन-नियमावली-२०७४.pdf
-        कसूरको-अनुसन्धान-सम्बन्धी-नियमावली-२०७५.pdf
-        कसूरजन्य-सम्पत्ति-तथा-साधन-रोक्का-नियन्त्रण-र-जफत-ऐन-२०७०.pdf
-        कसूरजन्य-सम्पत्ति-तथा-साधन-रोक्का-नियन्त्रण-र-जफत-नियमावली-२०७७.pdf
-        काठमाडौँ-उपत्यका-विकास-प्राधिकरण-ऐन-२०४५.pdf
-        काठमाडौं-उपत्यका-विकास-प्राधिकरण-नियमावली२०६८.pdf
-        काठमाडौं-विश्‍वविद्यालय-ऐन-२०४८.pdf
-        कानूनी-सचेतना-तथा-साक्षरता-प्रतिवेदन-२०७७.pdf
-        कानूनी-सहायता-सम्बन्धी-ऐन-२०५४.pdf
-        कानूनी-सहायता-सम्बन्धी-नियमावली-२०५५.pdf
-        कारागार-ऐन-२०१९.pdf
-        कारागार-ऐन-२०७९.pdf
-        कारागार-नियमावली-२०२०.pdf
-        कार्य-सञ्चालन-कोष-ऐन-२०४३.pdf
-        कार्य-सञ्चालन-कोष-नियमावली-२०५२.pdf
-        १८८३-सालको-राजेन्द्रको-न्यायिक-बन्दोबस्त.pdf
+└───raw
+    ├───01_constitution
+    │       Constitution-en.pdf
+    │       Constitution-np.pdf
+    │
+    ├───02_economic_survey
+    │       Economic-Survey-02-03.pdf
+    │       Economic-Survey-08-09.pdf
+    │       Economic-Survey-12-13.pdf
+    │       Economic-Survey-18-19.pdf
+    │       Economic-Survey-19-20.pdf
+    │       Economic-Survey-20-21.pdf
+    │       Economic-Survey-21-22.pdf
+    │       Economic-Survey-22-23.pdf
+    │       Economic-Survey-23-24.pdf
+    │       Economic-Survey-79-80-np.pdf
+    │       Economic-Survey-81-82-np.pdf
+    │
+    ├───03_budget_speech
+    │       budget-speech-2020-21-en.pdf
+    │       budget-speech-2022-23-en.pdf
+    │       budget-speech-2023-24-en.pdf
+    │       budget-speech-2024-25-en.pdf
+    │       budget-speech-2025-26-en.pdf
+    │       budget-speech-82-83-np.pdf
+    │
+    ├───04_psc_syllabuses
+    │       PSC-Engineer-Civil-Irrigation-p1.pdf
+    │       PSC-Engineer-Civil-Irrigation-p2.pdf
+    │       PSC-Engineer-Civil-Sanitary-p1.pdf
+    │       PSC-Engineer-Civil-Sanitary-p2.pdf
+    │       PSC-Joint-Sec-Govt-Attorney-p1.pdf
+    │       PSC-Joint-Sec-Govt-Attorney-p2.pdf
+    │       PSC-Joint-Sec-Govt-Attorney-p3.pdf
+    │       PSC-Joint-Sec-Parliament-p1.pdf
+    │       PSC-Joint-Sec-Parliament-p2.pdf
+    │       PSC-Joint-Sec-Parliament-p3.pdf
+    │       PSC-Photographer.pdf
+    │       PSC-Senior-Computer-Engineer-p1.pdf
+    │       PSC-Senior-Computer-Engineer-p2.pdf
+    │       PSC-Senior-Sociologist-p1.pdf
+    │       PSC-Senior-Sociologist-p2.pdf
+    │       psc_agriculture_economist_p1.pdf
+    │       psc_agriculture_economist_p2.pdf
+    │       psc_computer_operator.pdf
+    │       psc_engineer_civil_general_p1.pdf
+    │       psc_engineer_civil_general_p2.pdf
+    │       psc_environment_inspector_p1.pdf
+    │       psc_environment_inspector_p2.pdf
+    │       psc_joint_sec_admin_p1.pdf
+    │       psc_joint_sec_admin_p2.pdf
+    │       psc_joint_sec_admin_p3.pdf
+    │       psc_joint_sec_audit_p1.pdf
+    │       psc_joint_sec_audit_p2.pdf
+    │       psc_joint_sec_audit_p3.pdf
+    │       psc_joint_sec_foreign_p1.pdf
+    │       psc_joint_sec_foreign_p2.pdf
+    │       psc_joint_sec_foreign_p3.pdf
+    │       psc_joint_sec_justice_p1.pdf
+    │       psc_joint_sec_justice_p2.pdf
+    │       psc_joint_sec_justice_p3.pdf
+    │       psc_kharidar_p1.pdf
+    │       psc_kharidar_p2.pdf
+    │       psc_nayab_subba_p1.pdf
+    │       psc_nayab_subba_p2.pdf
+    │       psc_section_officer_law_p1.pdf
+    │       psc_section_officer_law_p2.pdf
+    │       psc_section_officer_law_p3.pdf
+    │       psc_section_officer_p1.pdf
+    │       psc_section_officer_p2.pdf
+    │       psc_sub_engineer_civil.pdf
+    │       psc_undersecretary_admin_p1.pdf
+    │       psc_undersecretary_admin_p2.pdf
+    │
+    ├───05_civil_service_acts
+    │       Civil-Service-Act-2049-en.pdf
+    │       Civil-Service-Rules-2050-en.pdf
+    │       Good-Governance-Act-2050-en.pdf
+    │       Good-Governance-Act-2064-en.pdf
+    │       Local-Administration-Act-2028-en.pdf
+    │
+    ├───06_bonus_resources
+    │       Nepal-Statistical-Yearbook-2023.pdf
+    │
+    ├───07_key_laws
+    │       Intergovernmental-Fiscal-Act-2077-en.pdf
+    │       Local-Government-Operation-Act-2074-en.pdf
+    │       Muluki-Ain-General-Code-en.pdf
+    │       Public-Procurement-Regulation-2064-en.pdf
+    │       RTI-Rules-2065-en.pdf
+    │       Work-Division-Rules-2064-en.pdf
+    │
+    ├───08_planning
+    │       15th-Periodic-Plan-en.pdf
+    │       16th-Periodic-Plan-en.pdf
+    │
+    ├───09_npc_documents
+    │       15th-Plan-Approach-Paper-Draft-1684516952_18.pdf
+    │       A-SDG-16-Plus-Report-Peaceful-Just-and-I-1684557808_59.pdf
+    │       Consolidated-Livelihood-Exercise-for-Analyzing-Resilience-in-Nepal_July-2024_print_copy.pdf
+    │       EMPLOYMENT-RECOVERY-STRATEGIES-AND-PLAN--1684600193_70.pdf
+    │       Final-Report-on-Study-and-Analysis-of-Op-1684516133_32.pdf
+    │       High-level-Asia-Pacific-Regional-Review--highlelvel-asial-pacific-regional-meeting-on-Istanbul.pdf
+    │       Hon-Prof-Dr-Puspa-Raj-Kadel-Vice-Chairma-1684424027_44.pdf
+    │       LDC-Graduation-Smooth-Transition-Strateg-LDC-Graduation-STS.pdf
+    │       Leading-the-Future---Sustainable-Roads-f-1684598697_11.pdf
+    │       Multidimensional-Poverty-Index-Analysis--1684557740_69.pdf
+    │       National-Framework-For-Leave-No-One-Behi-LNOB-UPDATED-REPORT-Sept-3-2023-updated.pdf
+    │       National-Review-of-Sustainable-Developme-1684554160_15.pdf
+    │       National-Strategy-for-Early-Childhood-De-1684556152_14.pdf
+    │       Needs-Assessment-Costing-and-Financing-S-1684517256_48.pdf
+    │       Nepal-Human-Development-Report-2014-1684513874_79.pdf
+    │       Nepal-Human-Development-Report-2020-1684554622_46.pdf
+    │       Nepal-MDGs-Acceleration-Framework-Improv-1684497210_100.pdf
+    │       Nepal-Millennium-Development-Goals-Progr-1684513954_63.pdf
+    │       Nepal-Multidimensional-Poverty-Index-Ana-1684514744_100.pdf
+    │       Nepals-National-Statement-to-be-delivere-Nepal_HLPF.pdf
+    │       Nepals-SDG-Status-and-Roadmap-2016-2030-1684515827_15.pdf
+    │       Nepals-Sustainable-Development-Goals-Nee-SDG-Costing-and-Financing-Strategy-2025.pdf
+    │       Post-Flood-Recovery-Needs-Assessment--Fi-1684514458_85.pdf
+    │       Press-Release-by-Embassy-of-Nepal-Beijin-press-note-PR-Beijing.pdf
+    │       Press-Release-by-the-Permanent-Mission-o-press-note-HLPF-2023.pdf
+    │       Press-Release-Consultation-and-lnteracti-consultation-and-interaction-program.pdf
+    │       Press-Release-Honourable-Vice-Chair-of-N-VC-participant-in-APFSD.pdf
+    │       Press-Release-Inauguration-of-SUN-Global-Inauguration-of-SUN-Global-Gathering,-2019.pdf
+    │       Press-Release-National-Planning-Commissi-npc-gets-full-shape-2080.01.05.pdf
+    │       Press-Release-on-the-Right-Honourable-Pr-Press-Release-23rd-July-pm-visit-to-italy-day-1.pdf
+    │       Press-Release-on-the-Right-Honourable-Pr-Press-Release-24th-July-pm-visit-to-italy-day-2.pdf
+    │       Press-Release-on-the-Right-Honourable-Pr-Press-Release-25-July-2023--pm-visit-to-italy-day-3.pdf
+    │       Press-Release-on-the-Visit-of-Vice-Chair-press-release-doha-for-website.pdf
+    │       Press-Release-UNICEF-Country-Representat-UNICEF-2079-12-22.pdf
+    │       Press-Release-Visit-of-Honourable-Member-Member-RK-Phuyal-Geneva.pdf
+    │       Regional-Earthquake-Recovery-Dialogue-fo-1684513531_79.pdf
+    │       SDGs-Baseline-Report-of-Karnali-Province-1684554230_30.pdf
+    │       Sub-Regional-Workshop-on-Structural-Tran-PR-Sub-regional-workshop-1.pdf
+    │       Sustainable-Development-GoalRevised-Indi-SDG-Indicators_16-Aug-2023-updated.pdf
+    │       Sustainable-Development-Goals-2016-2030--1684513461_65.pdf
+    │       Sustainable-Development-Goals-Progress-A-1684555333_67.pdf
+    │       THE-EFFECTS-OF-COVID-19-PANDEMIC-ON-FORE-1684556068_18.pdf
+    │       The-Fifteenth-Plan-Fiscal-Year-201920-2-1684554899_25.pdf
+    │       United-Nations-Development-Assistance-Fr-1684515022_20.pdf
+    │       Universalizing-Clean-Energy-in-Nepal-1684516044_18.pdf
+    │       अनगमन-भरमण-परतवदन-बक-बरदय-र-सरखत-सह-सचव-1684476784_88.pdf
+    │       अनगमन-भरमण-परतवदन-रकम-रलप-सलयन-र-पयठन-स-1684476591_75.pdf
+    │       अनगमन-भरमण-परतवदन-रमछप-र-सनधल-करयकरम-नर-1684476526_19.pdf
+    │       अनगमन-भरमण-परतवदनअछम-र-बजर-सह-सचव-वषण-न-1684476888_35.pdf
+    │       अनपचरक-कषतरम-कभड-१९-क-परभव-नयनकरण-रणनतहर-1684599402_55.pdf
+    │       आ-व-२०८३८४-क-लग-परदश-सरकर-र-सथनय-तहमरफत--notice-for-csgrants-2082-gorkhapatra.pdf
+    │       आ-व-२०८३८४-क-लग-परदश-सरकर-र-सथनय-तहमरफत--notice-for-csgrants-2082.pdf
+    │       आपरत-नत-२०६९-क-पनरवलकन-परतवदन-1684598784_87.pdf
+    │       आरथक-ववधकरण-करयकरम-Tanfeedh-Opening-Day--1684512789_96.pdf
+    │       आव-२०७४०७५-क-वरषक-परतवदन-1684516680_83.pdf
+    │       आव-२०७६७७-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684553096_58.pdf
+    │       आव-२०७६७७-म-समपरक-अनदन-मरफत-परदश-र-सथनय--1684553190_30.pdf
+    │       आव-२०७७७८-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684554366_4.pdf
+    │       आव-२०७७७८-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684555140_58.pdf
+    │       आव-२०७८७९-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684556757_93.pdf
+    │       आव-२०७८७९-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684556687_86.pdf
+    │       आव-२०७९८०-म-वशष-अनदन-मरफत-परदश-र-सथनय-त-1684598596_53.pdf
+    │       आव-२०७९८०-म-समपरक-अनदन-मरफत-परदश-र-सथनय-1684598499_58.pdf
+    │       आव-२०८०८१-म-वशष-अनदनमरफत-परदश-सरकर-र-सथन-विशेष-अनुदान-final-2080.pdf
+    │       आव-२०८०८१-म-समपरक-अनदनमरफत-परदश-सरकर-तथ--समपूरक-अनुदान-final-2080.pdf
+    │       आव-२०८२८३-म-वशष-अनदनमरफत-परदश-सरकर-तथ-सथ-Full-List-Vishesh.pdf
+    │       आव-२०८२८३-म-समपरक-अनदनमरफत-परदश-सरकर-तथ--Full-List-Samapurak.pdf
+    │       एककत-यजनबदध-शहर-वकसक-मपदणड-मसयद-परतवदन-1684512712_18.pdf
+    │       एककत-रषटरय-रजगर-परणलक-ढच-समबनध-परतवदन-२०-1684600265_78.pdf
+    │       एककत-रषटरय-समजक-सरकष-सरचन-२०७७-सझव-तथ-छल-1684599761_44.pdf
+    │       एककत-रषटरय-समजक-सरकष-सरचन-२०८०-एकीकृत-राष्ट्रिय-सामाजिक-सुरक्षा-संरचना,-२०८०-Final.pdf
+    │       औदयगक-नत२०६७-नत-पनरवलकन-परतवदन-1684598252_27.pdf
+    │       कष-वयवसय-परवरदधन-नतक-समकष-1684557897_18.pdf
+    │       कषजनय-वसतक-आयत-नरयतक-अवसथ-अधययन-परतवदन-1684557991_24.pdf
+    │       कषत-तथयङक-सङकलन-नरदशकपरयगकरत-पसतक-२०८२-DamageDataCollectionGuideline2082.pdf
+    │       कषम-वदश-लगनक-समभवयत-अधययन-1684599316_29.pdf
+    │       खदय-परणल-रपनतरणक-रणनतक-यजन-२०८१८२-२०८६८७-खाद्य-प्रणाली-रूपान्तरणको-रणनीतिक-योजना.pdf
+    │       गरमण-सडक-नरमणम-भर-उपकरण-परयगबट-उतपनन-वपद-1684598900_61.pdf
+    │       जललगत-वकस-अयजनहरक-अनगमन-भरमण-परतवदन-डट-अ-1684476654_62.pdf
+    │       तथयङक-र-तथयङकय-सकषरत-1684599899_99.pdf
+    │       दग-वकस-लकषय-आवशयकत-पहचन-लगत-अनमन-तथ-वततय-1684555921_22.pdf
+    │       दग-वकस-लकषय-सथनयकरण-सरत-पसतक-1684555249_21.pdf
+    │       दग-वकस-लकषयहर-वरतमन-अवसथ-र-भव-मरगचतर२०१६-1684516777_72.pdf
+    │       दग-वकसक-लकषयहर-करणल-परदशक-आधर-तथयङक-परतव-1684554297_69.pdf
+    │       नत-तथ-यजन-र-तथयङकसमबनध-परयगतमक-पसतक-1684600026_92.pdf
+    │       नपल-मनव-वकस-परतवदन-१९९८-1684493548_57.pdf
+    │       नपल-मनव-वकस-परतवदन-२००४-1684493449_40.pdf
+    │       नपल-मनव-वकस-परतवदन-२००९-1684493293_25.pdf
+    │       नपल-मनव-वकस-परतवदन-२०१४-1684493382_25.pdf
+    │       नपल-मनव-वकस-परतवदन-२०२०-1684493688_81.pdf
+    │       नपल-सहशरबद-वकस-परगत-परतवदन-२००२-1684497362_76.pdf
+    │       नपल-सहशरबद-वकस-परगत-परतवदन-२००५-1684497424_91.pdf
+    │       नपल-सहशरबद-वकस-परगत-परतवदन-२०१०-1684497280_44.pdf
+    │       नपल-सहशरबद-वकस-परगत-परतवदन-२०१३-1684494512_100.pdf
+    │       नपल-सहशरबद-वकस-परगत-परतवदन-२०१५-1684497496_97.pdf
+    │       नपलक-जनसखयक-परवरतनहर-परवतहर-र-नतगत-परभव-1684514333_4.pdf
+    │       नपलम-तहगत-सरकरक-यजन-समनवयक-सङगठनतमक-सरचन-1684557235_83.pdf
+    │       नपलम-लखपरकषण-र-बरज-फरछयटक-सथत-1684599113_54.pdf
+    │       नपलम-वततय-समवशकरण-समबनध-अधययन-परतवदन-1684557037_96.pdf
+    │       नरयतम-नगद-अनदन-समबनध-वयवसथक-परभवकरत-अधयय-1684557403_21.pdf
+    │       पनधर-यजन-आरथक-वरष-२०७६७७-२०७८७९-क-मधयव-1684600389_98.pdf
+    │       पनधर-यजन-आव-२०७६०७७-२०८००८१-क-आधर-पतर-1684517386_18.pdf
+    │       परमख-आरथक-सचकक-परयग-वध-1684600099_62.pdf
+    │       परयटन-नत-२०६५-नत-पनरवलकन-अधययन-परतवदन-1684596682_19.pdf
+    │       पररमभक-बलवकस-रषटरय-रणनत-२०७७-२०७८-1684555989_40.pdf
+    │       परशसनक-तथ-नययक-जटलतक-करण-ऊरज-खनपन-सडक-र--1684596404_83.pdf
+    │       परस-वजञपत-आगम-तन-आरथक-वरष-२०८०८१-२०८१८२-rastiya-shrot-anuman-samiti-3-arthik-barsha.pdf
+    │       परस-वजञपत-आगम-तन-आरथक-वरषक-रषटरय-सरतक-अन-rastriya-short-vc-bishwo.pdf
+    │       परस-वजञपत-आयगक-नवनयकत-सदसय-ड-अनत-शह-ढगनक-appointment-of-member-anita.pdf
+    │       परस-वजञपत-उचचसतरय-रजनतक-मञचक-बठक-२०७७३२९-HIGH-LEVEL-POLITICAL-FORUM.pdf
+    │       परस-वजञपत-कलमब-पलनक-४७-औ-Consultative-Co-COLOMBO-PLAN-47TH-CONSULTATIVE-COMMITTEE.pdf
+    │       परस-वजञपत-दग-वकस-लकषय-कनदरय-नरदशक-समतक-ब-Press-Release-2079-12-24-SDG-steering-committee.pdf
+    │       परस-वजञपत-दग-वकस-लकषय-परगत-समकष-२०१६--२०-SDG_Progress_Press_Release-2077.pdf
+    │       परस-वजञपत-दरघकलन-सच-सहतक-पनधर-यजन-आव-२०७-national-interaction-prg-on-15th-plan-concept-paper.pdf
+    │       परस-वजञपत-नपल-मनव-वकस-परतवदन-२०२०-सरवजनक-NHDR_2020_PR1.pdf
+    │       परस-वजञपत-नपलक-सवसथय-कषतर-वरतमन-अवसथ-र-भ-national-dialouge-on-health.pdf
+    │       परस-वजञपत-पषण-सव-वसतर-अभयन-समबनध-वशव-समम-scaling-up-nutrition-movement-golbal-gathering-2019.pdf
+    │       परस-वजञपत-पषण-सव-वसतर-अभयन-समबनध-वशव-समम-SUNGG-2076-kartik-19.pdf
+    │       परस-वजञपत-मत-२०७७-मघ-१८-गतक-रषटरय-यजन-आय-NPC-FULL-COMMITTEE-MEETING-2077-MAGH-18.pdf
+    │       परस-वजञपत-रषटरय-यजन-आयगक-उपधयकष-एव-सदसय-members-appointment-and-spokesperson.pdf
+    │       परस-वजञपत-रषटरय-यजन-आयगक-परण-बठकल-आव-२०७-full-committee-meeting-2077.2.15..pdf
+    │       परस-वजञपत-रषटरय-यजन-आयगक-मननय-उपधयकष-ड-म-vc-meeting-with-Hanna-Singer-Hamdy.pdf
+    │       परस-वजञपत-रषटरय-यजन-आयगक-मननय-उपधयकष-डमन-Press-release-2080.01.05-APFSD.pdf
+    │       परस-वजञपत-रषटरय-वकस-परषद-बठक२०७५-मत-२०७५-NDC-2075.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४५-औ--45th-NDAC.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४७-औ--47th-NDAC-2076.10.26.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४८-औ--48TH-NDAC.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-४९-औ--49-th-NDAC.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-५०-औ--50th-NDAC-2079-12-23.pdf
+    │       परस-वजञपत-रषटरय-वकस-समसय-समधन-समतक-५०-औ--50th-PRENDAC.pdf
+    │       परस-वजञपत-सममननय-परधनमनतर-एवम-रषटरय-यजन--NPC-FULL-MEETING-2076-FALGUN-19.pdf
+    │       परस-वजञपत-सममननय-परधनमनतर-एवम-रषटरय-यजन--npc-purna-baithak-2076.1.15.pdf
+    │       परस-वजञपत-२०८२-भद-२३-र-२४-गत-भएक-आनदलनक--press-release--loss-and-damage-assessment-2082-07-12.pdf
+    │       परस-वजञपतरषटरय-यजन-आयगक-मननय-उपधयकष-ड-मन-meeting-of-vc-with-adb-country-director.pdf
+    │       परस-वजञपतवकसशल-मलकम-सतरननत-रणनत-तरजमक-मस-press-note-LDC-Strearing.pdf
+    │       बढगणडक-जलवधत-आयजनक-लगनक-खक-तयर-गरन-गठत-स-1684514570_89.pdf
+    │       बदधक-अपङगत-भएक-वयकतलई-परदन-गरएक-सव-परवहक-1684556896_8.pdf
+    │       बलपतर-आहवनक-सचन-bid-documents11042025131852.pdf
+    │       बहकषतरय-पषण-यजन-तसर-आव-२०८०८१-२०८७८८-MSNP-III-Report-Nepali-final-(2).pdf
+    │       बहकषतरय-पषण-यजन-दसर-२०७५७६-२०७९८०-1684514913_92.pdf
+    │       म-उपधयकष-परड-पषपरज-कडल-तथ-करयकरम-नरदशक-श-1684477391_46.pdf
+    │       मधयमकलन-खरच-सरचन-अव-२०७५७६-२०७७७८-1684516215_67.pdf
+    │       मधयमकलन-खरच-सरचन-आव-२०७६७७-२०७८७९-1684517785_72.pdf
+    │       मधयमकलन-खरच-सरचन-आव-२०७७७८---२०७९८०-1684553945_59.pdf
+    │       मधयमकलन-खरच-सरचन-आव२०७८७९-२०८०८१-तथ-वरषक-1684556598_38.pdf
+    │       मधयमकलन-खरच-सरचन-आव२०८०८१-२०८२८३-तथ-वरषक-MTEF-Fina2080.81.pdf
+    │       मननय-कपसनध-परसद-समतक-टल-दवर-भएक-सथलगत-अन-1684477017_14.pdf
+    │       मननय-सदसय-ड-कपसनध-परसद-समतवट-उदयपर-र-परस-1684477276_88.pdf
+    │       मननय-सदसय-ड-कपसनध-परसद-समतवट-बर-र-परस-जल-1684477107_8.pdf
+    │       मननय-सदसय-ड-कपसनध-परसद-समतवट-महततर-र-धनष-1684477188_76.pdf
+    │       रषटरय-आयजन-बक-समबनध-नरदशक-1684553307_37.pdf
+    │       रषटरय-आयजन-बङकम-आयजन-परवषट-समबनध-जरर-सचन-राष्ट्रिय-आयोजना-बैङ्कमा-आयोजना-प्रविष्टि-सम्बन्धी-जरुरी-सूचना.pdf
+    │       रषटरय-गरवक-आयजनक-समय-तथ-लगत-अधकत-समबनध-स-national-pride-project-cost-and-time-overrun-report-82_6_10-(1).pdf
+    │       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-1684600664_81.pdf
+    │       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-अव-२०७३-1684516516_43.pdf
+    │       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-आव-२०७४-1684516864_55.pdf
+    │       रषटरय-गरवक-आयजनहरक-सकषपत-परचय-तथ-आव-२०७६-1684555049_25.pdf
+    │       रषटरय-गरवक-आयजनहरक-सङकषपत-परचय-तथ-परगत-1684472880_3.pdf
+    │       रषटरय-जनगणन-२०७८-पररमभक-नतज-1684598429_34.pdf
+    │       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684516328_92.pdf
+    │       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684517876_37.pdf
+    │       रषटरय-यजन-आयगक-शसकय-सधर-तथ-सशसन-समबनध-पर-1684554483_24.pdf
+    │       रषटरय-यजन-आयगबट-भईरहक-कषत-मलयङकन-सरवकषण--web.pdf
+    │       रषटरय-रजगर-नत-२०७१-नत-पनरवलकन-अधययन-परतव-1684596776_6.pdf
+    │       रषटरय-वकस-समसय-समधन-समतक-४६-औ-बठक-मत-२०७-46th-NDAC.pdf
+    │       रसय-यकरन-यदधल-नपलक-उदयग-वणजय-र-आपरत-कषतर-रसिया-र-युक्रेन-युद्धको-उद्योग-र-वाणिज्य-क्षैत्रमा-पर्ने-प्रभाव-अध्ययन-सम्बन्धी-प्रत.pdf
+    │       लख-रचन-उपलबध-गरउन-समबनध-सचन-notice-for-articles.pdf
+    │       लख-रचन-उपलबध-गरउन-समबनध-सचन-provinces-letter-for-loss-and-damage.pdf
+    │       वकस-पतरकक-लग-लख-रचन-उपलबध-गरउन-समबनध-सचन-notice-for-bikash-patrika10262025122010.pdf
+    │       वकस-वरष-४२---अक-१-२०८२-पस-VIKAS-2026.pdf
+    │       वणजय-नत-२०७२-करयनवयनक-परभवकरत-अधययन-परतव-1684557326_78.pdf
+    │       वदश-वनमय-दर-नरधरण-परणल-अधययन-परतवदन-1684556970_83.pdf
+    │       वदशक-छतरवततल-नजमत-सवक-जनशकत-वयवसथपनम-परक-1684556827_80.pdf
+    │       वदशक-रजगर-नत-२०६८-क-पनरवलकन-परतवदन-1684599200_6.pdf
+    │       वदशक-रजगरल-गरब-नवरण-र-समजक-सरकषम-परयएक-य-1684599579_37.pdf
+    │       वन-तथ-भसरकषण-मनतरलय-अनतरगत-सचलत-बह-सरकरव-1684476436_16.pdf
+    │       वपदपछक-आवशयकत-आकलन---भग-१-1684513771_45.pdf
+    │       वपदपछक-आवशयकत-आकलन---भग-२-1684513646_23.pdf
+    │       वरषक-परतवदन-आरथक-वरष-२०८१०८२-Barsik-Pratibedan-2082---Attached-cover.pdf
+    │       वरषक-परतवदन-आव-२०७४०७५-1684736687_60.pdf
+    │       वरषक-परतवदन-आव-२०७४०७५-1684916773_13.pdf
+    │       वरषक-परतवदन-आव-२०७५०७६-1684736614_59.pdf
+    │       वरषक-परतवदन-आव-२०७६०७७-1684554980_2.pdf
+    │       वरषक-परतवदन-आव-२०७६०७७-1684736325_22.pdf
+    │       वरषक-परतवदन-आव-२०७८०७९-1684470260_71.pdf
+    │       वरषक-परतवदन-आव-२०७८०७९-1684600529_76.pdf
+    │       वरषक-परतवदन-आव-२०७९८०-NPC-Annual-Report-2079-2080-Revised-3-26.pdf
+    │       वरषक-परतवदन-आव-२०८०८१-annual-report-2081.pdf
+    │       वरषक-परतवदन-आव२०७५०७६-1684553669_64.pdf
+    │       वरषक-वकस-करयकरम-आरथक-वरष-२०७७२०७८-1684553790_94.pdf
+    │       वरषक-वकस-करयकरम-२०७६२०७७-1684517590_27.pdf
+    │       वशष-अनदन-समबनध-पहल-सशधन-करयवध-२०८२-विशेष-अनुदान-सम्बन्धी-(पहिलो-संशोधन)-कार्यविधि,-२०८२.pdf
+    │       शहर-सवसथय-नत-२०७२-नत-पनरवलकन-अधययन-परतवद-1684597942_95.pdf
+    │       सचन-परवध-परणल-परयगकरत-तथ-परणल-सञचलनकरत-क-cyber-security-advisory.pdf
+    │       सचनक-हक-समबनध-ऐन-२०६४-क-दफ-५-र-सचनक-हक-स-1684554036_21.pdf
+    │       सथनय-तहक-यजन-तरजम-दगदरशन-1684598335_57.pdf
+    │       समदयक-वदयलयक-सबल-अभयस-अधययन-परतवदन-1684557564_86.pdf
+    │       समदयक-वनल-रषटरय-अरथतनतरम-परक-परभव-अधययन--1684557499_43.pdf
+    │       समपरक-अनदन-समबनध-पहल-सशधन-करयवध-२०८२-समपूरक-अनुदान-सम्बन्धी-(पहिलो-संशोधन)-कार्यविधि,-२०८२.pdf
+    │       समरट-सट-सफरत-शहर-समवनध-अवधरण-पतर-1684512575_36.pdf
+    │       सयकत-परस-वजञपत-रषटरय-यजन-आयग-र-महलख-परकष-SDG_Joint_Consultative_Meeting_between_NPC_and_OAG.pdf
+    │       सरकर-कषक-सरचन-अवसथ-र-परवतत-अधययन-1684599011_59.pdf
+    │       सरकषत-कषतरल-नपलक-अरथतनतरम-परक-परभव-1684599680_23.pdf
+    │       सरवजनक-लगन-वयवसथपन-करययजन-आरथक-वरष-२०८१८-सार्वजनिक-लगानी-व्यवस्थापन-कार्ययोजना.pdf
+    │       सरवजनक-ससथन-समबनध-अधययन-परतवदन-1684557632_81.pdf
+    │       सहर-यजन-आरथक-वरष-२०८१८२-२०८५८६-सोह्रौं-योजना.pdf
+    │       १४-औ-यजन-२०७३७४-२०७५७६-1684515942_66.pdf
+    │       २०३०-परकलपन-रयआ-क-परतनधमणडल-ल-मत-डसमबर-1684512890_25.pdf
+    │       २०८२-भद-२३-र-२४-गत-भएक-आनदलनक-करमम-भएक-क-notice-about-loss-n-damage.pdf
+    │       २०८२-भद-२३-र-२४-गतक-आनदलनक-करमम-भएक-सरवज-Cheti-Mulyankan.pdf
+    │
+    └───11_laws_np
+            2079-shrawan-ashoj.pdf
+            6.-सवारी-तथा-यातायात-व्यवस्था-नियमावली-२०५४.pdf
+            combine-Annual-Report-2073-74.pdf
+            combined-annual-report-2075-076.pdf
+            combined-annual-report-74-75.pdf
+            combined-final-Annula-report-79-80.pdf
+            Legal-Maxims-कानूनी-सूक्तिहरू.pdf
+            अख्तियार-दुरूपयोग-अनुसन्.pdf
+            अख्तियार-दुरूपयोग-अनुसन्धान-आयोग-ऐन-२०४८.pdf
+            अख्तियार-दुरूपयोग-अनुसन्धान-आयोग-नियमावली-२०५९.pdf
+            अचल-सम्पत्ति-अधिग्रण-ऐन-२०१३.pdf
+            अचल-सम्पत्ति-अधिग्रहण-नियमहरू-२०१६.pdf
+            अतिरिक्त-हुलाक-नियमावली-२०३४.pdf
+            अदालती-दण्ड-जरिवाना-असुल-तहसिल-नियमहरू-२०२६-लाई-खारेज-गर्ने-नियमहरू-२०२८.pdf
+            अध्यागमन-ऐन-२०४९-1.pdf
+            अध्यागमन-नियमावली-२०५१.pdf
+            अनिवार्य-तथा-निःशुल्क-शिक्षा-सम्बन्धी-ऐन-२०७५.pdf
+            अनिवार्य-तथा-निःशुल्क-शिक्षा-सम्बन्धी-नियमावली-२०७७.pdf
+            अनुगमन-तथा-मूल्याङ्कन-ऐन२०८०.pdf
+            अनुमतिपत्र-बहाल-नरहेका-दूरसञ्_चार-सेवा-प्रदायकको-सम्पत्ति-व्यवस्थापन-नियमावली-२०७९.pdf
+            अनुमतिपत्र-बहाल-नरहेका-दूरसञ्‍चार-सेवा-प्रदायकको-सम्पत्ति-व्यवस्थापन-नियमावली-२०७९.pdf
+            अनौपचारिक-शिक्षा-नीति-२०.pdf
+            अन्तःशुल्क-ऐन-२०५८.pdf
+            अन्तःशुल्क-नियमावली-२०५९.pdf
+            अन्तरदेशीय-धर्मपुत्र-धर.pdf
+            अन्तर्राष्ट्रिय-आणविक-उर.pdf
+            अन्तर्राष्ट्रिय-एकीकृत-पर्वतीय-विकास-केन्द्र-ऐन-२०४०.pdf
+            अन्तर्राष्ट्रिय-न्यायालयको-विधान.pdf
+            अन्तर्राष्ट्रिय-फाइनान्स-कर्पोरेशनको-सदस्याता-प्राप्त-गर्ने-ऐन-२०२२.pdf
+            अन्तर्राष्ट्रिय-विकास-एसोसिएशनको-सदस्यता-प्राप्त-गर्ने-ऐन-२०१९.pdf
+            अन्तर्राष्ट्रिय-वित्तीय-कारोबार-ऐन-२०५४.pdf
+            अन्तर–सरकारी-वित्त-व्यवस्थापन-ऐन-२०७४.pdf
+            अपराध-पीडित-संरक्षण-ऐन-२०७५.pdf
+            अपराध-पीडित-संरक्षण-नियमावली-२०७७.pdf
+            अपाङ्ग-संरक्षण-तथा-कल्याण-ऐन-२०३९-1.pdf
+            अपाङ्ग-संरक्षण-तथा-कल्याण-नियमावली-२०५१.pdf
+            अपाङ्गता-भएका-व्यक्तिको-अधिकार-सम्बन्धी-ऐन-२०७४.pdf
+            अपाङ्गता-भएका-व्यक्तिको-अधिकार-सम्बन्धी-नियमावली-२०७७.pdf
+            अपाङ्गता-भएका-व्यक्तिहरुको-अधिकार-सम्बन्धी-महासन्धिको-ऐच्छिक-आलेख.pdf
+            अभिलेख-संरक्षण-ऐन-२०४६.pdf
+            अभिलेख-संरक्षण-नियमावली-२०६३.pdf
+            अवैतनिक-वाणिज्यदूत-सम्बन्धी-नियमावली-२०३९.pdf
+            आकस्मिक-कोष-ऐन-२०१६-1.pdf
+            आकस्मिक-कोष-नियमावली-२०३१.pdf
+            आकस्मिक-बीमा-कोष-सञ्चालन-नियमावली-२०६०.pdf
+            आतङ्ककारी-तथा-विध्वंसात्मक-कार्य-नियन्त्रण-तथा-सजाय-ऐन-२०५८.pdf
+            आदिकवि-भानुभक्त-जन्मस्थल-विकास-समिति-गठन-आदेश-२०७७.pdf
+            आदिवासि-जनजाति-आयोग-नियामवली-२०७९.pdf
+            आदिवासी-जनजाति-आयोग-ऐन-२०७४.pdf
+            आदिवासी-जनजाति-उत्थान-राष्ट्रिय-प्रतिष्ठान-ऐन-२०५८.pdf
+            आदिवासी-तथा-जनजाति-सम्बन्धी-महासन्धि.pdf
+            आन्तरिक-हुलाक-वस्तु-बिमा-गर्ने-ऐन-२०१९.pdf
+            आन्तरिक-हुलाक-वस्तु-बिमा-गर्ने-नियमहरू-२०१९.pdf
+            आपतकालीन-बालउद्धार-कोष-सञ्चालन-नियमावली-२०६७.pdf
+            आमाको-दूधलाई-प्रतिस्थापन-गर्ने-वस्तु-बिक्री-वितरण-नियन्त्रण-ऐन-२०४९.pdf
+            आमाको-दूधलाई-प्रतिस्थापन-गर्ने-वस्तु-विक्री-वितरण-नियन्त्रण-नियमावली-२०५१.pdf
+            आय-टिकट-दस्तूर-ऐन-२०१९.pdf
+            आयकर-ऐन-२०५८.pdf
+            आयकर-नियमावली-२०५९.pdf
+            आयुर्वेद-चिकित्सा-परिषद्-ऐन-२०४५.pdf
+            आयोडिनयुक्त-नून-उत्पादन-तथा-बिक्री-वितरण-ऐन-२०५५.pdf
+            आर्थिक-अध्यादेश-२०५९.pdf
+            आर्थिक-अध्यादेश-२०७०.pdf
+            आर्थिक-ऐन-2079.pdf
+            आर्थिक-ऐन-२०७६.pdf
+            आर्थिक-ऐन-२०७७.pdf
+            आर्थिक-ऐन-२०८०.pdf
+            आर्थिक-कार्यविधि-ऐन-२०५५.pdf
+            आर्थिक-कार्यविधि-तथा-वित्तीय-उत्तरदायित्व-ऐन-२०७६.pdf
+            आर्थिक-कार्यविधि-तथा-वित्तीय-उत्तरदायित्व-नियमावली-२०७७.pdf
+            आर्थिक-कार्यविधि-नियमावली-२०६४.pdf
+            आर्थिक-सरकारको-अर्थ-सम्बन्धी-प्रस्तावलाई-कार्यान्वयन-गर्न-बनेको-अध्यादेश-२०६९.pdf
+            आर्थिक-सामाजिक-तथा-सांस्कृतिक-अधिकार-सम्बन्धी-अन्तर्राष्ट्रिय-प्रतिज्ञापत्र.pdf
+            आवश्यक-पदार्थ-नियन्त्रण-अधिकार-ऐन-२०१७.pdf
+            आवश्यक-वस्तु-संरक्षण-ऐन-२०१२.pdf
+            आवश्यक-सेवा-सञ्चालन-ऐन-२०१४.pdf
+            आवासको-अधिकार-सम्बन्धी-ऐन-२०७५.pdf
+            उखडा-सम्बन्धी-ऐन-२०२१.pdf
+            उखडा-सम्बन्धी-नियमहरू-२०२१.pdf
+            उच्च-अदालत-तथा-जिल्ला-अदालतका-न्यायाधीश.pdf
+            उच्च-अदालत-नियमावली-२०७३.pdf
+            उच्च-माध्यमिक-शिक्षा-ऐन-२०४६.pdf
+            उच्च-माध्यमिक-शिक्षा-नियमावली-२०५२.pdf
+            उजीरसिँह-थापाको-जंगी-तथा-निजामती-स्थिति-बन्देज.pdf
+            उपभोक्ता-संरक्षण-ऐन-२०७५.pdf
+            उपभोक्ता-संरक्षण-नियमावली-२०५६.pdf
+            उपभोक्ता-संरक्षण-नियमावली-२०७६.pdf
+            उमेर-नाम-र-जात-सच्याउने-नियमहरू-२०१७.pdf
+            उर्जा-दक्षता-तथा-संरक्षण-विधेयक-सम्बन्धमा-तयार-गरिएको-अध्ययन-प्रतिवेदन.pdf
+            ऋण-तथा-जमानत-ऐन-२०२५.pdf
+            ऋणपत्रको-प्राथमिक-तथा-दोस्रो-बजार-व्यवस्थापन-नियमावली-२०६१.pdf
+            एकल-महिला-सुरक्षा-कोष-सञ्चालन-नियमावली-२०७०.pdf
+            एजेन्सी-संशोधन-र-एकीकरण-नियमहरू-२०१९.pdf
+            ओजोन-तहलाई-नष्ट-गर्ने-पदार्थको-उपभोग-नियन्त्रण-नियमावली-२०५७.pdf
+            औद्योगिक-पुनरुत्थान-कोष-सञ्चालन-कार्यविधि-नियमावली-२०६४.pdf
+            औद्योगिक-व्यवसाय-ऐन-२०७३.pdf
+            औद्योगिक-व्यवसाय-ऐन-२०७६.pdf
+            औद्योगिक-व्यवसाय-नियमावली-२०७८.pdf
+            औद्योगिक-व्यवसाय-विकास-प्रतिष्ठान-ऐन-२०५३.pdf
+            औषधि-ऐन-२०३५.pdf
+            औषधि-जाँचबुझ-तथा-निरीक्षण-नियमावली-२०४०.pdf
+            औषधि-तेस्रो-संशोधन-अध्यादेश-२०७७.pdf
+            औषधि-तेस्रो-संशोधन-अध्यादेश-२०७९.pdf
+            औषधि-दर्ता-नियमावली-२०३८.pdf
+            औषधि-परामर्श-परिषद्-र-औषधि-सल्लाहकार-समिति-गठन-नियमावली-२०३७.pdf
+            औषधि-स्तर-नियमावली-२०४३.pdf
+            कञ्चनजङ्घा-संरक्षण-क्षेत्र-व्यवस्थापन-नियमावली-२०६४.pdf
+            कमैया-श्रम-निषेध-गर्ने-सम्बन्धी-ऐन-२०५८.pdf
+            कमैया-श्रम-निषेध-गर्ने-सम्बन्धी-नियमावली-२०६७.pdf
+            कम्पनी-ऐन-२०६३-लाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            कम्पनी-ऐन-२०६३.pdf
+            करार-सेवा-नियमहरू-२०२६.pdf
+            कर्जा-सुरक्षण-नियमावली-२०७५.pdf
+            कर्णाली-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०६८.pdf
+            कर्मचारी-सञ्चयकोष-ऐन-२०१९.pdf
+            कर्मचारी-समायोजन-अध्यादेश-२०७५.pdf
+            कर्मचारी-समायोजन-ऐन-२०७४.pdf
+            कर्मचारी-समायोजन-ऐन-२०७५.pdf
+            कर्मचारी-समायोजन-नियमावली-२०७४.pdf
+            कसूरको-अनुसन्धान-सम्बन्धी-नियमावली-२०७५.pdf
+            कसूरजन्य-सम्पत्ति-तथा-साधन-रोक्का-नियन्त्रण-र-जफत-ऐन-२०७०.pdf
+            कसूरजन्य-सम्पत्ति-तथा-साधन-रोक्का-नियन्त्रण-र-जफत-नियमावली-२०७७.pdf
+            काठमाडौँ-उपत्यका-विकास-प्राधिकरण-ऐन-२०४५.pdf
+            काठमाडौं-उपत्यका-विकास-प्राधिकरण-नियमावली२०६८.pdf
+            काठमाडौं-विश्‍वविद्यालय-ऐन-२०४८.pdf
+            कानूनी-सचेतना-तथा-साक्षरता-प्रतिवेदन-२०७७.pdf
+            कानूनी-सहायता-सम्बन्धी-ऐन-२०५४.pdf
+            कानूनी-सहायता-सम्बन्धी-नियमावली-२०५५.pdf
+            कारागार-ऐन-२०१९.pdf
+            कारागार-ऐन-२०७९.pdf
+            कारागार-नियमावली-२०२०.pdf
+            कार्य-सञ्चालन-कोष-ऐन-२०४३.pdf
+            कार्य-सञ्चालन-कोष-नियमावली-२०५२.pdf
+            कार्यस्थलमा-हुने-यौनजन्य-दुर्व्यवहार-निवारण-ऐन-२०७१-लाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            कार्यस्थलमा-हुने-यौनजन्य-दुर्व्यवहार-निवारण-ऐन-२०७१.pdf
+            कार्यालय-स्थापना-गर्ने-सम्बन्धी-नियमहरू२०४०.pdf
+            कालोबजार-तथा-केही-अन्य-सामाजिक-अपराध-तथा-सजाय-ऐन-२०३२.pdf
+            कृषि-तथा-वन-विज्ञान-विश्‍वविद्यालय-ऐन-२०६७.pdf
+            कृषि-व्यवसायको-प्रवर्द्धन-तथा-व्यवसायीकरणका-सम्बन्धमा-ब्यवस्था-गर्न-वनेको-विधेयक.pdf
+            केचना-कञ्चनजङ्घा-पर्यटन-क्षेत्र-विकास-समिति-गठन-आदेश-२०७७.pdf
+            केन्द्रीय-अनुसन्धान-ब्यूरो-स्थापना-र-कार्य-सञ्चालन-नियमावली-२०७०.pdf
+            केही-अध्यादेशलाई-खारेज-गरी-ऐनको-साविकको-व्यवस्थालाई-जगाउन-बनेको-अध्यादेश.pdf
+            केही-नेपाल-ऐन-संशोधन-गर्ने-ऐन-२०७५.pdf
+            केही-नेपाल-कानूनलाई-संशोधन-एकीकरण-समायोजन-र-खारेज-गर्ने-ऐन-२०७४.pdf
+            केही-फौजदारी-कसूर-सम्बन्धी-केही-ऐनलाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            केही-सार्वजनिक-अपराध-र-सजय-ऐन-२०२७.pdf
+            केही-सार्वजनिक-लिखत-प्रमाणीकरण-कार्यविधि-ऐन-२०६३.pdf
+            केही-सार्वजनिक-लिखत-प्रमाणीकरण-नियमावली-२०६३.pdf
+            कोभिड-१९-सङ्‍कट-व्यवस्थापन-सम्बन्धमा-व्यवस्था-गर्न-बनेको-अध्यादेश-२०७८.pdf
+            क्यासिनो-नियमावली-२०७०.pdf
+            क्रमिकरुपमा-वृद्धि-भईरहने-स्थायी-प्रकृतिका-प्रदूषकहरु-सम्बन्धी-स्टकहोम-महासन्धि.pdf
+            क्रिप्टोकरेन्सी-Crypto-currency-सम्बन्धी-अध्ययन.pdf
+            क्षतिपूर्ति-ऐन-२०१९.pdf
+            क्षतिपूर्ति-नियमहरु-२०२०.pdf
+            खनिज-सर्भेक्षण-भत्ता-तथा-सुविधा-नियमहरू-२०२४.pdf
+            खप्तड-राष्ट्रिय-निकुञ्ज-नियमावली-२०४४.pdf
+            खर्क-जग्गा-राष्ट्रियकरण-ऐन-२०३१.pdf
+            खर्क-जग्गा-राष्ट्रियकरण-नियमहरू-२०३३.pdf
+            खाद्य-अधिकार-तथा-खाद्य-सम्प्रभुता-सम्बन्धी-ऐन-२०७५.pdf
+            खाद्य-अधिकार-तथा-खाद्य-सम्प्रभुता-सम्बन्धी-नियमावली-२०८०.pdf
+            खाद्य-ऐन-२०२३.pdf
+            खाद्य-नियमावली-२०२७.pdf
+            खाद्य-स्वच्छता-तथा-गुणस्तर-ऐन-२०८१.pdf
+            खानी-तथा-खनिज-पदार्थ-ऐन-२०४२.pdf
+            खानी-तथा-खनिज-पदार्थ-नियमावली-२०५६.pdf
+            खानेपानी-तथा-सरसफाइ-ऐन-२०७९.pdf
+            खानेपानी-नियमावली२०५५.pdf
+            खानेपानी-महसुल-निर्धारण-आयोग-ऐन-२०६३.pdf
+            खानेपानी-व्यवस्थापन-वोर्ड-ऐन-२०६३.pdf
+            खानेपानी-सेवा-महसुल-असुल-उपर-गर्ने-नियमावली-२०५०.pdf
+            खेलकुद-विकास-ऐन-२०४८.pdf
+            खेलकूदमा-रङ्गभेद-विरूद्धको-अन्तर्राष्ट्रिय-महासन्धि.pdf
+            खोप-ऐन-२०७२.pdf
+            खोप-नियमावली-२०७४.pdf
+            गरीवी-निवारण-कोष-ऐन-२०६३.pdf
+            गाली-र-बेइज्जती-ऐन-२०१६.pdf
+            गुठी-संस्थान-ऐन-२०३३.pdf
+            गैर-आवासीय-नेपाली-सम्बन्धी-ऐन-२०६४.pdf
+            गैर-आवासीय-नेपाली-सम्बन्धी-नियमावली-२०६६.pdf
+            गैर-सरकारी-व्यक्तिहरुलाई-क्षतिपूर्ति-दिने-नियमहरु-२०२४.pdf
+            गैर-सैनिक-हवाई-उडान-दुर्घटना-जाँच-नियमावली-२०७१.pdf
+            गैर-सैनिक-हवाई-उडान-नियमावली-२०५२.pdf
+            गैर-सैनिक-हवाई-उडान-सिभिल-एभिएसन-ऐन-२०१५.pdf
+            गैरआवासीय-नेपाली-सम्बन्धी-कानूनलाई-संशोधन-र-एकीकरण-गर्न-बनेको-विधेयक.pdf
+            गैरसरकारी-विधेयकको-नमूना-नेपाल-विवाह-बिल-२०११.pdf
+            गोरखापत्र-कर्पोरेशन-नियमहरू-२०२१.pdf
+            गोरखापत्र-संस्थान-ऐन-२०१९.pdf
+            गोर्खापत्रमा-के-छाप्न-हुने-के-छाप्न-नहुने.pdf
+            घर-जग्गा-कर-नियमहरू-२०२०.pdf
+            घरेलु-हिंसा-कसूर-र-सजाय-ऐन-२०६६.pdf
+            घरेलु-हिंसा-कसूर-र-सजाय-नियमावली-२०६७.pdf
+            चन्दा-ऐन-२०३०.pdf
+            चलचित्र-निर्माण-प्रदर्शन-तथा-वितरण-ऐन-२०२६.pdf
+            चलचित्र-निर्माण-प्रदर्शन-तथा-वितरण-नियमावली-२०५७.pdf
+            चिकित्सा-विज्ञान-राष्ट्रिय-प्रतिष्ठान-ऐन-२०६३.pdf
+            चिठ्ठा-ऐन-२०२५.pdf
+            चिठ्ठा-नियमावली-२०२७.pdf
+            चितवन-राष्ट्रिय-निकुञ्ज-नियमावली-२०३०.pdf
+            चियाबगान-सम्बन्धी-श्रम-नियमावली-२०५०.pdf
+            चैतसम्म.pdf
+            छात्रवृत्ति-सम्बन्धी-ऐन-२०२१.pdf
+            छात्रवृत्ति-सम्बन्धी-नियमावली-२०६०.pdf
+            छापाखाना-र-प्रकाशन-सम्बन्धी-ऐन-२०४८.pdf
+            छापाखाना-र-प्रशासन-सम्बन्धी-नियमावली२०४९.pdf
+            जग्गा-नाप-जाँच-ऐन-२०१९.pdf
+            जग्गा-नाप-जाँच-नियमावली-२०५८.pdf
+            जग्गा-प्राप्ति-ऐन-२०३४.pdf
+            जग्गा-प्राप्ति-नियमहरु-२०२६.pdf
+            जग्गा-प्राप्ति-विधेयक.pdf
+            जग्गाको-क्षेत्रफल-लेख्ने-पुरानो-तरिका.pdf
+            जग्गाको-जाँच-सम्बन्धी-रुक्का-वि.सं.-१८४८.pdf
+            जङ्गल-र-सीमाना-सम्बन्धी-सवाल-१८८५.pdf
+            जनस्वास्थ्य-सेवा-ऐन-२०७५.pdf
+            जनस्वास्थ्य-सेवा-नियमावली-२०७७.pdf
+            जन्म-मृत्यु-तथा-व्यक्तिगत-घटना-दर्ता-गर्ने-ऐन-२०३३.pdf
+            जन्म-मृत्यु-दर्ता-नियमावली-२०३४.pdf
+            जयस्थिति-मल्लको-सुधार.pdf
+            जयस्थिति-मल्लद्वारा-वि.सं.-१४३६-मा-बनाउन-लगाइएको-कानून.pdf
+            जलचर-ठेक-नियम-२०१९.pdf
+            जलचर-संरक्षण-ऐन-२०१७.pdf
+            जलयात्रा-नियमावली-२०६३.pdf
+            जलस्रोत-ऐन-२०४९.pdf
+            जलस्रोत-नियमावली-२०५०.pdf
+            जवरजस्ती-करणी-लगायत-यौनजन्य-हिंसा-विरुद्धका-कानूनमा-रहेको-हदम्याद-सम्बन्धी-प्रतिवेदन.pdf
+            जाँचबुझ-आयोग-ऐन-२०२६.pdf
+            जाँचबुझ-आयोग-सदस्यहरूको-सेवाको-शर्त-नियमावली-२०५१.pdf
+            जातिहत्या-अपराधको-रोकथाम-र-सजाय-सम्बन्धी-महासन्धि.pdf
+            जातीय-तथा-अन्य-सामाजिक-छुवाछूत-तथा-भेदभाव-कसूर-र-सजाय-ऐन-२०६८.pdf
+            जातीय-भेदभाव-तथा-छुवाछुत-कसुर-र-सजाय-नियमावली-२०७४.pdf
+            जासुसी-ऐन-२०१८.pdf
+            जिल्ला-अदालत-नियमावली-२०५२.pdf
+            जिल्ला-अदालत-नियमावली-२०७५.pdf
+            जीउ-मास्ने-बेच्ने-तथा-अरूको-वेश्यावृत्तिको-शोषणको-दमनका-लागि-व्यवस्था-गर्न-भएको-महासन्धि.pdf
+            जीवनाशक-विषादी-ऐन-२०४८.pdf
+            जीवनाशक-विषादी-नियमावली-२०५०.pdf
+            जीवनाशक-विषादी-व्यवस्थापन-ऐन-२०७६.pdf
+            जुवा-ऐन-२०२०.pdf
+            ज्येष्ठ-नागरिक-सम्बन्धी-नियमावली-२०६५.pdf
+            ज्येष्ठ-नागरिकसम्बन्धी-ऐन-२०६३.pdf
+            झोरा-क्षेत्रको-जग्गा-सम्बन्धी-ऐन-२०२८.pdf
+            ट्राभल-तथा-ट्रेकिङ्ग-एजेन्सी-नियमावली-२०६२.pdf
+            ट्रेड-युनियन-नियमावली-२०५०.pdf
+            ट्रेड-यूनियन-ऐन-२०४९.pdf
+            तथ्यांक-ऐन-२०१५.pdf
+            तथ्याङ्क-ऐन-२०७९.pdf
+            तथ्याङ्क-नियमहरु-२०४१.pdf
+            तथ्याङ्क-नियमावली-२०८०.pdf
+            तुइन-दुर्घटनाबाट-प्रभावित-व्यक्तिको-उद्दार-तथा-सहायता-कोष-सञ्चालन-नियमावली-२०७५.pdf
+            तेजाब-तथा-अन्य-घातक-रासायनिक-पदार्थ-नियमन-अध्यादेश-२०७८.pdf
+            तेजाब-तथा-अन्य-घातक-रासायनिक-पदार्थ-नियमन-ऐन-२०७९.pdf
+            तेजाब-तथा-अन्य-घातक-रासायनिक-पदार्थ-नियमन-नियमावली-२०८०.pdf
+            तेजाब-तथा-अन्य-घातक-रासायनिक-पदार्थको-नियमनका-सम्बन्धमा-व्यवस्था-गर्न-बनेको-विधेयक.pdf
+            त्रिभुवन-विश्वविद्यालय-ऐन-२०४९.pdf
+            थारु-आयोग-ऐन-२०७४.pdf
+            थारु-आयोग-नियमावली-२०७८.pdf
+            दक्षिण-एसियाली-क्षेत्रीय-सहयोग-संगठनको-बडापत्र.pdf
+            दल-त्याग-ऐन-२०५४.pdf
+            दाना-पदार्थ-ऐन-२०३३.pdf
+            दाना-पदार्थ-नियमावली-२०४१.pdf
+            दामासाही-सम्बन्धी-ऐन-२०६३.pdf
+            दामासाही-सम्बन्धी-नियमावली-२०६४.pdf
+            दासत्व-दास-व्यापार-र-दासत्व-समान-संस्था-तथा-अभ्यासहरुको-उन्मूलन-सम्बन्धी-पूरक-महासन्धि.pdf
+            दासत्व-महासन्घि.pdf
+            दासत्व-महासन्घिलाई-संशोधन-गर्ने-प्रोटोकल.pdf
+            दुष्कृति-सम्बन्धी-कानूनको-सम्बन्धमा-तयार-गरिएको-अध्ययन-प्रतिवेदन.pdf
+            दूरसंचार-नियमावली-२०५४.pdf
+            दूरसञ्चार-ऐन-२०५३.pdf
+            दूरसञ्‍चार-पूर्वाधार-सम्बन्धी-नियमावली-२०७४-.pdf
+            दैवी-प्रकोप-उद्धार-ऐन-२०३९.pdf
+            धनादेश-नियमावली२०३१.pdf
+            धितोपत्र-कारोबार-नियमावली-२०५०l.pdf
+            धितोपत्र-सम्बन्धी-ऐन-२०६३.pdf
+            नगर-विकास-ऐन-२०४५.pdf
+            नगर-विकास-कोष-ऐन-२०५३.pdf
+            नगर-विकास-कोष-नियमावली-२०५४.pdf
+            नयाँ-नेपाल-निर्माण-कोष-सञ्चालन-नियमावली-२०६८.pdf
+            नागरिक-अधिकार-ऐन-२०१२.pdf
+            नागरिक-तथा-राजनीतिक-अधिकार-सम्बन्धी-अन्तर्राष्ट्रिय-प्रतिज्ञापत्र.pdf
+            नागरिक-लगानी-कोष-ऐन-२०४७.pdf
+            नाट्यशाला-बहाल-नियन्त्रण-नियमहरू-२०१७.pdf
+            निकासी-पैठारी-नियन्त्रण-ऐन-२०१३.pdf
+            निकासी-पैठारी-नियमहरु-२०३४.pdf
+            निक्षेप-तथा-कर्जा-सुरक्षण-कोष-ऐन-२०७३.pdf
+            निक्षेप-सुरक्षण-नियमावली-२०७५.pdf
+            निजामती-कर्मचारी-कल्याणकारी-कोष-नियमावली-२०७२.pdf
+            निजामती-कर्मचारी-योगदान-कोष-सञ्चालन-नियमावली-२०६९.pdf
+            निजामती-सेवा-ऐन-२०४९.pdf
+            निजामती-सेवा-नियमावली२०५०-1.pdf
+            निजामती-सेवाका-कर्मचारीको-आचरण-सम्बन्धी-नियमावली-२०६५.pdf
+            निजी-वन-जंगल-राष्ट्रियकरण-ऐन-२०१३.pdf
+            निजीकरण-ऐन-२०५०.pdf
+            निर्माण-व्यवसाय-ऐन-२०५५.pdf
+            निर्माण-व्यवसाय-नियमावली-२०५६.pdf
+            निर्वाचन-आयोग-ऐन-२०६३.pdf
+            निर्वाचन-आयोग-ऐन-२०७३-1.pdf
+            निर्वाचन-आयोग-नियमावली-२०७३.pdf
+            निर्वाचन-आयोगका-पदाधिकारीको-आचारसंहिता-२०७८.pdf
+            निर्वाचन-कसुर-र-सजाय-ऐन-२०६३.pdf
+            निर्वाचन-कसूर-तथा-सजाय-ऐन-२०७३.pdf
+            निर्वाचन-क्षेत्र-निर्धारण-ऐन-२०७३.pdf
+            निवृत्तभरण-कोष-ऐन-२०७५.pdf
+            निवृत्ति-कोष-ऐन-२०४२.pdf
+            नीति-अनुसन्धान-प्रतिष्ठान-विधेयक.pdf
+            नेपाल-अधिराज्यको-संविधान-२०१५.pdf
+            नेपाल-अधिराज्यको-संविधान-२०४७.pdf
+            नेपाल-आर्थिक-योजना-तथा-तथ्याङ्क-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियमहरु-२०५१.pdf
+            नेपाल-इन्जिनियरिङ-परिषद्-ऐन-२०५५.pdf
+            नेपाल-इन्जिनियरिङ्ग-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति.pdf
+            नेपाल-एजेन्सी-ऐन-२०१४.pdf
+            नेपाल-कानुन-आयोग-ऐन-२०६३.pdf
+            नेपाल-कानून-आयोग-ऐन-२०६३-लाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            नेपाल-कानून-व्यवसायी-परिषद्-ऐन-२०५०.pdf
+            नेपाल-कानून-व्याख्या-सम्बन्धी-ऐन-२०१०-लाई-संशोधन-गर्न-बनेको-विधेयक-२०७६.pdf
+            नेपाल-कानून-व्याख्या-सम्बन्धी-ऐन-२०१०.pdf
+            नेपाल-कृषि-अनुसन्धान-परिषद्-ऐन-२०४८.pdf
+            नेपाल-कृषि-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियमहरु-२०५०.pdf
+            नेपाल-खानेपानी-संस्थान-ऐन-२०४६.pdf
+            नेपाल-खुला-विश्‍वविद्यालय-ऐन-२०७३.pdf
+            नेपाल-गुणस्तर-प्रमाण-चिन्ह-नियमावली-२०४०.pdf
+            नेपाल-गुणस्तर-प्रमाण–चिन्ह-ऐन-२०३७.pdf
+            नेपाल-चार्टर्ड-एकाउन्टेन्टस्-ऐन-२०५३.pdf
+            नेपाल-ट्रष्ट-ऐन-२०६४.pdf
+            नेपाल-ट्रष्ट-नियमावली-२०६५.pdf
+            नेपाल-नर्सिङ्ग-परिषद्-ऐन-२०५२.pdf
+            नेपाल-नागरिक-उड्डयन-प्राधिकरण-ऐन-२०५३.pdf
+            नेपाल-नागरिकता-ऐन-२०६३.pdf
+            नेपाल-नागरिकता-नियमावली-२०६३.pdf
+            नेपाल-नागरिकता-पहिलो-संशोधन-अध्यादेश-२०७८.pdf
+            नेपाल-न्याय-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-नियुक्ति-सरुवा-र-बढुवा-नियमहरू-२०५१.pdf
+            नेपाल-पञ्चाङ्ग-निर्णायक-विकास-समिति-गठन-आदेश-२०७७.pdf
+            नेपाल-परराष्ट्र-सेवा-सम्बन्धी-नियमहरु-२०६८.pdf
+            नेपाल-पर्यटन-बोर्ड-ऐन-२०५३.pdf
+            नेपाल-पशु-चिकित्सा-परिषद्-ऐन-२०५५.pdf
+            नेपाल-पानी-जहाज-प्रमाणपत्र-र-रोजनामचा-ऐन-२०२७.pdf
+            नेपाल-पेट्रोलियम-ऐन-२०४०.pdf
+            नेपाल-प्रज्ञा-प्रतिष्ठान-ऐन-२०६४.pdf
+            नेपाल-प्रशासन-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियमहरु२०५०-1.pdf
+            नेपाल-प्रशासनिक-प्रशिक्षण-प्रतिष्ठान-ऐन-२०३९.pdf
+            नेपाल-प्रहरी-र-प्रदेश-प्रहरी-कार्य-सञ्चालन-सुपरिवेक्षण-र-समन्वय-ऐन-२०७६-2.pdf
+            नेपाल-प्रहरी-र-प्रदेश-प्रहरी-कार्य-सञ्चालन-सुपरिवेक्षण-र-समन्वय-पहिलो-संशोधन-अध्यादेश-२०७७.pdf
+            नेपाल-फार्मेसी-परिषद्-ऐन-२०५७.pdf
+            नेपाल-बैंक-कानून-१९९४.pdf
+            नेपाल-मेडिकल-काउन्सिल-ऐन-२०२०.pdf
+            नेपाल-मेडिकल-काउन्सिल-नियमावली-२०२४.pdf
+            नेपाल-राष्ट्र-बैङ्क-ऐन-२०५८.pdf
+            नेपाल-रेल्वे-ऐन-२०७९.pdf
+            नेपाल-ललितकला-प्रज्ञा-प्रतिष्ठान-ऐन-२०६४.pdf
+            नेपाल-वन-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियम-२०५१.pdf
+            नेपाल-वायु-सेवा-निगम-ऐन-२०१९.pdf
+            नेपाल-वायुसेवा-निगम-आर्थिक-प्रशासन-सम्बन्धी-नियमावली-२०६१.pdf
+            नेपाल-वायुसेवा-निगमका-कर्मचारीहरूको-सेवा-शर्त-र-सुविधा-सम्बन्धी-नियमावली-२०५८.pdf
+            नेपाल-विज्ञान-तथा-प्रविधि-प्रज्ञा-प्रतिष्ठान-ऐन-२०४८.pdf
+            नेपाल-विद्युत-प्राधिकरण-ऐन-२०४१.pdf
+            नेपाल-विविध-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियमहरु२०५०.pdf
+            नेपाल-विशेष-सेवा-ऐन-२०४२.pdf
+            नेपाल-विश्वविद्यालय-पूर्वाधार-विकास-तयारी-समिति-गठन-आदेश-२०७७.pdf
+            नेपाल-शिक्षा-सेवा-गठन-समूह-तथा-श्रेणी-विभाजन-र-नियुक्ति-नियमहरू-२०५०.pdf
+            नेपाल-संस्कृत-विश्‍वविद्यालय-ऐन-२०४३.pdf
+            नेपाल-सङ्गीत-तथा-नाट्य-प्रज्ञा-प्रतिष्ठान-ऐन-२०६४.pdf
+            नेपाल-सन्धि-ऐन-२०४७.pdf
+            नेपाल-सरकार-कार्य-विभाजन-नियमावली-२०७४.pdf
+            नेपाल-सरकार-कार्यसम्पादन-नियमावली-२०६४.pdf
+            नेपाल-सरकार-वैधानिक-कानून-२००४.pdf
+            नेपाल-सरकारको-अर्थ-सम्बन्धी-प्रस्तावलाई-कार्यान्वयन-गर्न-बनेको-अध्यादेश.pdf
+            नेपाल-सेना-लेखा-समूह-गठन-नियुक्ति-र-बढुवा-नियमावली-२०५७.pdf
+            नेपाल-सैनिक-पाइनियर-गण-भर्ना-नियमहरु-२०२०.pdf
+            नेपाल-स्काउट-ऐन-२०५०.pdf
+            नेपाल-स्वास्थ्य-अनुसन्धान-परिषद्-ऐन-२०४७.pdf
+            नेपाल-स्वास्थ्य-व्यवसायी-परिषद्-ऐन-२०५३.pdf
+            नेपाल-स्वास्थ्य-व्यवसायी-परिषद्-नियमावली-२०५६.pdf
+            नेपाल-स्वास्थ्य-सेवा-ऐन-२०५३.pdf
+            नेपाल-स्वास्थ्य-सेवा-नियमावली-२०५५.pdf
+            नेपालको-अन्तरिम-संविधान-२०६३.pdf
+            नेपालको-अन्तरीम-शासन-विधान-२००७.pdf
+            नेपालको-व्यापारिक-पानी-जहाजको-झण्डा-सम्बन्धी-ऐन-२०२७.pdf
+            नेपालको-संविधान-अनुकूल-बनाउन-केही-नेपाल-ऐनलाई-संशोधन-गर्ने-ऐन-२०७५.pdf
+            नेपालको-संविधान-२०१९.pdf
+            नेपालको-संविधानको-अनुसूचीमा-उल्लेखित-साझा-अधिकारको-विषयमा-कानून-निर्माणको-आवश्यकता.pdf
+            नेपालको-स‌ंविधान.pdf
+            नेपालमा-उपभोक्ता-सम्बन्धी-कानूनको-एकीकरण-सम्बन्धी-अध्ययन-प्रतिवेदन.pdf
+            नेपाली-पानी-जहाज-दर्ता-नियमावली-२०२८.pdf
+            नेपाली-भाषा-प्रकाशन-संस्थान-ऐन-२०२१.pdf
+            नेपाली-मुद्राको-चलन-चल्ती-बढाउने-ऐन-२०१४.pdf
+            नेपाली-सेनाका-भगुवा-उपर-गरिने-कारवाही-नियमावली-२०२३.pdf
+            नेपाली-सेनाको-बेकम्बा-वा-वेचल्तीका-नियन्त्रित-सामान-मिन्हा-र-रद्दी-गर्ने-नियमहरू-२०२६.pdf
+            नेपाली-सेनाको-बेकम्मा-वा-बेचल्तीका-सामानहरु-हटाउने-व्यवस्था-नियमहरु-२०२२.pdf
+            नेपाली-सैनिक-अल्पसेवा-नियमावली-२०४१.pdf
+            नेपाली-सैनिक-विभान-संभार-समूह-नियमावली-२०४२.pdf
+            नोटरी-पब्लिक-सम्बन्धी-ऐन-२०६३.pdf
+            न्याय-परिषद-ऐन-२०७३.pdf
+            न्याय-परिषद्-ऐन-२०४७.pdf
+            न्याय-परिषद्-कार्यविधि-नियमावली-२०५६.pdf
+            न्याय-परिषद्-नियमावली-२०७४.pdf
+            न्याय-प्रशासन-ऐन-२०४८.pdf
+            न्याय-प्रशासन-ऐन-२०७३.pdf
+            न्याय-सेवा-आयोग-ऐन-२०४८.pdf
+            न्याय-सेवा-आयोग-ऐन-२०७३.pdf
+            न्याय-सेवा-आयोग-नियमावली-२०७४.pdf
+            न्यायिक-कोष-ऐन-२०४३.pdf
+            पर्यटन-ऐन-२०३५.pdf
+            पर्वतारोहण-सम्बन्धी-नियमावली-२०५९.pdf
+            पशु-बधशाला-र-मासु-जाँच-नियमावली२०५७.pdf
+            पशु-वधशाला-र-मासु-जाँच-ऐन-२०५५.pdf
+            पशु-स्वास्थ्य-तथा-पशु-सेवा-ऐन-२०५५.pdf
+            पशु-स्वास्थ्य-तथा-पशु-सेवा-नियमावली-२०५६.pdf
+            पशु-स्वास्थ्य-तथा-पशु-सेवा-व्यवसायी-परिषद्-ऐन-२०७९.pdf
+            पशुपति-क्षेत्र-विकास-कोष-ऐन-२०४४.pdf
+            पाटन-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०६४.pdf
+            पानी-कर-ऐन-२०२३.pdf
+            पानी-जहाज-दर्ता-ऐन-२०२७.pdf
+            पारस्परिक-कानूनी-सहायता-अध्यादेश-२०६९.pdf
+            पारस्परिक-कानूनी-सहायता-ऐन-२०७०.pdf
+            पारस्परिक-कानूनी-सहायता-नियमावली-२०७०.pdf
+            पारस्परिक-कानूनी-सहायता-नियमावली-२०७९.pdf
+            पूर्वाञ्‍चल-विश्‍वविद्यालय-ऐन-२०५०.pdf
+            पूर्वाधार-संरचनाको-निर्माण-तथा-सञ्चालनमा-निजी-लगानी-सम्बन्धी-ऐन-२०६३.pdf
+            पूर्वाधार-संरचनाको-निर्माण-तथा-सञ्चालनमा-निजी-लगानी-सम्बन्धी-नियमावली-२०६४.pdf
+            पूर्वाधार-स‌ंरचनाको-निर्माण-तथा-सञ्चालनमा-निजी-लगानी-सम्बन्धी-नियमावली-२०६४.pdf
+            पृथ्वीनारायण-शाहको-दिव्य-उपदेश.pdf
+            पेटेण्ट-डिजायन-र-ट्रेडमार्क-ऐन-२०२२.pdf
+            पेट्रोलियम-नियमावली-२०४१.pdf
+            पेट्रोलियम-पदार्थ-तथा-ग्याँस-मूल्य-स्थिरीकरण-कोष-सञ्चालन-नियमावली-२०७१.pdf
+            पोखरा-विश्‍वविद्यालय-ऐन-२०५३.pdf
+            पोखरा-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०७२.pdf
+            प्रचलित-कानूनमा-रहेको-दोहोरोपना-सम्बन्धी-अध्ययन-प्रतिवेदन.pdf
+            प्रतिनिधि-सभा-नियमावली-२०७५.pdf
+            प्रतिनिधि-सभा-सदस्य-निर्वाचन-ऐन-२०७४.pdf
+            प्रतिनिधि-सभा-सदस्य-निर्वाचन-नियमावली-२०७४.pdf
+            प्रतिलिपि-अधिकार-ऐन-२०५९.pdf
+            प्रतिलिपि-अधिकार-नियमावली-२०६१.pdf
+            प्रतिस्पर्धा-प्रवर्द्धन-तथा-बजार-संरक्षण-ऐन-२०६३.pdf
+            प्रतिस्पर्धा-प्रवर्द्धन-तथा-बजार-संरक्षण-नियमावली-२०६६.pdf
+            प्रत्यायन-ऐन-२०७९.pdf
+            प्रदेश-प्रमुखको-पारिश्रमिक-तथा-सुविधा-सम्बन्धी-ऐन-२०७४.pdf
+            प्रदेश-लोक-सेवा-आयोग-आधार-र-मापदण्ड-निर्धारण-ऐन-२०७५.pdf
+            प्रदेश-सभा-सदस्य-निर्वाचन-ऐन-२०७४.pdf
+            प्रदेश-सभा-सदस्य-निर्वाचन-नियमावली-२०७४.pdf
+            प्रधान-न्यायाधीश-तथा-सर्वोच्च-अदालतका-न्यायाधीश.pdf
+            प्रधानमन्त्री-दैवी-प्रकोप-सहायता-कोष.pdf
+            प्रधानमन्त्री-सहायता-कोष-नियमावली-२०५९.pdf
+            प्रमाण-ऐन-२०३१-लाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            प्रमाण-ऐन-२०३१.pdf
+            प्रमाणीकरण-दस्तुर-नियमावली-२०२४.pdf
+            प्रशासकिय-अदालत-नियमावली-२०७७.pdf
+            प्रशासकीय-अदालत-ऐन-२०७६.pdf
+            प्रशासकीय-कार्यविधि-नियमित-गर्ने-ऐन-२०१३.pdf
+            प्रहरी-ऐन-२०१२.pdf
+            प्रहरी-कर्मचारी-समायोजन-ऐन-२०७६.pdf
+            प्रहरी-नियमावली-२०७१.pdf
+            प्राइभेट-फर्म-रजिष्ट्रेशन-ऐन-२०१४.pdf
+            प्राइभेट-फर्म-रजिष्ट्रेशन-नियमावली-२०३४.pdf
+            प्राचीन-स्मारक-संरक्षण-ऐन-२०१३.pdf
+            प्राचीन-स्मारक-संरक्षण-नियमावली-२०४६.pdf
+            प्रादेशिक-विकास-योजनाहरू-कार्यान्वित-गर्ने-ऐन-२०१३.pdf
+            प्राविधिक-शिक्षा-तथा-व्यावसायिक-तालिम-परिषद्-ऐन-२०४५.pdf
+            प्राविधिक-शिक्षा-तथा-व्यावसायिक-तालीम-परिषद्-नियमावली-२०५१.pdf
+            प्रेस-काउन्सिल-ऐन-२०४८.pdf
+            प्रेस-काउन्सिल-कार्य-व्यवस्था-नियमावली-२०४९.pdf
+            फोहरमैला-व्यवस्थापन-नियमावली-२०७०.pdf
+            फोहोर-मैला-प्रवन्ध-तथा-स्रोत-परिचालन-ऐन-२०४४.pdf
+            फोहोर-मैला-व्यवस्थापन-ऐन२०६८.pdf
+            फौजदारी-कसूर-कैद-कट्टा-नियमावली-२०७६.pdf
+            फौजदारी-कसूर-तथा-फौजदारी-कार्यविधि-सम्बन्धी-केही-ऐन-संशोधन-गर्न-बनेको-विधेयक.pdf
+            फौजदारी-कसूर-तथा-फौजदारी-कार्यविधि-सम्बन्धी-केही-ऐन-संशोधन-गर्ने-अध्यादेश-२०७७.pdf
+            फौजदारी-कसूर-पीडित-राहत-कोष-नियमावली-२०७७.pdf
+            फौजदारी-कसूर-सजाय-निर्धारण-तथा-कार्यान्वयन-ऐन-२०७४.pdf
+            फौजदारी-कसूर-सजाय-निर्धारण-तथा-कार्यान्वयन-सम्बन्धी-नियमावली-२०७५.pdf
+            बर्ड-फ्लू-नियन्त्रण-नियमावली-२०७८.pdf
+            बर्दिया-राष्ट्रिय-निकुञ्ज-नियमावली-२०५३.pdf
+            बाँके-राष्ट्रिय-निकुञ्ज-नियमावली-२०७१.pdf
+            बाल-अधिकार-सम्बन्धी-महासन्धि.pdf
+            बाल-श्रम-निषेध-र-नियमित-गर्ने-ऐन-२०५६.pdf
+            बाल-श्रम-निषेध-र-नियमित-गर्ने-नियमावली-२०६२.pdf
+            बालबालिका-नियामावलि-२०७८.pdf
+            बालबालिका-विकास-तथा-पुनर्स्थापना-कोष-नियमावली-२०५३.pdf
+            बालबालिका-सम्बन्धी-ऐन-२०४८.pdf
+            बालबालिका-सम्बन्धी-ऐन-२०७५.pdf
+            बिमा-ऐन-२०४९.pdf
+            बिमा-नियमावली-२०४९.pdf
+            बिरुवा-क्वारेन्टाइन-तथा-संरक्षण-ऐन-२०६४.pdf
+            बिरुवा-क्वारेन्टाइन-तथा-संरक्षण-नियमावली-२०६६.pdf
+            बिर्ता-उन्मूलन-ऐन-२०१६.pdf
+            बिर्ता-उन्मूलन-नियमावली-२०१७.pdf
+            बीउ-बिजन-ऐन-२०४५.pdf
+            बीमा-ऐन-२०७९.pdf
+            बृहत्तर-जनकपुर-क्षेत्र-विकास-परिषद्-ऐन-२०५५.pdf
+            बेपत्ता-पारिएका-व्यक्तिको-छानबिन-आयोग-नियमावली-२०७२.pdf
+            बेपत्ता-पारिएका-व्यक्तिको-छानविन-सत्य-निरुपण-तथा-मेलमिलाप-आयोग-अध्यादेश-२०६९.pdf
+            बेपत्ता-पारिएका-व्यक्तिको-छानविन-सत्य-निरुपण-तथा-मेलमिलाप-आयोग-ऐन-२०७१.pdf
+            बेपत्ता-पारिएका-व्यक्तिको-छानविन-सत्य-निरुपण-तथा-मेलमिलाप-आयोग-पहिलो-संशोधन-अध्यादेश-२०७४.pdf
+            बैंक-तथा-वित्तीय-संस्था-सम्बन्धी-ऐन-२०७३.pdf
+            बैंक-तथा-वित्तीय-संस्थाको-ऋण-असुली-ऐन-२०५८.pdf
+            बैंकिङ-कसुर-तथा-सजाय-ऐन-२०६४.pdf
+            बैङ्क-तथा-वित्तीय-संस्थाको-ऋण-असुली-नियमावली-२०५९.pdf
+            बैङ्किङ्ग-कसूर-तथा-सजाय-ऐन-२०६४.pdf
+            बै‌क-तथा-वित्तीय-संस्था-सम्बन्धी-ऐन-२०६३.pdf
+            बोक्सीको-आरोप-कसूर-र-सजाय-ऐन-२०७२.pdf
+            बोनस-ऐन-२०३०.pdf
+            बोनस-नियमावली-२०३९.pdf
+            ब्रेटन-उड्स-सम्झौता-ऐन-२०१८.pdf
+            भन्सार-ऐन-२०६४.pdf
+            भन्सार-नियमावली-२०६४-1.pdf
+            भवन-ऐन-२०५५.pdf
+            भवन-नियमावली२०६६.pdf
+            भाषा-आयोग-ऐन-२०७४.pdf
+            भिक्षा-माग्ने-निषेध-ऐन-२०१८.pdf
+            भुक्तानी-तथा-फर्स्यौट-ऐन-२०७५.pdf
+            भू-तथा-जलाधार-संरक्षण-ऐन-२०३९.pdf
+            भू-तथा-जलाधार-संरक्षण-नियमावली-२०४२.pdf
+            भूउपयोग-नियमावली-२०७९.pdf
+            भूउपयोग-सम्बन्धि-ऐन-२०७६.pdf
+            भूकम्पबाट-प्रभावित-संरचनाका-पुनर्निमाण-सम्बन्धी-एन-२०७२.pdf
+            भूतपूर्व-सैनिक-नियुक्ति-विशेष-व्यवस्था-नियमावली-२०५९.pdf
+            भूमि-सम्बन्धी-ऐन-२०२१.pdf
+            भूमि-सम्बन्धी-नियमहरू-२०२१.pdf
+            भ्रमण-खर्च-नियमावली-२०६४.pdf
+            भ्रष्टाचार-निवारण-ऐन-२०५९.pdf
+            भ्रष्टाचार-विरुद्धको-संयुक्त-राष्ट्रसंङ्घीय-महासन्धि.pdf
+            मतदाता-नामावली-ऐन-२०७३.pdf
+            मतदाता-नामावली-सम्बन्धी-ऐन-२०६३.pdf
+            मतदाता-नामावली-सम्बन्धी-नियमावली-२०६८.pdf
+            मदन-भण्डारी-विज्ञान-तथा-प्रविधि-विश्वविद्यालय-ऐन-२०७९.pdf
+            मदन-भण्डारी-विज्ञान-तथा-प्रविधि-विश्वविद्यालय-पूर्वाधार-निर्माण-विकास-समिति-गठन-आदेश-२०७५.pdf
+            मदिरा-ऐन-२०३१.pdf
+            मदिरा-नियमहरु-२०३३.pdf
+            मधेशी-आयोग-ऐन-२०७४.pdf
+            मध्यपश्‍चिम-विश्‍वविद्यालय-ऐन-२०६७.pdf
+            मध्यवर्ति-क्षेत्र-व्यवस्थापन-नियमावली-२०५२.pdf
+            मध्यस्थता-अदालती-कार्यविधि-नियमावली-२०५९.pdf
+            मध्यस्थता-ऐन-२०५५-को-संशोधन-सम्बन्धी-अध्ययन.pdf
+            मध्यस्थता-ऐन-२०५५.pdf
+            मन्त्रीहरूको-पारिश्रमिक-र-सुविधा-सम्बन्धी-ऐन-२०४९.pdf
+            महान्यायाधिवक्ताको-पारिश्रमिक-सेवाको-शर्त-र-सुविधा-सम्बन्धी-ऐन-२०५२.pdf
+            महाभियोग-कार्यविधि-नियमित-गर्ने-ऐन-२०५९.pdf
+            महिला-विरूद्धका-सबै-प्रकारका-भेदभाव-उन्मूलन-गर्ने-सम्बन्धी-महासन्धि.pdf
+            महिला-विरूद्धका-सबै-प्रकारका-भेदभाव-उन्मूलन-गर्ने-सम्बन्धी-महासन्धिको-स्वेच्छिक-प्रोटोकल.pdf
+            महिलाहरूको-राजनीतिक-अधिकार-सम्बन्धी-महासन्धि.pdf
+            महेन्द्र-मल्लको-स्थिति.pdf
+            मानव-अधिकारको-विश्वव्यापी-घोषणापत्र.pdf
+            मानव-बेचबिखन-तथा-ओसारपसार-नियन्त्रण-ऐन-२०६४.pdf
+            मानव-बेचबिखन-तथा-ओसारपसार-नियन्त्रण-नियमावली-२०६५-1.pdf
+            मानव-शरीरको-अङ्ग-प्रत्यारोपण-नियमित-तथा-निषेध-ऐन-२०५५.pdf
+            मानव-शरीरको-अङ्ग-प्रत्यारोपण-नियमित-तथा-निषेध-नियमावली-२०७३-1.pdf
+            मार्कको-अन्तर्राष्ट्रिय-दर्ताको-सम्बन्धमा-व्यवस्था-गर्न-बनेको-म्याड्रिड-प्रोटोकल.pdf
+            मालपोत-ऐन-२०३४.pdf
+            मालपोत-नियमावली-२०३६.pdf
+            मालसामानको-बहुविधिक-ढुवानी-ऐन-२०६३.pdf
+            मालसामानको-बहुविधिक-ढुवानी-नियमावली-२०६६.pdf
+            मुद्रण-सम्बन्धी-नियमहरू-२०५५.pdf
+            मुलुकी-अपराध-संहिता-तथा-त्यस-सम्बन्धी-कार्यविधि-कानूनलाई-संशोधन-गर्न-बनेको-विधेयक-1.pdf
+            मुलुकी-अपराध-संहिता-२०७४.pdf
+            मुलुकी-ऐन-१९१०.pdf
+            मुलुकी-देवानी-कार्यविधि-ऐन-२०७४.pdf
+            मुलुकी-देवानी-कार्यविधि-नियमावली२०७५.pdf
+            मुलुकी-देवानी-तथा-कार्यविधि-संहिता-२०७४-सम्बन्धी-प्रतिवेदन.pdf
+            मुलुकी-देवानी-संहिता-ऐन-२०७४.pdf
+            मुलुकी-देवानी-संहिता-तथा-त्यस-सम्बन्धी-कार्यविधि-कानूनलाई-संशोधन-गर्न-बनेको-विधेयक.pdf
+            मुलुकी-फौजदारी-कार्यविधि-नियमावली-२०७५.pdf
+            मुलुकी-फौजदारी-कार्यविधि-संहिता-२०७४.pdf
+            मुस्लिम-आयोग-ऐन-२०७४.pdf
+            मूल्य-अभिवृद्धि-कर-ऐन-२०५२.pdf
+            मूल्य-अभिवृद्धि-कर-नियमावली-२०५३.pdf
+            मेलमिलाप-सम्बन्धी-ऐन-२०६८.pdf
+            मेलमिलाप-सम्बन्धी-नियमावली-२०७०.pdf
+            मेलमिलाप-सम्बन्धी-सिंगापुर-महासन्धि.pdf
+            यसरी-निरुत्साहित-गरियो-मृत्युदण्ड-कार्यान्वयनलाई-भीमशमशेर-१९८८-साल.pdf
+            यातना-तथा-अन्य-क्रुर-अमानवीय-वा-अपमानजनक-व्यवहार-वा-सजाय-विरुद्धको-महासन्धि.pdf
+            यातना-सम्बन्धी-क्षतिपूर्ति-ऐन-२०५३.pdf
+            युद्धको-समयमा-गैरसैनिक-व्यक्तिहरुको-संरक्षण-सम्बन्धी-चौथो-महासन्धि.pdf
+            युद्धबन्दीहरूसँग-गरिने-व्यवहार-सम्बन्धी-तेस्रो-महासन्धि.pdf
+            युवा-तथा-साना-व्यवसायी-स्वरोजगार-कोष-सञ्चालन-नियमावली-२०६५.pdf
+            युवा-तथा-साना-व्यवसायी-स्वरोजगार-कोष-सञ्‍‍चालन-नियमावली-२०७७.pdf
+            योगदानमा-आधारित-सामाजिक-सुरक्षा-ऐन-२०७४.pdf
+            योगदानमा-आधारित-सामाजिक-सुरक्षा-नियमावली-२०७५.pdf
+            योगमाया-आयुर्वेद-विश्वविद्यालय-ऐन-२०७९.pdf
+            यौन-हिंसा-विरुद्धका-केही-ऐनलाई-संशोधन-गर्ने-अध्यादेश-२०७८.pdf
+            यौनजन्य-हिंसा-विरूद्धका-केही-नेपाल-ऐनलाई-संशोधन-गर्न-बनेको-विधेयक-.pdf
+            रकम-र-सरकारी-ठेक्का-बन्दोवस्त-नियमहरु-२०२२.pdf
+            रक्षा-आर्थिक-कार्यविधि-नियमहरु-२०२२.pdf
+            रङ्गभेद-अपराधको-दमन-र-सजाय-सम्बन्धी-अन्तर्राष्ट्रिय-महासन्धि.pdf
+            रङ्गशाला-बहाल-नियमहरू-२०१८.pdf
+            रणबहादुर-शाहको-कानूनी-बन्दोबस्त.pdf
+            राजनीतिक-दल-दर्ता-निर्वाचन-प्रयेाजन-नियमावली-२०६३.pdf
+            राजनीतिक-दल-सम्बन्धी-ऐन-20७३-लाई-संशोधन-गर्न-बनेको-अध्यादेश-२०७८.pdf
+            राजनीतिक-दल-सम्बन्धी-ऐन-२०७३-लाई-स‌ंशोधन-गर्न-बनेको-अध्यादेश-२०७७.pdf
+            राजनीतिक-दल-सम्बन्धी-ऐन-२०७३.pdf
+            राजनीतिक-दल-सम्बन्धी-नियमावली-२०७४.pdf
+            राजनीतिक-दलसम्बन्धी-ऐन-२०५८.pdf
+            राजर्षिजनक-विश्‍वविद्यालय-ऐन-२०७४.pdf
+            राजश्व-न्यायाधिकरण-ऐन-२०३१.pdf
+            राजस्व-चुहावट-अनुसन्धान-तथा-नियन्त्रण-ऐन-२०५२.pdf
+            राजस्व-न्यायाधिकरण-नियमावली-२०३०.pdf
+            राज्य-अदालत-उन्मूलन-ऐन-२०१७.pdf
+            राज्य-रजौटा-ऐन-२०१७.pdf
+            राप्ती-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०७४.pdf
+            राप्तीदून-विकास-क्षेत्रको-जमीनको-बिक्री-वितरण-व्यवस्था-ऐन-२०२४.pdf
+            राप्तीदून-विकास-क्षेत्रको-जमीनको-बिक्री-वितरण-व्यवस्था-नियमहरू-२०२४.pdf
+            रामशाहको-कचहरीको-मर्यादा.pdf
+            राष्ट्र-ऋण-उठाउने-अध्यादेश-२०६९.pdf
+            राष्ट्र-ऋण-उठाउने-अध्यादेश-२०७०.pdf
+            राष्ट्र-ऋण-उठाउने-अध्यादेश-२०७८.pdf
+            राष्ट्र-ऋण-उठाउने-ऐन-२०७५.pdf
+            राष्ट्र-ऋण-उठाउने-ऐन-२०७६.pdf
+            राष्ट्र-ऋण-उठाउने-ऐन-२०७७.pdf
+            राष्ट्र-ऋण-उठाउने-ऐन-२०७९.pdf
+            राष्ट्र-ऋण-उठाउने-ऐन-२०८०-.pdf
+            राष्ट्र-ऋण-ऐन-२०५९.pdf
+            राष्ट्र-ऋण-नियमावली-२०५९.pdf
+            राष्ट्रपति-तथा-उपराष्ट्रपतिको-निर्वाचन-सम्बन्धी-ऐन-२०७४.pdf
+            राष्ट्रपति-तथा-उपराष्ट्रपतिको-निर्वाचन-सम्बन्धी-नियमावली-२०७४.pdf
+            राष्ट्रपति-र-उपराष्ट्रपतिको-पारिश्रमिक-तथा-सुविधा-सम्बन्धी-ऐन-२०७४.pdf
+            राष्ट्रिय-खेलकुद-विकास-ऐन-२०७७.pdf
+            राष्ट्रिय-खेलकुद-विकास-नियमावली-२०७९.pdf
+            राष्ट्रिय-चिकत्सा-शिक्षा-ऐन-२०७५.pdf
+            राष्ट्रिय-चिकित्सा-शिक्ष_3.pdf
+            राष्ट्रिय-चिया-तथा-कफी-विकास-बोर्ड-ऐन-२०४९.pdf
+            राष्ट्रिय-दलित-आयोग-ऐन-२०७४.pdf
+            राष्ट्रिय-दुग्ध-विकास-बोर्ड-ऐन-२०४८.pdf
+            राष्ट्रिय-निकुञ्ज-तथा-वन्यजन्तु-संरक्षण-ऐन-२०२९.pdf
+            राष्ट्रिय-निकुञ्ज-तथा-वन्यजन्तु-संरक्षण-नियमावली-२०३०.pdf
+            राष्ट्रिय-निर्देशन-ऐन-२०१८.pdf
+            राष्ट्रिय-न्यायिक-प्रतिष्ठान-ऐन-२०६३.pdf
+            राष्ट्रिय-परिचयपत्र-तथा-पञ्जीकरण-ऐन-२०७६.pdf
+            राष्ट्रिय-परिचयपत्र-तथा-पञ्जीकरण-नियमावली-२०७७.pdf
+            राष्ट्रिय-परीक्षा-बोर्ड-नियमावली-२०७६.pdf
+            राष्ट्रिय-प्रकृति-संरक्षण-कोष-ऐन-२०३९.pdf
+            राष्ट्रिय-प्रकृति-संरक्षण-कोष-नियमावली-२०४१.pdf
+            राष्ट्रिय-प्रसारण-ऐन-२०४९.pdf
+            राष्ट्रिय-प्रसारण-नियमावली-२०५२.pdf
+            राष्ट्रिय-प्राकृतिक-स्रोत-तथा-वित्त-आयोग-ऐन-२०७४-1.pdf
+            राष्ट्रिय-प्राकृतिक-स्रोत-तथा-वित्त-आयोग-नियमावली-२०७६.pdf
+            राष्ट्रिय-प्राथमिकता-विधेयक.pdf
+            राष्ट्रिय-बीमा-संस्थान-ऐन-२०२५.pdf
+            राष्ट्रिय-महिला-आयोग-ऐन-२०६३.pdf
+            राष्ट्रिय-महिला-आयोग-ऐन-२०७४.pdf
+            राष्ट्रिय-महिला-आयोग-नियमावली-२०७८.pdf
+            राष्ट्रिय-मानव-अधिकार-आयोग-ऐन-२०६८.pdf
+            राष्ट्रिय-युवा-परिषद्-ऐन-२०७२.pdf
+            राष्ट्रिय-सतर्कता-केन्द्र-कार्य-सञ्चालन-नियमावली-२०६५.pdf
+            राष्ट्रिय-सतर्कता-प्रहरी-नियमावली-२०७१.pdf
+            राष्ट्रिय-सभा-नियमावली-२०७५.pdf
+            राष्ट्रिय-सभा-सदस्य-निर्वाचन-अध्यादेश-२०७४.pdf
+            राष्ट्रिय-सभा-सदस्य-निर्वाचन-ऐन-२०७५.pdf
+            राष्ट्रिय-सभा-सदस्य-निर्वाचन-नियमावली-२०७६.pdf
+            राष्ट्रिय-समाचार-समिति-ऐन-२०१९.pdf
+            राष्ट्रिय-समाचार-समिति-नियमावली-२०४१.pdf
+            राष्ट्रिय-समावेशी-आयोग-ऐन-२०७४.pdf
+            राष्ट्रिय-समावेशी-आयोग-नियमावली-079.3.5.pdf
+            राष्ट्रिय-सहकारी-विकास-बोर्ड-ऐन-२०४९.pdf
+            राष्ट्रिय-सेवा-दल-ऐन-२०२७.pdf
+            रासायनिक-पदार्थको-सुरक्षित-प्रयोग-नियमन-तथा-जोखिम-व्यवस्थापन-विधेयक.pdf
+            राहदानी-ऐन-२०२४.pdf
+            राहदानी-ऐन-२०७६.pdf
+            राहदानी-नियमावली-२०७७-1.pdf
+            रेडियो-ऐन-२०१४.pdf
+            रेडियो-सञ्चार-लाइसेन्स-नियमावली-२०४९.pdf
+            रेडियोधर्मी-पदार्थ-उपयोग-तथा-नियमन-ऐन-२०७७.pdf
+            रेल्वे-अध्यादेश-२०७८-1.pdf
+            रेल्वे-ऐन-२०२०.pdf
+            रोजगारीको-हक-सम्बन्धी-ऐन-२०७५.pdf
+            रोजगारीको-हक-सम्बन्धी-नियमावली-२०७५.pdf
+            रोटरडाम-महासन्धि.pdf
+            लागू-औषध-नियन्त्रण-ऐन-२०३३.pdf
+            लिखतहरूको-गोप्यतासम्बन्धी-ऐन-२०३९.pdf
+            लुम्बिनी-बौद्ध-विश्‍वविद्यालय-ऐन-२०६३.pdf
+            लुम्बिनी-विकास-कोष-ऐन-२०४२.pdf
+            लेखापरीक्षण-ऐन-२०७५.pdf
+            लेख्य-प्रमाणक-नियमावली२०४१.pdf
+            लैङ्गिक-हिंसा-निवारण-कोष-सञ्चालन-नियमावली-२०६७-1.pdf
+            लोक-सेवा-आयोग-ऐन-२०७९.pdf
+            लोक-सेवा-आयोग-नियमावली-२०७९.pdf
+            लोकसेवा-आयोग-ऐन-२०६६.pdf
+            वन-ऐन-२०४९.pdf
+            वन-ऐन-२०७६.pdf
+            वन-नियमावली-२०५१.pdf
+            वन-नियमावली-२०७९.pdf
+            वन्यजन्तु-आरक्ष-नियमावली-२०३४.pdf
+            वस्तु-विनिमय-बजार-सम्बन्धी-ऐन-२०७४-1.pdf
+            वस्तुको-प्रत्यक्ष-बिक्री-व्यवस्थापन-तथा-नियमन-गर्ने-ऐन-२०७४.pdf
+            वातावरण-संरक्षण-ऐन-२०५३.pdf
+            वातावरण-संरक्षण-ऐन-२०७६.pdf
+            वातावरण-संरक्षण-नियमावली-२०५४.pdf
+            वातावरण-संरक्षण-नियमावली-२०७७.pdf
+            वायुयान-खोज-तथा-उद्धार-नियमावली-२०७४.pdf
+            वार्षिक-प्रतिवेदन-२०६७-०६८.pdf
+            वार्षिक-प्रतिवेदन-२०७१-०७२.pdf
+            वार्षिक-प्रतिवेदन-२०७६-०७७.pdf
+            वार्षिक-प्रतिवेदन-२०७७-०७८.pdf
+            वार्षिक-प्रतिवेदन-२०७८-०७९.pdf
+            विकास-समिति-ऐन-२०१३.pdf
+            विज्ञापन-नियमन-गर्ने-ऐन-२०७६.pdf
+            विज्ञापन-नियमन-गर्ने-नियमावली-२०७७.pdf
+            वित्तीय-मध्यस्थताको-काम-गर्ने-संस्था-सम्बन्धी-ऐन-२०५५.pdf
+            विदेशबाट-नेपाल-आगमन-हुने-यात्रुहरूको-व्यवस्थापन-सम्बन्धी-आदेश-२०७8.pdf
+            विदेशमा-लगानी-गर्न-प्रतिबन्ध-लगाउने-ऐन-२०२१.pdf
+            विदेशी-राज्य-र-कुटनैतिक-प्रतिनिधिको-सुविधा-तथा-उन्मुक्ति-ऐन-२०२७.pdf
+            विदेशी-लगानी-कर-नियमहरू-२०२०.pdf
+            विदेशी-लगानी-तथा-प्रविधि-हस्तान्तरण-ऐन-२०७५.pdf
+            विदेशी-लगानी-तथा-प्रविधि-हस्तान्तरण-नियमावली-२०७७.pdf
+            विदेशी-विनिमय-नियमित-गर्ने-ऐन-२०१९.pdf
+            विदेशी-विनिमय-नियमित-गर्ने-नियमहरु२०२०.pdf
+            विद्युत-ऐन-२०४९.pdf
+            विद्युत-चोरी-नियन्त्रण-ऐन-२०५८.pdf
+            विद्युत-नियमन-आयोग-ऐन-२०७४.pdf
+            विद्युत-नियमन-आयोग-नियमावली-२०७५.pdf
+            विद्युत-नियमावली-२०५०.pdf
+            विद्युत-महसुल-निर्धारण-नियमावली-२०५०.pdf
+            विद्युतीय-इलेक्ट्रोनिक-कारोबार-ऐन-२०६३.pdf
+            विद्युतीय-कारोवार-नियमावली-२०६४.pdf
+            विद्युतीय-व्यापारका-सम्बन्धमा-व्यवस्था-गर्न-बनेको-विधेयक.pdf
+            विनिमेय-अधिकारपत्र-ऐन-२०३४.pdf
+            विनियोजन-अध्यादेश-२०६९.pdf
+            विनियोजन-अध्यादेश-२०७०.pdf
+            विनियोजन-अध्यादेश-२०७८.pdf
+            विनियोजन-ऐन-२०७६.pdf
+            विनियोजन-ऐन-२०७७.pdf
+            विनियोजन-ऐन-२०७९.pdf
+            विनियोजन-ऐन-२०८०.pdf
+            विपद्-जोखिम-न्यूनीकरण-तथा-व्यवस्थापन-ऐन२०७४-1.pdf
+            विपद्-जोखिम-न्यूनीकरण-तथा-व्यवस्थापन-नियमावली-२०७६.pdf
+            विफर-नियन्त्रण-ऐन-२०२०.pdf
+            विफर-नियन्त्रण-नियमावली-२०२३.pdf
+            विभूषण-ऐन-२०६४.pdf
+            विभूषण-नियमावली-२०६५.pdf
+            विभूषण-सम्बन्धी-कानूनलाई-संशोधन-र-एकीकरण-गर्न-बनेको-विधेयक.pdf
+            विमानस्थल-दस्तुर-नियमावली-२०३८-खारेज-गर्ने-नियमावली-२०६७.pdf
+            विर्तावालाले-विर्तामा-रकम-लगाई-लिन-खान-नपाउने.pdf
+            विवाह-दर्ता-नियमावली-२०२८.pdf
+            विशेष-अदालत-ऐन-२०५९.pdf
+            विशेष-अदालत-नियमावली-२०८०.pdf
+            विशेष-आर्थिक-क्षेत्र-ऐन-२०७३.pdf
+            विशेष-आर्थिक-क्षेत्र-नियमावली-२०७४.pdf
+            विशेष-समूहका-कर्मचारीहरुको-प्रशासन-र-व्यवस्थापन-नियमावली-२०६५.pdf
+            विश्व-स्वास्थ्य-संगठनको-सुर्तिजन्य-पदार्थ-नियन्त्रण-सम्ब्नधी-अवधारणा-फ्रेमवर्क-महासन्धि.pdf
+            विश्‍वविद्यालय-अनुदान-आयोग-ऐन-२०५०.pdf
+            विष्फोटक-पदार्थ-ऐन-२०१८.pdf
+            विस्फोटक-पदार्थ-नियम२०२०.pdf
+            वी.पी-कोईराला-मेमोरियल-क्यान्सर-अस्पताल-ऐन-२०५३.pdf
+            वी.पी.कोईराला-स्वास्थ्य-विज्ञान-प्रतिष्ठान-ऐन-२०४९.pdf
+            वीउ-विजन-नियमावली-२०६९.pdf
+            वैदेशिक-रोजगार-ऐन-२०६४.pdf
+            वैदेशिक-रोजगार-नियमावली-२०६४.pdf
+            वैदेशिक-रोजगार-न्यायाधिकरण-नियमावली२०६८.pdf
+            वैयक्तिक-गोपनीयता-सम्बन्धी-ऐन-२०७५.pdf
+            वैयक्तिक-गोपनीयताको-हक-सम्बन्धी-नियमावली-२०७७.pdf
+            व्यवस्थापिका-संसदक-सचिवालय-सम्बन्धी-ऐन-२०६४.pdf
+            व्यवस्थापिका-संसदका-महासचिव-तथा-सचिवको-पारिश्रमिक-सेवाको-शर्त-र-सुविधा-सम्बन्धी-ऐन-२०५५.pdf
+            व्यवस्थापिका–संसद-आर्थिक-प्रशासन-नियमावली-२०६५.pdf
+            शपथ-सम्बन्धी-अध्यादेश-२०७८.pdf
+            शपथ-सम्बन्धी-ऐन-२०७९.pdf
+            शहरी-क्षेत्र-सार्वजनिक-यातायात-व्यवस्थापन-प्राधिकरण-ऐन-२०७९.pdf
+            शहीद-गंगालाल-राष्ट्रिय-हृदय-केन्द्र-ऐन-२०५७.pdf
+            शान्ति-कोष-सञ्चालन-नियमावली-२०६५.pdf
+            शिक्षक-सेवा-आयोग-नियमावली-२०५७.pdf
+            शिक्षा-ऐन-२०२८.pdf
+            शिक्षा-नियमावली-२०५९.pdf
+            शिक्षा-सम्बन्धी-केही-नेपाल-ऐन-संशोधन-गर्न-बनेको-ऐन-२०७७.pdf
+            शिवपुरी-नागार्जुन-राष्ट्रिय-निकुञ्ज-नियमावली-२०७६.pdf
+            श्रम-अदालत-कार्यविधि-नियमावली-२०५२.pdf
+            श्रम-अदालत-नियमावली-२०८०.pdf
+            श्रम-ऐन-२०४८.pdf
+            श्रम-ऐन-२०७४.pdf
+            श्रम-नियमावली-२०५०.pdf
+            श्रम-नियमावली-२०७५.pdf
+            श्रमजीवी-पत्रकार-सम्बन्धी-ऐन-२०५१.pdf
+            श्रमजीवी-पत्रकार-सम्बन्धी-नियमावली-२०५३.pdf
+            संक्रामक-रोग-ऐन-२०२०.pdf
+            संक्षिप्त-कार्यविधि-ऐन-२०२८..pdf
+            संगठित-अपराध-निवारण-अध्यादेश-२०६९.pdf
+            संगठित-अपराध-निवारण-ऐन-२०७०.pdf
+            संघ-प्रदेश-र-स्थानीय-तह-समन्वय-तथा-अन्तरसम्बन्ध-ऐन-२०७७.pdf
+            संघीय-आकस्मिक-कोष-ऐन-२०७४.pdf
+            संघीय-संसद-सचिवालय-कर्मचारी-प्रशासन-नियमावली-२०६५-1.pdf
+            संघीय-संसदका-पदाधिकारी-तथा-सदस्यहरुको-पारिश्रमिक-र-सुविधा-सम्बन्धी-ऐन-२०७३.pdf
+            संघीय-संसदका-महासचिव-प्रतिनिधिसभाका-सचिव-तथा-राष्ट्रियसभाका-सचिवको.pdf
+            संघीय-संसदको-संयुक्त-बैठक-र-संयुक्त-समिति-कार्यसञ्चालन-नियमावली-२०७५.pdf
+            संयुक्त-आवासको-स्वामित्त्वसम्बन्धी-ऐन-२०५४.pdf
+            संयुक्त-आवासको-स्वामित्व-सम्बन्धी-नियमावली-२०६०.pdf
+            संयुक्त-राष्ट्र-संघको-बडापत्र.pdf
+            संरक्षण-क्षेत्र-व्यवस्थापन-नियमावली-२०५३.pdf
+            संरक्षण-क्षेत्र-सरकारी-व्यवस्थापन-नियमावली-२०५७.pdf
+            संविधान-सभा-सदस्य-निर्वाचन-अध्यादेश-२०७०.pdf
+            संविधानसभा-अदालत-ऐन-२०६४.pdf
+            संविधानसभा-सदस्य-निर्वाचन-ऐन-२०६४.pdf
+            संवैधानिक-निकायका-पदाधिकारीहरूक-पारिश्रमिक-सेवाको-शर्त-र-सुविधा-सम्बन्धी-ऐन-२०५३.pdf
+            संवैधानिक-परिषद्-ऐन-२०६६-लाई-संशोधन-गर्न-बनेको-अध्यादेश-२०७७.pdf
+            संवैधानिक-परिषद्-काम-कर्तव्य-अधिकार-र-कार्यविधि-सम्बन्धी-ऐन-२०६६.pdf
+            संसदका-पदाधिकारी-तथा-सदस्यहरूको-पारिश्रमिक-र-सुविधासम्बन्धी-ऐन-२०५२.pdf
+            संसदीय-सुनुवाई-सम्बन्धी-विधेयक-मसौदा-.pdf
+            संस्था-दर्ता-ऐन-२०३४.pdf
+            संस्था-दर्ता-नियमावली-२०३४.pdf
+            संस्थान-ऐन-२०२१.pdf
+            सङ्कटापन्न-वन्यजन्तु-तथा-वनस्पतिको-अन्तर्राष्ट्रिय-व्यापार-नियन्त्रण-ऐन-२०७३.pdf
+            सङ्कटापन्न-वन्यजन्तु-तथा-वनस्पतिको-अन्तर्राष्ट्रिय-व्यापार-नियन्त्रण-नियमावली-२०७६.pdf
+            सङ्घीय-संसद-सचिवालय-सम्बन्धी-ऐन-२०६४.pdf
+            सङ्घीय-संसदको-संयुक्त-बैठक-र-संयुक्त-समिति-कार्यसञ्चालन-नियमावली-२०८०.pdf
+            सञ्चार-संस्थान-ऐन-२०२८.pdf
+            सडक-वोर्ड-ऐन-२०५८.pdf
+            सतीप्रथा-नियन्त्रण-गर्ने-१९४४-सालको-इतिहास.pdf
+            सत्य-निरुपण-तथा-मेलमिलाप-आयोग-नियमावली-२०७२.pdf
+            सपुदर्गी-ऐन-२०४५.pdf
+            सपुर्दगी-अध्यादेश-२०६९.pdf
+            सपुर्दगी-ऐन-२०७०.pdf
+            समाज-कल्याण-ऐन-२०४९.pdf
+            सम्पत्ति-कर-नियमहरू-२०१७.pdf
+            सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-ऐन-२०६४-1.pdf
+            सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-नियमावली-२०६६.pdf
+            सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-नियमावली-२०७३-1.pdf
+            सम्पत्ति-सूचीकृत-व्यक्ति-समूह-वा-संगठनको-सम्पत्ति-वा-कोष-रोक्का-नियमावली-२०७०.pdf
+            सरकारी-कागजात-धुल्याउने-नियमहरू२०२७.pdf
+            सरकारी-कार्यालयको-वेबसाईट-निर्माण-तथा-व्यवस्थापन-सम्बन्धी-निर्देशिका२०७८.pdf
+            सरकारी-छात्रावास-नियमावली-२०२९.pdf
+            सरकारी-मुद्दा-सम्बन्धी-नियमावली-२०५५.pdf
+            सरकारी-वकील-सम्बन्धी-नियमावली-२०५५.pdf
+            सरकारी-वकील-सम्बन्धी-नियमावली-२०७७.pdf
+            सर्वोच्च-अदालत-ऐन-२०४८.pdf
+            सर्वोच्च-अदालत-नियमावली-२०४९.pdf
+            सर्वोच्च-अदालत-नियमावली-२०७४.pdf
+            सर्वोच्च-अदालत-संवैधानिक-इजलास-सञ्चालन-नियमावली-२०७२.pdf
+            सवारी-तथा-यातायात-व्यवस्था-ऐन-२०४९.pdf
+            सवारीको-रुल-साबिक-१९८७-सालमा-जारी-भएको-खारेज-भै-त्यसको-बदलामा-भएको.pdf
+            सशस्त्र-प्रहरी-नियमावली-२०७२.pdf
+            सशस्‍त्र-प्रहरी-ऐन-२०५८.pdf
+            सहकारी-ऐन-२०४८.pdf
+            सहकारी-ऐन-२०७४.pdf
+            सहकारी-नियमावली-२०४९.pdf
+            सहकारी-नियमावली-२०७५.pdf
+            साझेदारी-ऐन-संशोधन-विधेयक.pdf
+            साझेदारी-ऐन-२०२०.pdf
+            सामयिक-कर-असुल-ऐन-२०१२-को-दफा-३-ले-दिएको-अधिकार-प्रयोग-गरी-नेपाल-सरकारले-जारी-गरेको-सूचित-आदेश.pdf
+            सामयिक-कर-असुल-ऐन-२०१२.pdf
+            सामाजिक-व्यवहार-सुधार-ऐन-२०३३.pdf
+            सामाजिक-व्यवहार-सुधार-नियमावली-२०३३.pdf
+            सामाजिक-संस्था-ऐन-विधेयक.pdf
+            सामाजिक-सुरक्षा-ऐन-२०७५.pdf
+            सामाजिक-सुरक्षा-कोष-व्यवस्थापन-तथा-सञ्चालन-नियमावली-२०६७.pdf
+            सामाजिक-सुरक्षा-नियमावली-२०७६.pdf
+            सामाजिक-सुरक्षा-पहिलो-संशोधन-अध्यादेश-२०७७.pdf
+            सार्वजनिक-ऋण-व्यवस्थापन-ऐन-२०७९-1.pdf
+            सार्वजनिक-ऋण-व्यवस्थापन-नियमावली-२०८०.pdf
+            सार्वजनिक-खरिद-ऐन-२०६३..pdf
+            सार्वजनिक-खरिद-नियमावली-२०६४.pdf
+            सार्वजनिक-निजी-साझेदारी-तथा-लगानी-ऐन-२०७५.pdf
+            सार्वजनिक-निजी-साझेदारी-तथा-लगानी-नियमावली-२०७७.pdf
+            सार्वजनिक-सडक-ऐन-२०३१.pdf
+            सार्वजनिक-सडक-मुआब्जा-निर्धारण-समिति-नियमावली-२०३३.pdf
+            सार्वजनिक-सुरक्षा-ऐन-२०४६.pdf
+            सिंचाइ-नियमावली-२०५६.pdf
+            सुदूरपश्‍चिम-विश्‍वविद्यालय-ऐन-२०६७.pdf
+            सुपथ-मूल्यका-सहकारी-पसल-सञ्चालन-सम्बन्धी-नियमावली-२०६५.pdf
+            सुरक्षित-कारोबार-ऐन-२०६३.pdf
+            सुरक्षित-मातृत्व-तथा-प्रजनन-स्वास्थ्य-अधिकार-ऐन-२०७५.pdf
+            सुरक्षित-मातृत्व-तथा-प्रजनन-स्वास्थ्य-अधिकार-नियमावली-२०७७.pdf
+            सुशासन-व्यवस्थापन-तथा-सञ्चालन-ऐन-२०६४-1.pdf
+            सुशासन-व्यवस्थापन-तथा-सञ्चालन-नियमावली-२०६५.pdf
+            सूचना-प्रविधि-न्यायाधिकरण-कार्यविधि-नियमावली-२०६४.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७५-बैशाख-जेष्ठ-र-आषाढ-मसान्तसम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७६-चैत्र-मसान्तसम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७६-श्रावण-देखि-२०७७-असार-सम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७६असार-मसान्तसम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७७-कात्तिक-देखि-२०७७-पुष-मसान्तसम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७७-श्रावण-देखि-असोज-सम्म-1.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७७-श्रावण-देखि-२०७८-असार-मसान्तसम्म.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७८-कात्तिक-देखि-२०७८-पुष-मसान्तसम्म-1.pdf
+            सूचनाको-हक-बमोजिम-सार्वजनिक-गरिएको-विवरण-२०७८-माघ-देखि-२०७८-चैत-मसान्तसम्म.pdf
+            सूचनाको-हक-सम्बन्धी-ऐन-२०६४.pdf
+            सूचनाको-हक-सम्बन्धी-नियमावली-२०६५.pdf
+            सूचनादाताको-संरक्षण-गर्ने-सम्बन्धमा-व्यवस्था-गर्न-बनेको-विधेयक.pdf
+            सूर्तिजन्य-पदार्थ-नियन्त्रण-र-नियमन-गर्ने-ऐन-२०६८.pdf
+            सूर्तिजन्य-पदार्थ-नियन्त्रण-र-नियमन-गर्ने-नियमावली-२०६८.pdf
+            सेना-प्राड-विवाक-भर्ना-बढुवा-र-सेवा-शर्त-नियमहरु-२०२९.pdf
+            सेफगार्ड्स-एन्टी-डम्पिङ्ग-तथा-काउण्टरभेलिङ्ग-ऐन-२०७६.pdf
+            सेफगार्ड्स-एन्टी-डम्पिङ्ग-तथा-काउण्टरभेलिङ्ग-नियमावली-२०७७.pdf
+            सैनिक-अदालत-नियमावली-२०६४.pdf
+            सैनिक-अस्पताल-व्यवस्था-नियमहरू-२०२३.pdf
+            सैनिक-उपचारिका-नियमावली-२०४९.pdf
+            सैनिक-ऐन-२०६३.pdf
+            सैनिक-कल्याणकारी-कोष-नियमावली-२०६५.pdf
+            सैनिक-चन्दा-र-पुरस्कार-सम्बन्धी-नियमहरू-२०२४.pdf
+            सैनिक-नयाँ-भर्ना-नियमहरू-२०१९.pdf
+            सैनिक-प्याराचुट-फोल्डर-महिला-नियमावली-२०४६.pdf
+            सैनिक-प्रहरी-सम्बन्धी-नियमावली-२०५८.pdf
+            सैनिक-प्राड-सेवा-नियमावली-२०७४.pdf
+            सैनिक-प्राविधिक-सेवा-नियमहरू-२०१९.pdf
+            सैनिक-प्राविधिक-सेवा-नियमावली-२०७६.pdf
+            सैनिक-मनोरञ्जन-अनुदान-प्रदान-गर्ने-नियमहरू-२०२१.pdf
+            सैनिक-विविध-सेवा-नियमावली-२०७४.pdf
+            सैनिक-सेवा-नियमावली-२०६९-1.pdf
+            सैनिक-हवाई-परिवहन-नियमावली-२०३०.pdf
+            सैनिक-हवाई-सेवा-नियमावली-२०७४.pdf
+            स्टाण्डर्ड-नाप-र-तौल-ऐन-२०२५.pdf
+            स्टाण्डर्ड-नाप-र-तौल-नियमहरु-२०२७.pdf
+            स्टाण्डर्ड-नाप-र-तौल-मोहरबन्द-प्याकेज-नियमावली-२०७६.pdf
+            स्थानीय-तह-निर्वाचन-ऐन-२०७३.pdf
+            स्थानीय-तह-निर्वाचन-नियमावली-२०७३.pdf
+            स्थानीय-निकाय-निर्वाचन-कार्यविधि-ऐन-२०४८.pdf
+            स्थानीय-पूर्वाधार-विकास-साझेदारी-कार्यक्रम-सञ्चालन-कार्यविधि-नियमावली-२०७५.pdf
+            स्थानीय-पूर्वाधार-विकास-साझेदारी-कार्यक्रम-सञ्चालन-कार्यविधि-नियमावली-२०७६.pdf
+            स्थानीय-पूर्वाधार-विकास-साझेदारी-कार्यक्रम-सञ्चालन-कार्यविधि-नियमावली-२०७७.pdf
+            स्थानीय-प्रशासन-ऐन-२०२८.pdf
+            स्थानीय-विकसा-प्रशिक्षण-प्रतिष्ठान-ऐन-२०४९.pdf
+            स्थानीय-विकास-शुल्क-कोष-नियमावली-२०५६.pdf
+            स्थानीय-सरकार-सञ्चालन-ऐन-२०७४.pdf
+            स्थानीय-स्वायत्त-शासन-ऐन-२०५५.pdf
+            स्वास्थ्य-बीमा-ऐन-२०७४.pdf
+            स्वास्थ्य-बीमा-नियमावली-२०७५.pdf
+            स्वास्थ्यकर्मी-तथा-स्वास्थ्य-संस्थाको-सुरक्षा-सम्बन्धी-ऐन-२०६६-.pdf
+            स्वास्थ्यकर्मी-तथा-स्वास्थ्य-संस्थाको-सुरक्षा-सम्बन्धी-नियमावली-२०६९.pdf
+            स्वास्थ्यकर्मी-तथा-स्वास्थ्य-संस्थाको-सुरक्षा-सम्बन्धी-पहिलो-संशोधन-अध्यादेश-२०७८.pdf
+            स्वास्थ्यकर्मी-तथा-स्वास्थ्य-संस्थाको-सुरक्षा-सम्बन्धी-पहिलो-संशोधन-अध्यादेश२०७९.pdf
+            हवाई-सुरक्षा-व्यवस्था-नियमावली-२०४६.pdf
+            हातहतियार-खरखजाना-ऐन-२०१९.pdf
+            हातहतियार-खरखजाना-नियमावली-२०२८.pdf
+            हात्तीको-व्यवस्था-गर्ने-नियमहरू-२०२२.pdf
+            हिमाली-राष्ट्रिय-निकुञ्ज-नियमावली-२०३६.pdf
+            हुलाक-ऐन-२०१९.pdf
+            हुलाक-नियमावली-२०२०.pdf
+            हुलाक-बचत-बैङ्क-नियमावली-२०३३.pdf
+            हेजिङ्‍ग-नियमावली-२०७९.pdf
+            होटल-व्यवस्था-तथा-मदिराको-बिक्री-वितरण-नियन्त्रण-अधिकारी-तोक्ने-नियमहरू-२०२४.pdf
+            होटल-व्यवस्था-तथा-मदिराको-विक्री-वितरण-नियन्त्रण-ऐन-२०२३.pdf
+            होटेल-लज-रेष्टूराँ-तथा-रिजर्ट-बार-तथा-पथ-प्रदर्शक-नियमावली-२०३८.pdf
+            १८८३-सालको-राजेन्द्रको-न्यायिक-बन्दोबस्त.pdf
+            २०७९-कार्तिक-१-गते-देखि-चैत्र-मसान्तसम्म.pdf
+            २०८०-बैशाख-१-गते-देखि-असार-मसान्तसम्मको.pdf
