@@ -41,8 +41,10 @@ CHROMA_DIR = Path("data/chromadb")
 EMBED_MODEL = "intfloat/multilingual-e5-base"
 COLLECTION_NAME = "civiclens_nepal"
 
-CHUNK_SIZE = 500      # target tokens per chunk (rough — we use word count as proxy)
+CHUNK_SIZE = 250      # target tokens per chunk (rough — we use word count as proxy)
 CHUNK_OVERLAP = 50    # overlap between chunks so context isn't lost at boundaries
+MIN_CHUNK_WORDS = 40   # chunks smaller than this get merged with neighbors
+MAX_MERGE_COUNT = 4
 
 # maps folder name → metadata category tag
 FOLDER_CATEGORIES = {
@@ -60,6 +62,12 @@ FOLDER_CATEGORIES = {
 }
 
 # ── step 1: pdf text extraction ───────────────────────────────────────────────
+
+def clean_text(text : str) -> str:
+    text_no_dots = re.sub(r'(?:[ \t]*\.[ \t]*){5,}', ' ', text)
+    text_no_numbers = re.sub(r'^\s*\d+\s*$', '', text_no_dots, flags=re.MULTILINE)
+    cleaned_text = re.sub(r'^\s*\n', '', text_no_numbers, flags=re.MULTILINE)
+    return cleaned_text
 
 def extract_text(pdf_path: Path) -> str:
     try:
@@ -109,6 +117,8 @@ def run_extraction(folders=None):
             log.warning(f"  empty: {pdf_path.name}")
             continue
 
+        text = clean_text(text)
+
         # save text with metadata header
         folder = pdf_path.parent.name
         lang = detect_language(text)
@@ -132,14 +142,14 @@ def run_extraction(folders=None):
 # ── step 2: chunking ──────────────────────────────────────────────────────────
 
 # section heading patterns in both english and nepali
+# Uselss the way i am doing right now, might change chuking start later for now, fuck it we ball
 SECTION_PATTERNS = [
     re.compile(r"^\s*(?:section|article|chapter|part)\s+\d+", re.I | re.M),
-    re.compile(r"^\s*\d+[\.\)]\s+\S", re.M),           # 1. or 1) followed by text
-    re.compile(r"^\s*[१२३४५६७८९०]+[\.\)]\s+\S", re.M), # nepali numerals
     re.compile(r"^\s*(?:दफा|धारा|अनुसूची|भाग)\s*\d*", re.M),  # common nepali legal terms
 ]
 
 
+# Also useless for now lol
 def find_section_breaks(text: str) -> list[int]:
     breaks = set()
     for pattern in SECTION_PATTERNS:
@@ -151,55 +161,65 @@ def find_section_breaks(text: str) -> list[int]:
 def word_count(text: str) -> int:
     return len(text.split())
 
-
 def chunk_text(text: str, meta: dict) -> list[dict]:
+    words = text.split()
     chunks = []
-    breaks = find_section_breaks(text)
-
-    # split into sections first, then chunk each section if too long
-    if breaks:
-        sections = []
-        prev = 0
-        for b in breaks:
-            if b > prev:
-                sections.append(text[prev:b])
-            prev = b
-        sections.append(text[prev:])
-    else:
-        sections = [text]
-
     chunk_index = 0
-    for section in sections:
-        section = section.strip()
-        if not section:
-            continue
-        words = section.split()
 
-        if len(words) <= CHUNK_SIZE:
-            # section fits in one chunk
-            chunks.append({
-                **meta,
-                "chunk_index": chunk_index,
-                "text": section,
-                "word_count": len(words),
-            })
-            chunk_index += 1
-        else:
-            # slide a window over the section
-            start = 0
-            while start < len(words):
-                end = min(start + CHUNK_SIZE, len(words))
-                chunk_words = words[start:end]
-                chunks.append({
-                    **meta,
-                    "chunk_index": chunk_index,
-                    "text": " ".join(chunk_words),
-                    "word_count": len(chunk_words),
-                })
-                chunk_index += 1
-                start += CHUNK_SIZE - CHUNK_OVERLAP
+    start = 0
+    while start < len(words):
+        end = min(start + CHUNK_SIZE, len(words))
+        chunk_words = words[start:end]
+
+        chunks.append({
+            **meta,
+            "chunk_index": chunk_index,
+            "text": " ".join(chunk_words),
+            "word_count": len(chunk_words),
+        })
+
+        chunk_index += 1
+
+        if end == len(words):
+            break
+
+        start += CHUNK_SIZE - CHUNK_OVERLAP
 
     return chunks
+
+
+# Useless for now cuz i am doing a simple way
+def merge_small_chunks(chunks: list[dict]) -> list[dict]:
+    if not chunks:
+        return chunks
+
+    merged = []
+    i = 0
+    while i < len(chunks):
+        current = dict(chunks[i])   
+        merge_count = 1
+
+        while (
+            merge_count < MAX_MERGE_COUNT
+            and i + merge_count < len(chunks)
+            and (
+                current["word_count"] < MIN_CHUNK_WORDS
+                or chunks[i + merge_count]["word_count"] < MIN_CHUNK_WORDS
+            )
+        ):
+            nxt = chunks[i + merge_count]
+            current["text"] = current["text"].rstrip() + "\n" + nxt["text"].lstrip()
+            current["word_count"] += nxt["word_count"]
+            merge_count += 1
+
+        merged.append(current)
+        i += merge_count
+
+    # keep chunk_index sequential
+    for idx, chunk in enumerate(merged):
+        chunk["chunk_index"] = idx
+
+    return merged
 
 
 def run_chunking(folders=None):
