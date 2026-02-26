@@ -196,7 +196,7 @@ def merge_small_chunks(chunks: list[dict]) -> list[dict]:
     merged = []
     i = 0
     while i < len(chunks):
-        current = dict(chunks[i])   
+        current = dict(chunks[i])
         merge_count = 1
 
         while (
@@ -273,31 +273,19 @@ def make_chunk_id(source_file: str, chunk_index: int) -> str:
     return hashlib.md5(raw.encode()).hexdigest()
 
 
-def run_embedding(batch_size=64, folders=None):
-    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-
-    log.info(f"loading embedding model: {EMBED_MODEL}")
-    model = SentenceTransformer(EMBED_MODEL)
-
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    collection = client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        metadata={"hnsw:space": "cosine"}
-    )
-
-    existing_ids = set(collection.get(include=[])["ids"])
-    log.info(f"chromadb has {len(existing_ids)} existing chunks")
-
+def get_chunk_files(folders=None) -> list[Path]:
     chunk_files = list(CHUNKS_DIR.glob("*.jsonl"))
-    if folders:
-        allowed_stems = set()
-        for folder in RAW_DIR.iterdir():
-            if folder.is_dir() and folder.name in folders:
-                for p in folder.glob("*.pdf"):
-                    allowed_stems.add(p.stem)
-        chunk_files = [f for f in chunk_files if f.stem in allowed_stems]
+    if not folders:
+        return chunk_files
+    allowed_stems = set()
+    for folder in RAW_DIR.iterdir():
+        if folder.is_dir() and folder.name in folders:
+            for p in folder.glob("*.pdf"):
+                allowed_stems.add(p.stem)
+    return [f for f in chunk_files if f.stem in allowed_stems]
 
-    # load all chunks not yet in the db
+
+def load_pending_chunks(chunk_files: list[Path], existing_ids: set) -> list[dict]:
     pending = []
     for chunk_file in chunk_files:
         with open(chunk_file, encoding="utf-8") as f:
@@ -310,18 +298,15 @@ def run_embedding(batch_size=64, folders=None):
                 if chunk_id not in existing_ids:
                     chunk["_id"] = chunk_id
                     pending.append(chunk)
+    return pending
 
-    log.info(f"{len(pending)} chunks to embed and ingest")
-    if not pending:
-        log.info("nothing to do — all chunks already in chromadb")
-        return
 
-    # multilingual-e5 works best with a "query: " or "passage: " prefix
+def embed_and_ingest(pending: list[dict], collection, model, batch_size: int):
     texts_to_embed = [f"passage: {c['text']}" for c in pending]
 
     for i in tqdm(range(0, len(pending), batch_size), desc="embedding"):
         batch_chunks = pending[i:i + batch_size]
-        batch_texts = texts_to_embed[i:i + batch_size]
+        batch_texts  = texts_to_embed[i:i + batch_size]
 
         embeddings = model.encode(batch_texts, normalize_embeddings=True).tolist()
 
@@ -338,6 +323,32 @@ def run_embedding(batch_size=64, folders=None):
                 "word_count":  c["word_count"],
             } for c in batch_chunks],
         )
+
+
+def run_embedding(batch_size=64, folders=None):
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
+    log.info(f"loading embedding model: {EMBED_MODEL}")
+    model = SentenceTransformer(EMBED_MODEL)
+
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    collection = client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"}
+    )
+
+    existing_ids = set(collection.get(include=[])["ids"])
+    log.info(f"chromadb has {len(existing_ids)} existing chunks")
+
+    chunk_files = get_chunk_files(folders)
+    pending = load_pending_chunks(chunk_files, existing_ids)
+
+    log.info(f"{len(pending)} chunks to embed and ingest")
+    if not pending:
+        log.info("nothing to do — all chunks already in chromadb")
+        return
+
+    embed_and_ingest(pending, collection, model, batch_size)
 
     log.info(f"done — {len(pending)} chunks ingested into chromadb")
     log.info(f"total collection size: {collection.count()} chunks")
