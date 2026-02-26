@@ -163,13 +163,37 @@ def extract_text_ocr(pdf_path: Path) -> str:
         import pytesseract
 
         log.info(f"  falling back to OCR: {pdf_path.name}")
-        images = convert_from_path(pdf_path, dpi=300, poppler_path=POPPLER_PATH)
-        pages  = [pytesseract.image_to_string(img, lang="nep+eng") for img in images]
-        return "\n".join(p for p in pages if p.strip())
-    except Exception as e:
-        log.warning(f"  OCR also failed: {pdf_path.name} — {e}")
-        return ""
 
+        # get page count first without loading images
+        doc        = fitz.open(pdf_path)
+        page_count = doc.page_count
+        doc.close()
+        pages = []
+        for page_num in range(1, page_count + 1):
+            try:
+                # convert one page at a time to avoid MemoryError on large PDFs
+                images = convert_from_path(
+                    pdf_path,
+                    dpi          = 150,       
+                    poppler_path = POPPLER_PATH,
+                    first_page   = page_num,
+                    last_page    = page_num,
+                )
+                text = pytesseract.image_to_string(images[0], lang="nep+eng")
+                if text.strip():
+                    pages.append(text)
+            except MemoryError:
+                log.warning(f"  OOM on page {page_num}, skipping")
+                continue
+            except Exception as e:
+                log.warning(f"  OCR failed on page {page_num}: {e}")
+                continue
+
+        return "\n".join(pages)
+
+    except Exception as e:
+        log.warning(f"  OCR completely failed: {pdf_path.name} — {e}")
+        return ""
 
 def extract_text(pdf_path: Path) -> tuple[str, str]:
     """Tries pymupdf → preeti → ocr. Returns (text, method)."""
