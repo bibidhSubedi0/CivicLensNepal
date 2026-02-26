@@ -16,6 +16,7 @@ requirements:
     pip install pymupdf sentence-transformers chromadb tqdm
 """
 
+import os
 import re
 import json
 import argparse
@@ -24,9 +25,12 @@ import logging
 from pathlib import Path
 
 import fitz  # pymupdf
+from dotenv import load_dotenv
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
 import chromadb
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)-7s  %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger(__name__)
@@ -40,6 +44,10 @@ CHROMA_DIR = Path("data/chromadb")
 
 EMBED_MODEL = "intfloat/multilingual-e5-base"
 COLLECTION_NAME = "civiclens_nepal"
+
+# optional — only needed for OCR fallback on scanned PDFs
+# set in .env file: POPPLER_PATH=C:\path\to\poppler\Library\bin
+POPPLER_PATH = os.getenv("POPPLER_PATH", None)
 
 CHUNK_SIZE = 250      # target tokens per chunk (rough — we use word count as proxy)
 CHUNK_OVERLAP = 50    # overlap between chunks so context isn't lost at boundaries
@@ -63,13 +71,36 @@ FOLDER_CATEGORIES = {
 
 # ── step 1: pdf text extraction ───────────────────────────────────────────────
 
-def clean_text(text : str) -> str:
-    text_no_dots = re.sub(r'(?:[ \t]*\.[ \t]*){5,}', ' ', text)
+def clean_text(text: str) -> str:
+    text_no_dots    = re.sub(r'(?:[ \t]*\.[ \t]*){5,}', ' ', text)
     text_no_numbers = re.sub(r'^\s*\d+\s*$', '', text_no_dots, flags=re.MULTILINE)
-    cleaned_text = re.sub(r'^\s*\n', '', text_no_numbers, flags=re.MULTILINE)
+    cleaned_text    = re.sub(r'^\s*\n', '', text_no_numbers, flags=re.MULTILINE)
     return cleaned_text
 
-def extract_text(pdf_path: Path) -> str:
+
+def is_garbage_text(text: str, source_path: Path = None) -> bool:
+    """Return True if extracted text is mostly garbage (e.g. broken OCR layer in scanned PDF)."""
+    if not text:
+        return True
+
+    # check 1: low ratio of clean characters (scanned/broken PDFs)
+    total = len(text)
+    clean = sum(1 for c in text if c.isalnum() or "\u0900" <= c <= "\u097f" or c == " ")
+    if clean / total < 0.5:
+        return True
+
+    # check 2: nepali filename but zero devanagari in text (font-encoded e.g. Preeti)
+    if source_path is not None:
+        filename_is_nepali = any("\u0900" <= c <= "\u097f" for c in source_path.stem)
+        text_has_devanagari = any("\u0900" <= c <= "\u097f" for c in text)
+        if filename_is_nepali and not text_has_devanagari:
+            return True
+
+    return False
+
+
+def extract_text_pymupdf(pdf_path: Path) -> str:
+    """Primary extraction using PyMuPDF — fast, works on text-layer PDFs."""
     try:
         doc = fitz.open(pdf_path)
         pages = []
@@ -80,8 +111,43 @@ def extract_text(pdf_path: Path) -> str:
         doc.close()
         return "\n".join(pages)
     except Exception as e:
-        log.warning(f"extraction failed: {pdf_path.name} — {e}")
+        log.warning(f"  pymupdf failed: {pdf_path.name} — {e}")
         return ""
+
+
+def extract_text_ocr(pdf_path: Path) -> str:
+    """Fallback OCR extraction for scanned/garbage PDFs using tesseract."""
+    if not POPPLER_PATH:
+        log.warning(f"  OCR skipped: POPPLER_PATH not set in .env — {pdf_path.name}")
+        return ""
+    try:
+        from pdf2image import convert_from_path
+        import pytesseract
+
+        log.info(f"  falling back to OCR: {pdf_path.name}")
+        images = convert_from_path(pdf_path, dpi=300, poppler_path=POPPLER_PATH)
+        pages = []
+        for img in images:
+            text = pytesseract.image_to_string(img, lang="nep+eng")
+            if text.strip():
+                pages.append(text)
+        return "\n".join(pages)
+    except Exception as e:
+        log.warning(f"  OCR also failed: {pdf_path.name} — {e}")
+        return ""
+
+
+def extract_text(pdf_path: Path) -> tuple[str, str]:
+    """
+    Extract text from a PDF.
+    Returns (text, method) where method is 'pymupdf' or 'ocr'.
+    Falls back to OCR if pymupdf produces garbage.
+    """
+    text = extract_text_pymupdf(pdf_path)
+    if is_garbage_text(text, source_path=pdf_path):
+        text = extract_text_ocr(pdf_path)
+        return text, "ocr"
+    return text, "pymupdf"
 
 
 def detect_language(text: str) -> str:
@@ -111,26 +177,30 @@ def run_extraction(folders=None):
             skipped += 1
             continue
 
-        text = extract_text(pdf_path)
+        log.info(f"  [{extracted + failed + 1}] {pdf_path.name}")
+        text, method = extract_text(pdf_path)
+
         if not text.strip():
             failed += 1
-            log.warning(f"  empty: {pdf_path.name}")
+            log.warning(f"  FAILED — empty result: {pdf_path.name}")
             continue
 
         text = clean_text(text)
+        log.info(f"  method={method}  chars={len(text):,}  lang={detect_language(text)}")
 
         # save text with metadata header
         folder = pdf_path.parent.name
         lang = detect_language(text)
         meta = {
-            "source_file": pdf_path.name,
-            "folder": folder,
-            "category": FOLDER_CATEGORIES.get(folder, "other"),
-            "language": lang,
-            "char_count": len(text),
+            "source_file":       pdf_path.name,
+            "folder":            folder,
+            "category":          FOLDER_CATEGORIES.get(folder, "other"),
+            "language":          lang,
+            "char_count":        len(text),
+            "extraction_method": method,   # "pymupdf" or "ocr"
         }
         out_path.write_text(
-            json.dumps(meta) + "\n---\n" + text,
+            json.dumps(meta, ensure_ascii=False) + "\n---\n" + text,
             encoding="utf-8"
         )
         extracted += 1
@@ -196,7 +266,7 @@ def merge_small_chunks(chunks: list[dict]) -> list[dict]:
     merged = []
     i = 0
     while i < len(chunks):
-        current = dict(chunks[i])   
+        current = dict(chunks[i])
         merge_count = 1
 
         while (
@@ -273,31 +343,19 @@ def make_chunk_id(source_file: str, chunk_index: int) -> str:
     return hashlib.md5(raw.encode()).hexdigest()
 
 
-def run_embedding(batch_size=64, folders=None):
-    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-
-    log.info(f"loading embedding model: {EMBED_MODEL}")
-    model = SentenceTransformer(EMBED_MODEL)
-
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    collection = client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        metadata={"hnsw:space": "cosine"}
-    )
-
-    existing_ids = set(collection.get(include=[])["ids"])
-    log.info(f"chromadb has {len(existing_ids)} existing chunks")
-
+def get_chunk_files(folders=None) -> list[Path]:
     chunk_files = list(CHUNKS_DIR.glob("*.jsonl"))
-    if folders:
-        allowed_stems = set()
-        for folder in RAW_DIR.iterdir():
-            if folder.is_dir() and folder.name in folders:
-                for p in folder.glob("*.pdf"):
-                    allowed_stems.add(p.stem)
-        chunk_files = [f for f in chunk_files if f.stem in allowed_stems]
+    if not folders:
+        return chunk_files
+    allowed_stems = set()
+    for folder in RAW_DIR.iterdir():
+        if folder.is_dir() and folder.name in folders:
+            for p in folder.glob("*.pdf"):
+                allowed_stems.add(p.stem)
+    return [f for f in chunk_files if f.stem in allowed_stems]
 
-    # load all chunks not yet in the db
+
+def load_pending_chunks(chunk_files: list[Path], existing_ids: set) -> list[dict]:
     pending = []
     for chunk_file in chunk_files:
         with open(chunk_file, encoding="utf-8") as f:
@@ -310,18 +368,15 @@ def run_embedding(batch_size=64, folders=None):
                 if chunk_id not in existing_ids:
                     chunk["_id"] = chunk_id
                     pending.append(chunk)
+    return pending
 
-    log.info(f"{len(pending)} chunks to embed and ingest")
-    if not pending:
-        log.info("nothing to do — all chunks already in chromadb")
-        return
 
-    # multilingual-e5 works best with a "query: " or "passage: " prefix
+def embed_and_ingest(pending: list[dict], collection, model, batch_size: int):
     texts_to_embed = [f"passage: {c['text']}" for c in pending]
 
     for i in tqdm(range(0, len(pending), batch_size), desc="embedding"):
         batch_chunks = pending[i:i + batch_size]
-        batch_texts = texts_to_embed[i:i + batch_size]
+        batch_texts  = texts_to_embed[i:i + batch_size]
 
         embeddings = model.encode(batch_texts, normalize_embeddings=True).tolist()
 
@@ -338,6 +393,32 @@ def run_embedding(batch_size=64, folders=None):
                 "word_count":  c["word_count"],
             } for c in batch_chunks],
         )
+
+
+def run_embedding(batch_size=64, folders=None):
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
+    log.info(f"loading embedding model: {EMBED_MODEL}")
+    model = SentenceTransformer(EMBED_MODEL)
+
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    collection = client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"}
+    )
+
+    existing_ids = set(collection.get(include=[])["ids"])
+    log.info(f"chromadb has {len(existing_ids)} existing chunks")
+
+    chunk_files = get_chunk_files(folders)
+    pending = load_pending_chunks(chunk_files, existing_ids)
+
+    log.info(f"{len(pending)} chunks to embed and ingest")
+    if not pending:
+        log.info("nothing to do — all chunks already in chromadb")
+        return
+
+    embed_and_ingest(pending, collection, model, batch_size)
 
     log.info(f"done — {len(pending)} chunks ingested into chromadb")
     log.info(f"total collection size: {collection.count()} chunks")
