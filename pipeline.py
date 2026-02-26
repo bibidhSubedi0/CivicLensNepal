@@ -79,7 +79,6 @@ def clean_text(text: str) -> str:
 
 
 def is_garbage_text(text: str, source_path: Path = None) -> bool:
-    """Return True if extracted text is mostly garbage (e.g. broken OCR layer in scanned PDF)."""
     if not text:
         return True
 
