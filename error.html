@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💀 Something Broke</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0c0c0c;
+      color: #e8e8e8;
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .icon {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 2rem;
+      animation: glitch 2s infinite;
+    }
+    @keyframes glitch {
+      0%, 90%, 100% { transform: translate(0); filter: none; }
+      92%  { transform: translate(-3px, 1px); filter: hue-rotate(90deg); }
+      94%  { transform: translate(3px, -1px); filter: hue-rotate(180deg); }
+      96%  { transform: translate(-2px, 2px); filter: hue-rotate(270deg); }
+      98%  { transform: translate(2px, -2px); filter: none; }
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.8rem;
+      color: #f5a623;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+    }
+    a.back {
+      font-size: 0.72rem;
+      color: #444;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #333;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    a.back:hover { color: #e8e8e8; }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <span class="icon">💀</span>
+  <h1>Something Died</h1>
+  <p>
+    Not the API this time — something else broke.<br>
+    I have no idea what. Neither does the server.<br>
+    Try again, or don't. It probably won't help.
+  </p>
+  <a class="back" href="/">← try your luck again</a>
+</body>
+</html>

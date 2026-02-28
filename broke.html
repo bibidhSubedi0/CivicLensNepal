@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💸 Server's Broke</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0c0c0c;
+      color: #e8e8e8;
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .coin {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%       { transform: translateY(-16px) rotate(5deg); }
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.8rem;
+      color: #ff5f5f;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+    }
+    a.back {
+      font-size: 0.72rem;
+      color: #444;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #333;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    a.back:hover { color: #e8e8e8; }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <span class="coin">💸</span>
+  <h1>Server's Broke (Again)</h1>
+  <p>
+    Hi, I'm a college student who built this thing at 2am.<br>
+    I ran out of free API credits and the LLM has gone on strike.<br>
+    Please come back later. Or esewa/phonePay me for GPU credits.
+  </p>
+  <a class="back" href="/">← go back</a>
+</body>
+</html>
