@@ -6,7 +6,9 @@ import json
 import argparse
 import hashlib
 import logging
+import traceback
 from pathlib import Path
+from datetime import datetime
 
 import fitz
 import torch
@@ -17,7 +19,15 @@ import chromadb
 
 load_dotenv()
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)-7s  %(message)s", datefmt="%H:%M:%S")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-7s  %(message)s",
+    datefmt="%H:%M:%S",
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("pipeline.log", encoding="utf-8"),
+    ]
+)
 log = logging.getLogger(__name__)
 
 # ── config ────────────────────────────────────────────────────────────────────
@@ -31,9 +41,7 @@ EMBED_MODEL     = "intfloat/multilingual-e5-base"
 COLLECTION_NAME = "civiclens_nepal"
 
 NEP_TTF2UTF_DIR = Path("nep-ttf2utf")
-
-# only needed for tesseract OCR fallback
-POPPLER_PATH = os.getenv("POPPLER_PATH", None)
+POPPLER_PATH    = os.getenv("POPPLER_PATH", None)
 
 CHUNK_SIZE      = 250
 CHUNK_OVERLAP   = 50
@@ -72,15 +80,11 @@ else:
 
 def _load_preeti_converter():
     if not NEP_TTF2UTF_DIR.exists():
-        log.warning(
-            "nep-ttf2utf not found — Preeti PDFs will fall back to OCR.\n"
-            "  Fix: git clone https://github.com/sapradhan/nep-ttf2utf.git"
-        )
+        log.warning("nep-ttf2utf not found — Preeti PDFs will fall back to OCR.")
         return None
     try:
         sys.path.insert(0, str(NEP_TTF2UTF_DIR))
         from ttf2utf import converter, rules_loader
-
         rules_path = str(NEP_TTF2UTF_DIR / "rules") + os.sep
         all_rules  = rules_loader.load_rules(rules_path)
         rule       = all_rules["preeti"]
@@ -102,8 +106,7 @@ def _load_preeti_converter():
 _preeti_to_unicode = _load_preeti_converter()
 
 
-# ── easyocr setup (GPU-accelerated OCR) ──────────────────────────────────────
-# friendship with tessearact is over, easyocr is my new best freindeasyocr
+# ── easyocr setup ─────────────────────────────────────────────────────────────
 
 def _load_easyocr():
     try:
@@ -113,7 +116,7 @@ def _load_easyocr():
         log.info(f"easyocr loaded (gpu={use_gpu})")
         return reader
     except ImportError:
-        log.info("easyocr not installed — OCR will use tesseract (CPU) instead")
+        log.info("easyocr not installed — OCR will use tesseract instead")
         return None
     except Exception as e:
         log.warning(f"easyocr failed to load: {e} — will use tesseract")
@@ -123,7 +126,7 @@ def _load_easyocr():
 _easyocr_reader = _load_easyocr()
 
 
-# ── step 1: pdf text extraction ───────────────────────────────────────────────
+# ── text extraction ───────────────────────────────────────────────────────────
 
 def clean_text(text: str) -> str:
     text = re.sub(r'(?:[ \t]*\.[ \t]*){5,}', ' ', text)
@@ -133,20 +136,13 @@ def clean_text(text: str) -> str:
 
 
 def is_garbage_text(text: str) -> bool:
-    """
-    Returns True if extracted text is unusable.
-    Catches: scanned/image PDFs, Preeti legacy font, near-empty extractions,
-    corrupt text with bad word lengths.
-    """
     if not text or len(text.strip()) < 50:
         return True
-    
+
     control_chars = sum(1 for c in text if ord(c) < 32 and c not in "\n\r\t")
     if control_chars / len(text) > 0.1:
         return True
 
-    # near-empty files — lots of whitespace but barely any real words
-    # catches files like जङ्गल-र-सीमाना that extract as mostly blank space
     words = [w for w in text.split() if len(w) > 1]
     if len(words) < 30:
         return True
@@ -159,19 +155,13 @@ def is_garbage_text(text: str) -> bool:
     suspect    = sum(1 for c in text if c in _PREETI_SUSPECT)
     meaningful = devanagari + latin + digits + whitespace
 
-    # too many junk characters — scanned/broken PDF
     if meaningful / total < 0.5:
         return True
-
-    # real Unicode Nepali — definitely not garbage
     if devanagari / total > 0.15:
         return False
-
-    # high suspect ratio — Preeti legacy font
     if suspect / total > 0.04:
         return True
 
-    # word length sanity check
     avg_len = sum(len(w) for w in words) / len(words)
     if avg_len < 2.0 or avg_len > 25.0:
         return True
@@ -180,7 +170,6 @@ def is_garbage_text(text: str) -> bool:
 
 
 def is_preeti(text: str) -> bool:
-    """Returns True if text looks like Preeti legacy font encoding."""
     if not text or len(text) < 50:
         return False
     total      = len(text)
@@ -211,61 +200,44 @@ def extract_text_preeti(raw_text: str) -> str:
 
 
 def extract_text_ocr(pdf_path: Path) -> str:
-    """
-    OCR fallback. Uses easyocr (GPU) if available, otherwise tesseract (CPU).
-    Processes one page at a time to avoid OOM on large PDFs.
-    """
-    doc        = fitz.open(pdf_path)
-    page_count = doc.page_count
-
-    MAX_DIM = 2000
-    scale   = 150 / 72
-    mat     = fitz.Matrix(scale, scale)
-    pix     = page.get_pixmap(matrix=mat)
-
-    # ── downscale if too large ──────────────────────────
-    if pix.width > MAX_DIM or pix.height > MAX_DIM:
-        resize_scale = min(MAX_DIM / pix.width, MAX_DIM / pix.height)
-        mat = fitz.Matrix(scale * resize_scale, scale * resize_scale)
-        pix = page.get_pixmap(matrix=mat)
-
-
-    pages = []
-
-    # ── easyocr path (GPU) ────────────────────────────────────────────────────
-    if _easyocr_reader is not None:
-        log.info(f"  OCR via easyocr ({'GPU' if DEVICE == 'cuda' else 'CPU'}): {pdf_path.name}")
-        import numpy as np
-
-        for page_num in range(page_count):
-            try:
-                page = doc[page_num]
-                mat  = fitz.Matrix(150 / 72, 150 / 72)   # 150 DPI
-                pix  = page.get_pixmap(matrix=mat)
-                doc.close()
-
-                img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
-                if pix.n == 4:
-                    img = img[:, :, :3]  # drop alpha
-
-                results = _easyocr_reader.readtext(img, detail=0, paragraph=True)
-                text    = "\n".join(results)
-                if text.strip():
-                    pages.append(text)
-
-            except MemoryError:
-                log.warning(f"  OOM on page {page_num + 1}, skipping")
-            except Exception as e:
-                log.warning(f"  easyocr failed on page {page_num + 1}: {e}")
-
-        return "\n".join(pages)
-
-    # ── tesseract fallback (CPU) ───────────────────────────────────────────────
-    if not POPPLER_PATH:
-        log.warning(f"  OCR skipped: neither easyocr nor POPPLER_PATH available — {pdf_path.name}")
-        return ""
-
     try:
+        doc        = fitz.open(pdf_path)
+        page_count = doc.page_count
+        pages      = []
+
+        if _easyocr_reader is not None:
+            log.info(f"  OCR via easyocr ({'GPU' if DEVICE == 'cuda' else 'CPU'}): {pdf_path.name}")
+            import numpy as np
+
+            for page_num in range(page_count):
+                try:
+                    page = doc[page_num]
+                    mat  = fitz.Matrix(150 / 72, 150 / 72)
+                    pix  = page.get_pixmap(matrix=mat)
+
+                    img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
+                    if pix.n == 4:
+                        img = img[:, :, :3]
+
+                    results = _easyocr_reader.readtext(img, detail=0, paragraph=True)
+                    text    = "\n".join(results)
+                    if text.strip():
+                        pages.append(text)
+
+                except MemoryError:
+                    log.warning(f"  OOM on page {page_num + 1}, skipping")
+                except Exception as e:
+                    log.warning(f"  easyocr failed on page {page_num + 1}: {e}")
+
+            doc.close()
+            return "\n".join(pages)
+
+        # tesseract fallback
+        doc.close()
+        if not POPPLER_PATH:
+            log.warning(f"  OCR skipped: neither easyocr nor POPPLER_PATH available — {pdf_path.name}")
+            return ""
+
         from pdf2image import convert_from_path
         import pytesseract
 
@@ -274,10 +246,10 @@ def extract_text_ocr(pdf_path: Path) -> str:
             try:
                 images = convert_from_path(
                     pdf_path,
-                    dpi          = 150,
-                    poppler_path = POPPLER_PATH,
-                    first_page   = page_num,
-                    last_page    = page_num,
+                    dpi=150,
+                    poppler_path=POPPLER_PATH,
+                    first_page=page_num,
+                    last_page=page_num,
                 )
                 text = pytesseract.image_to_string(images[0], lang="nep+eng")
                 if text.strip():
@@ -295,7 +267,6 @@ def extract_text_ocr(pdf_path: Path) -> str:
 
 
 def extract_text(pdf_path: Path, skip_ocr: bool = False) -> tuple[str, str]:
-    """Tries pymupdf -> preeti -> ocr. Returns (text, method)."""
     text = extract_text_pymupdf(pdf_path)
 
     if not is_garbage_text(text):
@@ -325,6 +296,7 @@ def detect_language(text: str) -> str:
 
 def run_extraction(folders=None, skip_ocr: bool = False):
     TEXT_DIR.mkdir(parents=True, exist_ok=True)
+
     pdfs = []
     for folder in RAW_DIR.iterdir():
         if not folder.is_dir():
@@ -334,7 +306,8 @@ def run_extraction(folders=None, skip_ocr: bool = False):
         pdfs.extend(folder.glob("*.pdf"))
 
     log.info(f"extracting text from {len(pdfs)} PDFs...")
-    skipped = extracted = failed = 0
+    skipped = extracted = failed = crashed = 0
+    failed_files = []
 
     for pdf_path in tqdm(pdfs, desc="extracting"):
         out_path = TEXT_DIR / f"{pdf_path.stem}.txt"
@@ -342,39 +315,61 @@ def run_extraction(folders=None, skip_ocr: bool = False):
             skipped += 1
             continue
 
-        log.info(f"  [{extracted + failed + 1}] {pdf_path.name}")
-        text, method = extract_text(pdf_path, skip_ocr=skip_ocr)
+        log.info(f"  [{extracted + failed + crashed + 1}] {pdf_path.name}")
 
-        if not text.strip():
-            failed += 1
-            log.warning(f"  FAILED — empty result: {pdf_path.name}")
+        try:
+            text, method = extract_text(pdf_path, skip_ocr=skip_ocr)
+
+            if not text.strip():
+                failed += 1
+                failed_files.append((pdf_path.name, "empty result"))
+                log.warning(f"  FAILED — empty result: {pdf_path.name}")
+                continue
+
+            text = clean_text(text)
+            lang = detect_language(text)
+            log.info(f"  method={method}  chars={len(text):,}  lang={lang}")
+
+            folder = pdf_path.parent.name
+            meta   = {
+                "source_file":       pdf_path.name,
+                "folder":            folder,
+                "category":          FOLDER_CATEGORIES.get(folder, "other"),
+                "language":          lang,
+                "char_count":        len(text),
+                "extraction_method": method,
+            }
+            out_path.write_text(
+                json.dumps(meta, ensure_ascii=False) + "\n---\n" + text,
+                encoding="utf-8-sig"
+            )
+            extracted += 1
+
+        except Exception as e:
+            crashed += 1
+            failed_files.append((pdf_path.name, str(e)))
+            log.error(f"  CRASHED on {pdf_path.name}: {e}")
+            log.debug(traceback.format_exc())
+            # never stop — move on to next file
             continue
 
-        text = clean_text(text)
-        lang = detect_language(text)
-        log.info(f"  method={method}  chars={len(text):,}  lang={lang}")
+    # ── final report ──────────────────────────────────────────────────────────
+    log.info("=" * 60)
+    log.info(f"EXTRACTION COMPLETE — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    log.info(f"  extracted : {extracted}")
+    log.info(f"  skipped   : {skipped}")
+    log.info(f"  failed    : {failed}")
+    log.info(f"  crashed   : {crashed}")
+    if failed_files:
+        log.info("  problem files:")
+        for name, reason in failed_files:
+            log.info(f"    {name} — {reason}")
+    log.info("=" * 60)
 
-        folder = pdf_path.parent.name
-        meta   = {
-            "source_file":       pdf_path.name,
-            "folder":            folder,
-            "category":          FOLDER_CATEGORIES.get(folder, "other"),
-            "language":          lang,
-            "char_count":        len(text),
-            "extraction_method": method,
-        }
-        # utf-8-sig avoids mojibake in metadata when filenames contain unicode
-        out_path.write_text(
-            json.dumps(meta, ensure_ascii=False) + "\n---\n" + text,
-            encoding="utf-8-sig"
-        )
-        extracted += 1
-
-    log.info(f"extraction done — extracted:{extracted}  skipped:{skipped}  failed:{failed}")
     return extracted + skipped
 
 
-# ── step 2: chunking ──────────────────────────────────────────────────────────
+# ── chunking ──────────────────────────────────────────────────────────────────
 
 SECTION_PATTERNS = [
     re.compile(r"^\s*(?:section|article|chapter|part)\s+\d+", re.I | re.M),
@@ -403,7 +398,6 @@ def chunk_text(text: str, meta: dict) -> list[dict]:
     while start < len(words):
         end         = min(start + CHUNK_SIZE, len(words))
         chunk_words = words[start:end]
-
         chunks.append({
             **meta,
             "chunk_index": chunk_index,
@@ -411,7 +405,6 @@ def chunk_text(text: str, meta: dict) -> list[dict]:
             "word_count":  len(chunk_words),
         })
         chunk_index += 1
-
         if end == len(words):
             break
         start += CHUNK_SIZE - CHUNK_OVERLAP
@@ -428,7 +421,6 @@ def merge_small_chunks(chunks: list[dict]) -> list[dict]:
     while i < len(chunks):
         current     = dict(chunks[i])
         merge_count = 1
-
         while (
             merge_count < MAX_MERGE_COUNT
             and i + merge_count < len(chunks)
@@ -441,7 +433,6 @@ def merge_small_chunks(chunks: list[dict]) -> list[dict]:
             current["text"] = current["text"].rstrip() + "\n" + nxt["text"].lstrip()
             current["word_count"] += nxt["word_count"]
             merge_count += 1
-
         merged.append(current)
         i += merge_count
 
@@ -465,37 +456,40 @@ def run_chunking(folders=None):
 
     log.info(f"chunking {len(txt_files)} extracted texts...")
     total_chunks = 0
+    failed = 0
 
     for txt_path in tqdm(txt_files, desc="chunking"):
         out_path = CHUNKS_DIR / f"{txt_path.stem}.jsonl"
         if out_path.exists():
             continue
 
-        content = txt_path.read_text(encoding="utf-8-sig")
-        if "\n---\n" not in content:
-            continue
-
-        meta_str, text = content.split("\n---\n", 1)
         try:
-            meta = json.loads(meta_str)
-        except json.JSONDecodeError:
+            content = txt_path.read_text(encoding="utf-8-sig")
+            if "\n---\n" not in content:
+                continue
+
+            meta_str, text = content.split("\n---\n", 1)
+            meta   = json.loads(meta_str)
+            chunks = chunk_text(text, meta)
+            if not chunks:
+                continue
+
+            with open(out_path, "w", encoding="utf-8-sig") as f:
+                for chunk in chunks:
+                    f.write(json.dumps(chunk, ensure_ascii=False) + "\n")
+
+            total_chunks += len(chunks)
+
+        except Exception as e:
+            failed += 1
+            log.error(f"  chunking failed for {txt_path.name}: {e}")
             continue
 
-        chunks = chunk_text(text, meta)
-        if not chunks:
-            continue
-
-        with open(out_path, "w", encoding="utf-8-sig") as f:
-            for chunk in chunks:
-                f.write(json.dumps(chunk, ensure_ascii=False) + "\n")
-
-        total_chunks += len(chunks)
-
-    log.info(f"chunking done — {total_chunks} chunks across {len(txt_files)} docs")
+    log.info(f"chunking done — {total_chunks} chunks across {len(txt_files)} docs  (failed: {failed})")
     return total_chunks
 
 
-# ── step 3: embedding + chromadb ingestion ────────────────────────────────────
+# ── embedding + chromadb ingestion ────────────────────────────────────────────
 
 def make_chunk_id(source_file: str, chunk_index: int) -> str:
     return hashlib.md5(f"{source_file}_{chunk_index}".encode()).hexdigest()
@@ -516,16 +510,20 @@ def get_chunk_files(folders=None) -> list[Path]:
 def load_pending_chunks(chunk_files: list[Path], existing_ids: set) -> list[dict]:
     pending = []
     for chunk_file in chunk_files:
-        with open(chunk_file, encoding="utf-8-sig") as f:
-            for line in f:
-                try:
-                    chunk = json.loads(line)
-                except json.JSONDecodeError:
-                    continue
-                chunk_id = make_chunk_id(chunk["source_file"], chunk["chunk_index"])
-                if chunk_id not in existing_ids:
-                    chunk["_id"] = chunk_id
-                    pending.append(chunk)
+        try:
+            with open(chunk_file, encoding="utf-8-sig") as f:
+                for line in f:
+                    try:
+                        chunk    = json.loads(line)
+                        chunk_id = make_chunk_id(chunk["source_file"], chunk["chunk_index"])
+                        if chunk_id not in existing_ids:
+                            chunk["_id"] = chunk_id
+                            pending.append(chunk)
+                    except json.JSONDecodeError:
+                        continue
+        except Exception as e:
+            log.error(f"  failed to read chunk file {chunk_file.name}: {e}")
+            continue
     return pending
 
 
@@ -539,30 +537,32 @@ def embed_and_ingest(pending: list[dict], collection, model, batch_size: int):
         normalize_embeddings = True,
         show_progress_bar    = True,
         convert_to_numpy     = True,
-        num_workers          = 4,    # parallel CPU workers prefetch batches while GPU encodes
+        num_workers          = 4,
     )
 
-    # ingest into chromadb in large batches
     chroma_batch = 512
     log.info("ingesting into chromadb...")
     for i in tqdm(range(0, len(pending), chroma_batch), desc="ingesting"):
-        batch_chunks     = pending[i:i + chroma_batch]
-        batch_embeddings = all_embeddings[i:i + chroma_batch].tolist()
-
-        collection.add(
-            ids        = [c["_id"] for c in batch_chunks],
-            embeddings = batch_embeddings,
-            documents  = [c["text"] for c in batch_chunks],
-            metadatas  = [{
-                "source_file":       c["source_file"],
-                "folder":            c["folder"],
-                "category":          c["category"],
-                "language":          c["language"],
-                "chunk_index":       c["chunk_index"],
-                "word_count":        c["word_count"],
-                "extraction_method": c.get("extraction_method", "unknown"),
-            } for c in batch_chunks],
-        )
+        try:
+            batch_chunks     = pending[i:i + chroma_batch]
+            batch_embeddings = all_embeddings[i:i + chroma_batch].tolist()
+            collection.add(
+                ids        = [c["_id"] for c in batch_chunks],
+                embeddings = batch_embeddings,
+                documents  = [c["text"] for c in batch_chunks],
+                metadatas  = [{
+                    "source_file":       c["source_file"],
+                    "folder":            c["folder"],
+                    "category":          c["category"],
+                    "language":          c["language"],
+                    "chunk_index":       c["chunk_index"],
+                    "word_count":        c["word_count"],
+                    "extraction_method": c.get("extraction_method", "unknown"),
+                } for c in batch_chunks],
+            )
+        except Exception as e:
+            log.error(f"  chromadb batch {i} failed: {e} — continuing")
+            continue
 
 
 def run_embedding(batch_size=64, folders=None):
@@ -598,25 +598,27 @@ def run_embedding(batch_size=64, folders=None):
         peak = torch.cuda.max_memory_allocated(0) / 1e9
         log.info(f"peak VRAM used during embedding: {peak:.2f} GB")
 
-    log.info(f"done — {len(pending)} chunks ingested into chromadb")
-    log.info(f"total collection size: {collection.count()} chunks")
+    log.info("=" * 60)
+    log.info(f"EMBEDDING COMPLETE — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    log.info(f"  total collection size: {collection.count()} chunks")
+    log.info("=" * 60)
 
 
 # ── entry point ───────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--folder",       help="process only this folder (e.g. 11_laws_np)")
+    parser.add_argument("--folder",       help="process only this folder")
     parser.add_argument("--extract-only", action="store_true")
     parser.add_argument("--chunk-only",   action="store_true")
     parser.add_argument("--embed-only",   action="store_true")
-    parser.add_argument("--skip-ocr",     action="store_true",
-                        help="skip OCR fallback — process text-layer and Preeti PDFs only, much faster")
-    parser.add_argument("--batch-size",   type=int, default=64,
-                        help="embedding batch size — 128 for GTX 1650, 512 for RTX 5060")
+    parser.add_argument("--skip-ocr",     action="store_true")
+    parser.add_argument("--batch-size",   type=int, default=64)
     args = parser.parse_args()
 
     folders = {args.folder} if args.folder else None
+
+    log.info(f"pipeline started — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     if args.embed_only:
         run_embedding(batch_size=args.batch_size, folders=folders)
