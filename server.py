@@ -38,7 +38,7 @@ groq_client = None
 async def lifespan(app: FastAPI):
     global embedder, collection, groq_client
     print("Loading embedding model...")
-    embedder = SentenceTransformer(EMBED_MODEL)
+    embedder = SentenceTransformer(EMBED_MODEL, device="cuda")
     chroma   = chromadb.PersistentClient(path=str(CHROMA_DIR))
     collection = chroma.get_collection(COLLECTION_NAME)
     groq_client = Groq(api_key=GROQ_API_KEY)
