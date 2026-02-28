@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivicLens Nepal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0c0c0c;
+      --surface:   #141414;
+      --border:    #222;
+      --accent:    #c8f562;
+      --accent2:   #f5a623;
+      --text:      #e8e8e8;
+      --muted:     #555;
+      --error:     #ff5f5f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    /* noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      padding: 2rem 3rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+    .dot.online { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+    .dot.error  { background: var(--error);  box-shadow: 0 0 6px var(--error);  }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      height: calc(100vh - 73px - 48px);
+    }
+
+    /* ── chat panel ── */
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .empty-state {
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-state .big {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3rem;
+      color: #1e1e1e;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .message { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .message.user { align-items: flex-end; }
+    .message.assistant { align-items: flex-start; }
+
+    .bubble {
+      max-width: 75%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message.user .bubble {
+      background: var(--accent);
+      color: #0c0c0c;
+      border-radius: 2px 2px 0 2px;
+    }
+
+    .message.assistant .bubble {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px 2px 2px 0;
+    }
+
+    .message-label {
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 0.2rem;
+    }
+
+    .thinking {
+      display: flex;
+      gap: 4px;
+      padding: 0.9rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+
+    .thinking span {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--muted);
+      animation: bounce 1.2s infinite;
+    }
+    .thinking span:nth-child(2) { animation-delay: 0.2s; }
+    .thinking span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); background: var(--accent); }
+    }
+
+    .input-area {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-end;
+    }
+
+    textarea {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      padding: 0.8rem 1rem;
+      resize: none;
+      outline: none;
+      border-radius: 2px;
+      line-height: 1.5;
+      max-height: 120px;
+      transition: border-color 0.15s;
+    }
+
+    textarea:focus { border-color: var(--accent); }
+    textarea::placeholder { color: var(--muted); }
+
+    button.send {
+      background: var(--accent);
+      color: #0c0c0c;
+      border: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.4rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    button.send:hover { opacity: 0.85; }
+    button.send:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* ── sources panel ── */
+    .sources-panel {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sources-header {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sources-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .source-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateX(10px);
+      animation: slideIn 0.3s forwards;
+    }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .source-index {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .source-name {
+      color: var(--text);
+      word-break: break-all;
+      margin-bottom: 0.4rem;
+    }
+
+    .source-meta {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: #1e1e1e;
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.65rem;
+    }
+
+    .score-bar {
+      margin-top: 0.5rem;
+      height: 2px;
+      background: var(--border);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 1px;
+      transition: width 0.6s ease;
+    }
+
+    .no-sources {
+      color: var(--muted);
+      font-size: 0.72rem;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* ── footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 3rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── error overlay ── */
+    .error-toast {
+      position: fixed;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a0a0a;
+      border: 1px solid var(--error);
+      color: var(--error);
+      font-size: 0.75rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 2px;
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 100;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .error-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      .sources-panel { border-right: none; border-top: 1px solid var(--border); max-height: 220px; }
+      header { padding: 1.2rem 1.5rem; }
+      .messages { padding: 1.5rem; }
+      .input-area { padding: 1rem 1.5rem; }
+      footer { padding: 0.75rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">CivicLens</span>
+  <span class="logo-sub">Nepal Legal & Policy RAG</span>
+  <div class="status-dot">
+    <div class="dot" id="statusDot"></div>
+    <span id="statusText">checking...</span>
+  </div>
+</header>
+
+<main>
+  <div class="chat-panel">
+    <div class="messages" id="messages">
+      <div class="empty-state" id="emptyState">
+        <span class="big">न्याय</span>
+        <p>Ask anything about Nepal's laws, constitution, and governance.</p>
+        <p style="margin-top:0.4rem; font-size:0.68rem;">Nepali र English दुवैमा सोध्न सकिन्छ।</p>
+      </div>
+    </div>
+    <div class="input-area">
+      <textarea
+        id="input"
+        rows="1"
+        placeholder="Ask about Nepal's laws, constitution, budget..."
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="send" id="sendBtn" onclick="sendQuery()">Send</button>
+    </div>
+  </div>
+
+  <div class="sources-panel">
+    <div class="sources-header">Sources</div>
+    <div class="sources-list" id="sourcesList">
+      <div class="no-sources" id="noSources">Sources will appear here after your first query.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>CivicLens Nepal — RAG over Nepali governance documents</span>
+  <span id="chunkCount">—</span>
+</footer>
+
+<div class="error-toast" id="errorToast"></div>
+
+<script>
+  const API = '';  // empty = same origin; set to 'http://localhost:8000' for local dev
+
+  async function checkHealth() {
+    try {
+      const res  = await fetch(`${API}/health`);
+      const data = await res.json();
+      document.getElementById('statusDot').className  = 'dot online';
+      document.getElementById('statusText').textContent = 'online';
+      document.getElementById('chunkCount').textContent = `${data.chunks?.toLocaleString() ?? '?'} chunks indexed`;
+    } catch {
+      document.getElementById('statusDot').className  = 'dot error';
+      document.getElementById('statusText').textContent = 'offline';
+    }
+  }
+
+  function showError(msg) {
+    const t = document.getElementById('errorToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendQuery(); }
+  }
+
+  function appendMessage(role, text) {
+    const empty = document.getElementById('emptyState');
+    if (empty) empty.remove();
+
+    const msgs = document.getElementById('messages');
+    const div  = document.createElement('div');
+    div.className = `message ${role}`;
+    div.innerHTML = `
+      <span class="message-label">${role === 'user' ? 'You' : 'CivicLens'}</span>
+      <div class="bubble">${escHtml(text)}</div>
+    `;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function showThinking() {
+    const empty = document.getElementById('emptyState');
+    if (empty) empty.remove();
+
+    const msgs = document.getElementById('messages');
+    const div  = document.createElement('div');
+    div.className = 'message assistant';
+    div.id = 'thinking';
+    div.innerHTML = `
+      <span class="message-label">CivicLens</span>
+      <div class="thinking"><span></span><span></span><span></span></div>
+    `;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function renderSources(sources) {
+    const list = document.getElementById('sourcesList');
+    list.innerHTML = '';
+
+    if (!sources || sources.length === 0) {
+      list.innerHTML = '<div class="no-sources">No sources cited for this answer.</div>';
+      return;
+    }
+
+    sources.forEach((s, i) => {
+      const card = document.createElement('div');
+      card.className = 'source-card';
+      card.style.animationDelay = `${i * 0.08}s`;
+      card.innerHTML = `
+        <div class="source-index">[SOURCE ${s.index}]</div>
+        <div class="source-name">${escHtml(s.source)}</div>
+        <div class="source-meta">
+          <span class="tag">${escHtml(s.category)}</span>
+          <span class="tag">${escHtml(s.language)}</span>
+          <span class="tag">score: ${s.score}</span>
+        </div>
+        <div class="score-bar"><div class="score-fill" style="width:${Math.round(s.score * 100)}%"></div></div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  async function sendQuery() {
+    const input = document.getElementById('input');
+    const btn   = document.getElementById('sendBtn');
+    const q     = input.value.trim();
+    if (!q) return;
+
+    input.value = '';
+    input.style.height = 'auto';
+    btn.disabled = true;
+
+    appendMessage('user', q);
+    showThinking();
+
+    try {
+      const res = await fetch(`${API}/query`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ question: q }),
+      });
+
+      document.getElementById('thinking')?.remove();
+
+      // server returned the broke HTML page
+      const ct = res.headers.get('content-type') || '';
+      if (ct.includes('application/json')) {
+        const data = await res.json();
+        if (data.redirect) {
+          window.location.href = data.redirect;
+          return;
+        }
+        document.getElementById('thinking')?.remove();
+        appendMessage('assistant', data.answer);
+        renderSources(data.sources);
+      } else {
+        window.location.href = '/error';
+      }
+
+    } catch (err) {
+      document.getElementById('thinking')?.remove();
+      appendMessage('assistant', '⚠ Could not reach the server. Is it running?');
+      showError('Connection failed — is the server running?');
+      renderSources([]);
+    }
+
+    btn.disabled = false;
+    document.getElementById('input').focus();
+  }
+
+  checkHealth();
+  setInterval(checkHealth, 30000);
+</script>
+</body>
+</html>
