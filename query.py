@@ -57,6 +57,7 @@ def build_prompt(query: str, chunks: list[dict]) -> str:
                 Answer the user's question using ONLY the sources provided below.
 
                 Rules:
+                - Never answer questions about current officeholders, recent events, or anything time-sensitive. Say you don't have that information.
                 - Cite sources inline using [SOURCE N] whenever you use information from them.
                 - If multiple sources support a point, cite all of them e.g. [SOURCE 1][SOURCE 3].
                 - If the sources don't contain enough information, say so clearly.

@@ -22,10 +22,10 @@ TOP_K           = 6
 
 
 def broke_page() -> HTMLResponse:
-    return HTMLResponse(content=open("broke.html", encoding="utf-8").read(), status_code=503)
+    return HTMLResponse(content=open("WebApp/broke.html", encoding="utf-8").read(), status_code=503)
 
 def error_page() -> HTMLResponse:
-    return HTMLResponse(content=open("error.html", encoding="utf-8").read(), status_code=500)
+    return HTMLResponse(content=open("WebApp/error.html", encoding="utf-8").read(), status_code=500)
 
 
 # ── startup ───────────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ app = FastAPI(title="CivicLens Nepal", lifespan=lifespan)
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    return HTMLResponse(content=open("index.html", encoding="utf-8").read())
+    return HTMLResponse(content=open("WebApp/index.html", encoding="utf-8").read())
 
 @app.get("/broke")
 async def show_broke():

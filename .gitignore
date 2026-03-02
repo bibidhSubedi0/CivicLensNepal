@@ -19,3 +19,10 @@ Thumbs.db
 *.tmp
 *.log
 nep-ttf2utf/
+
+test_proportion.py
+test.py
+test_retrieval.py
+test.ipynb
+nayan_gpu.sh
+lang.py

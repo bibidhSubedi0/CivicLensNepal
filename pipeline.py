@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import logging
 import traceback
+import time
 from pathlib import Path
 from datetime import datetime
 
@@ -42,6 +43,7 @@ COLLECTION_NAME = "civiclens_nepal"
 
 NEP_TTF2UTF_DIR = Path("nep-ttf2utf")
 POPPLER_PATH    = os.getenv("POPPLER_PATH", None)
+OCR_TIMEOUT     = 600  # seconds — skip file if OCR takes longer than this
 
 CHUNK_SIZE      = 250
 CHUNK_OVERLAP   = 50
@@ -209,7 +211,11 @@ def extract_text_ocr(pdf_path: Path) -> str:
             log.info(f"  OCR via easyocr ({'GPU' if DEVICE == 'cuda' else 'CPU'}): {pdf_path.name}")
             import numpy as np
 
+            ocr_start = time.time()
             for page_num in range(page_count):
+                if time.time() - ocr_start > OCR_TIMEOUT:
+                    log.warning(f"  OCR timeout ({OCR_TIMEOUT}s) on {pdf_path.name} at page {page_num + 1} — skipping rest")
+                    break
                 try:
                     page = doc[page_num]
                     mat  = fitz.Matrix(150 / 72, 150 / 72)
@@ -537,7 +543,6 @@ def embed_and_ingest(pending: list[dict], collection, model, batch_size: int):
         normalize_embeddings = True,
         show_progress_bar    = True,
         convert_to_numpy     = True,
-        num_workers          = 4,
     )
 
     chroma_batch = 512
@@ -633,6 +638,9 @@ def main():
 
     run_chunking(folders=folders)
     run_embedding(batch_size=args.batch_size, folders=folders)
+
+    log.info("pipeline fully complete — shutting down...")
+    os.system("shutdown /s /t 30")  # 30 second delay so logs flush
 
 
 if __name__ == "__main__":
