@@ -1,69 +1,91 @@
-# CivicLens Nepal 
+# CivicLens Nepal
 
-A RAG-powered assistant that lets you ask questions about Nepal's laws, constitution, and governance documents — in Nepali or English — and get factual answers with citations pointing to the exact source documents.
+A RAG-powered assistant for Nepal's laws, constitution, and governance documents. Ask questions in Nepali or English and get factual, cited answers pointing back to the exact source document.
 
-**Live: NOT_RIGHT_NOW_UNDER_CONSTRUCTION**
+**Live demo: coming soon**
 
-<img width="1894" height="940" alt="SS" src="https://github.com/user-attachments/assets/9006de28-c077-4231-bad1-eb7ca61b8eb7" />
+![CivicLens Screenshot](https://github.com/user-attachments/assets/9006de28-c077-4231-bad1-eb7ca61b8eb7)
 
 ---
 
-## Why
+## Why this exists
 
-Nepal's legal and governance documents are scattered, hard to search, and often only available as scanned PDFs in legacy fonts. CivicLens indexes all of it and makes it queryable in plain language.
+Nepal's legal and governance documents are scattered across government websites, hard to search, and often only available as scanned PDFs in legacy Preeti font encoding. CivicLens indexes all of it and makes it queryable in plain language.
 
 Ask things like:
 - *भ्रष्टाचारको सजाय के हो?*
 - *What does the constitution say about fundamental rights?*
 - *मजदुरको न्यूनतम पारिश्रमिक कति हो?*
 
-Every answer cites the exact document it came from.
+Every answer cites the exact document it came from, with a relevance score.
 
 ---
 
-## Documents indexed
+## What's indexed
 
-~FOR THIS VERY EXPREMENTAL VERSION : 9,500 chunks (Expected to be 100,000+) across Nepal's constitution, budget speeches, economic surveys, PSC syllabuses, civil service acts, key legislation (Nepali and English), and NPC planning documents.
+> **Note:** This is an early experimental version. Data is not included in this repo — the raw PDFs are sourced from various Nepali government websites and are too large for GitHub. A download link will be added here once they're hosted somewhere reasonable (hopefully soon).
+
+| Category | Documents |
+|----------|-----------|
+| Constitution | Nepal's constitution (English + Nepali) |
+| Economic Surveys | 2002 – 2024 |
+| Budget Speeches | 2020 – 2026 |
+| PSC Syllabuses | 40+ civil service exam syllabuses |
+| Civil Service Acts | Civil Service Act, Good Governance Act, Local Administration Act |
+| Key Laws | 500+ Nepali laws (English and Nepali) |
+| NPC Documents | Planning documents, SDG reports, annual reports |
+
+Currently **67,079 chunks** indexed. Expected to grow as more documents are added.
 
 ---
 
 ## Stack
 
-- **Embeddings** — `intfloat/multilingual-e5-base` (supports Nepali + English)
-- **Vector store** — ChromaDB
-- **LLM** — Llama 3.1 8B via Groq
-- **Backend** — FastAPI
-- **Frontend** — vanilla HTML/CSS/JS, no frameworks
+| Component | Technology |
+|-----------|-----------|
+| Embeddings | `intfloat/multilingual-e5-base` |
+| Vector store | ChromaDB |
+| LLM | Llama 3.1 8B via Groq |
+| Backend | FastAPI |
+| Frontend | Vanilla HTML/CSS/JS |
+
+Multilingual-e5-base was chosen specifically for its strong performance on both Devanagari and Latin script — most English-only embedding models struggle badly with Nepali text.
 
 ---
 
 ## Running locally
 
-You need Python 3.10+, and a free [Groq API key](https://console.groq.com) (no credit card).
+You need Python 3.10+ and a free [Groq API key](https://console.groq.com) (no credit card required).
 
 ```bash
 git clone https://github.com/bibidhSubedi0/CivicLensNepal
-cd civiclens-nepal
-python -m venv venv && venv\Scripts\activate
+cd CivicLensNepal
+
+python -m venv cln_env
+cln_env\Scripts\activate      # Windows
+source cln_env/bin/activate   # Linux/Mac
+
 pip install -r requirements.txt
 ```
 
-Add your key to a `.env` file:
+Create a `.env` file:
 ```
 GROQ_API_KEY=your_key_here
 ```
 
-Run the ingestion pipeline once to build the index:
+Run the ingestion pipeline to build the index (requires PDFs in `data/raw/`):
 ```bash
-python ingest.py
+python pipeline.py
 ```
 
-Then start the server:
+Start the server:
 ```bash
 uvicorn server:app --port 8000
 ```
 
 Open `http://localhost:8000`.
+
+See [INSTRUCTIONS.md](INSTRUCTIONS.md) for all pipeline flags, folder structure, and advanced usage.
 
 ---
 
