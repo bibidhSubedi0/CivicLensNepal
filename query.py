@@ -17,27 +17,25 @@ COLLECTION_NAME = "civiclens_nepal"
 EMBED_MODEL     = "intfloat/multilingual-e5-base"
 TOP_K           = 6
 
-print("Loading embedding model...")
+print("loading model...")
 embedder   = SentenceTransformer(EMBED_MODEL)
 chroma     = chromadb.PersistentClient(path=str(CHROMA_DIR))
 collection = chroma.get_collection(COLLECTION_NAME)
 client     = Groq(api_key=GROQ_API_KEY)
-print(f"Ready , {collection.count():,} chunks in index\n")
+print(f"ready, {collection.count():,} chunks indexed\n")
 
 
 def retrieve(query: str) -> list[dict]:
-    embedding = embedder.encode(f"query: {query}", normalize_embeddings=True).tolist()
-    results   = collection.query(
-        query_embeddings=[embedding],
+    # e5 asymmetric retrieval: queries get "query: " prefix, passages get "passage: "
+    # skipping this prefix tanks retrieval quality noticeably
+    vec     = embedder.encode(f"query: {query}", normalize_embeddings=True).tolist()
+    results = collection.query(
+        query_embeddings=[vec],
         n_results=TOP_K,
         include=["documents", "metadatas", "distances"],
     )
     chunks = []
-    for doc, meta, dist in zip(
-        results["documents"][0],
-        results["metadatas"][0],
-        results["distances"][0],
-    ):
+    for doc, meta, dist in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
         chunks.append({
             "text":     doc,
             "source":   meta.get("source_file", "unknown"),
@@ -54,31 +52,31 @@ def build_prompt(query: str, chunks: list[dict]) -> str:
         for i, c in enumerate(chunks, 1)
     )
     return f"""You are CivicLens, a helpful assistant for Nepali governance, law, and public policy.
-                Answer the user's question using ONLY the sources provided below.
+            Answer the user's question using ONLY the sources provided below.
 
-                Rules:
-                - Never answer questions about current officeholders, recent events, or anything time-sensitive. Say you don't have that information.
-                - Cite sources inline using [SOURCE N] whenever you use information from them.
-                - If multiple sources support a point, cite all of them e.g. [SOURCE 1][SOURCE 3].
-                - If the sources don't contain enough information, say so clearly.
-                - Answer in the english if the question is in english, else answer in both english and nepali if the question is in nepali
-                - Sepeate 2 answer by [ENG] ...eng answer  and then a few lines later [NEP] ...nep answer
-                - Be concise and factual.
+            Rules:
+            - Never answer questions about current officeholders, recent events, or anything time-sensitive. Say you don't have that information.
+            - Cite sources inline using [SOURCE N] whenever you use information from them.
+            - If multiple sources support a point, cite all of them e.g. [SOURCE 1][SOURCE 3].
+            - If the sources don't contain enough information, say so clearly.
+            - If the question is in English, answer in English. If the question is in Nepali, answer in both:
+            [ENG] English answer here
+            [NEP] Nepali answer here
+            - Be concise and factual.
 
-                SOURCES:
-                {context}
+            SOURCES:
+            {context}
 
-                QUESTION: {query}
+            QUESTION: {query}
 
-                ANSWER:"""
+            ANSWER:"""
 
 
 def ask(query: str) -> None:
-    chunks = retrieve(query)
-
+    chunks   = retrieve(query)
     response = client.chat.completions.create(
-        model    = GROQ_MODEL,
-        messages = [{"role": "user", "content": build_prompt(query, chunks)}],
+        model=GROQ_MODEL,
+        messages=[{"role": "user", "content": build_prompt(query, chunks)}],
     )
     answer = response.choices[0].message.content
 
@@ -99,7 +97,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         ask(" ".join(sys.argv[1:]))
     else:
-        print("CivicLens Nepal — type your question, Ctrl+C to exit\n")
+        print("CivicLens Nepal: type your question, Ctrl+C to exit\n")
         while True:
             try:
                 q = input("Question: ").strip()
@@ -107,5 +105,5 @@ if __name__ == "__main__":
                     ask(q)
                 print()
             except KeyboardInterrupt:
-                print("\nBye!")
+                print("\nbye!")
                 break
