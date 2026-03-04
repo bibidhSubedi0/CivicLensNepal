@@ -14,7 +14,7 @@ from sentence_transformers import SentenceTransformer
 load_dotenv()
 
 GROQ_API_KEY    = os.getenv("GROQ_API_KEY")
-GROQ_MODEL      = "llama-3.1-8b-instant"
+GROQ_MODEL      = "meta-llama/llama-4-scout-17b-16e-instruct"
 CHROMA_DIR      = Path("data/chromadb")
 COLLECTION_NAME = "civiclens_nepal"
 EMBED_MODEL     = "intfloat/multilingual-e5-base"
