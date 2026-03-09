@@ -6,10 +6,14 @@ from contextlib import asynccontextmanager
 import chromadb
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from groq import Groq, APIStatusError
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from sentence_transformers import SentenceTransformer
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 load_dotenv()
 
@@ -19,6 +23,7 @@ CHROMA_DIR      = Path("data/chromadb")
 COLLECTION_NAME = "civiclens_nepal"
 EMBED_MODEL     = "intfloat/multilingual-e5-base"
 TOP_K           = 6
+MAX_QUESTION_LENGTH = 500
 
 WEBAPP = Path("WebApp")
 
@@ -37,17 +42,32 @@ groq_client = None
 async def lifespan(app: FastAPI):
     global embedder, collection, groq_client
     print("loading embedding model...")
-    # force cuda, on CPU this takes forever and the server feels broken
     embedder   = SentenceTransformer(EMBED_MODEL, device="cuda")
-    # embedder = SentenceTransformer(EMBED_MODEL, device="cpu")
-    chroma     = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    collection = chroma.get_collection(COLLECTION_NAME)
+    # embedder    = SentenceTransformer(EMBED_MODEL, device="cpu")
+    chroma      = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    collection  = chroma.get_collection(COLLECTION_NAME)
     groq_client = Groq(api_key=GROQ_API_KEY)
     print(f"ready, {collection.count():,} chunks indexed")
     yield
 
 
+# ── rate limiter ──────────────────────────────────────────────────────────────
+
+limiter = Limiter(key_func=get_remote_address, default_limits=["60/minute"])
+
 app = FastAPI(title="CivicLens Nepal", lifespan=lifespan)
+
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# ── CORS ──────────────────────────────────────────────────────────────────────
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://bibidh-civiclens-nepal.hf.space"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 
 # ── routes ────────────────────────────────────────────────────────────────────
@@ -66,7 +86,6 @@ async def show_error():
 
 @app.get("/favicon.ico")
 async def favicon():
-    # browsers spam this endpoint constantly, just return empty
     return Response(status_code=204)
 
 @app.exception_handler(404)
@@ -128,9 +147,20 @@ def build_prompt(query: str, chunks: list[dict]) -> str:
 class QueryRequest(BaseModel):
     question: str
 
+    @field_validator("question")
+    @classmethod
+    def validate_question(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("Question cannot be empty.")
+        if len(v) > MAX_QUESTION_LENGTH:
+            raise ValueError(f"Question too long (max {MAX_QUESTION_LENGTH} characters).")
+        return v
+
 
 @app.post("/query")
-async def query(req: QueryRequest):
+@limiter.limit("10/minute")
+async def query(req: QueryRequest, request: Request):
     try:
         chunks   = retrieve(req.question)
         response = groq_client.chat.completions.create(
@@ -154,7 +184,6 @@ async def query(req: QueryRequest):
         return {"answer": answer, "sources": sources}
 
     except APIStatusError:
-        # groq free tier quota, redirect to the broke page
         return JSONResponse({"redirect": "/broke"}, status_code=402)
     except Exception:
         return JSONResponse({"redirect": "/error"}, status_code=500)
@@ -163,14 +192,3 @@ async def query(req: QueryRequest):
 @app.get("/health")
 async def health():
     return {"status": "ok", "chunks": collection.count(), "model": GROQ_MODEL}
-
-
-@app.get("/stats")
-async def stats():
-    return {
-        "collection":   COLLECTION_NAME,
-        "total_chunks": collection.count(),
-        "embed_model":  EMBED_MODEL,
-        "llm":          GROQ_MODEL,
-        "top_k":        TOP_K,
-    }
