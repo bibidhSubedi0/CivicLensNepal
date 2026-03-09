@@ -39,6 +39,7 @@ async def lifespan(app: FastAPI):
     print("loading embedding model...")
     # force cuda, on CPU this takes forever and the server feels broken
     embedder   = SentenceTransformer(EMBED_MODEL, device="cuda")
+    # embedder = SentenceTransformer(EMBED_MODEL, device="cpu")
     chroma     = chromadb.PersistentClient(path=str(CHROMA_DIR))
     collection = chroma.get_collection(COLLECTION_NAME)
     groq_client = Groq(api_key=GROQ_API_KEY)
