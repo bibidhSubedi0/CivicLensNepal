@@ -2,9 +2,10 @@
 
 A RAG-powered assistant for Nepal's laws, constitution, and governance documents. Ask questions in Nepali or English and get factual, cited answers pointing back to the exact source document.
 
-**Live demo: coming soon**
+**Live demo: https://bibidh-civiclens-nepal.hf.space/**
 
-![CivicLens Screenshot](https://github.com/user-attachments/assets/9006de28-c077-4231-bad1-eb7ca61b8eb7)
+<img width="1892" height="986" alt="image" src="https://github.com/user-attachments/assets/7ad88df6-fd3a-4cff-ad0a-7295da6ff453" />
+
 
 ---
 
