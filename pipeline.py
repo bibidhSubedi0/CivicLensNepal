@@ -66,6 +66,7 @@ FOLDER_CATEGORIES = {
     "09_npc_documents":      "npc",
     "10_laws_en":            "laws_en",
     "11_laws_np":            "laws_np",
+    "12_extras":             "extras",
 }
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
